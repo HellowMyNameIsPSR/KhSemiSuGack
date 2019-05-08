@@ -1,0 +1,80 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>마이페이지</title>
+<style>
+	.myPage{
+		display:block;
+	}
+	.headerMe{
+		border:1px solid black;
+		display:block;
+	}
+</style>
+</head>
+<body>
+
+<!-- Wrapper -->
+	<div id="wrapper">
+	
+		<!-- Main -->
+		<div id="main">
+				
+			<div class="inner">
+				
+				<!-- Header -->
+				
+				<header id="header">
+				
+					
+					
+					<div class="table">
+						<table border="1">
+							<tr>
+							<th colspan="4" style="font-size:20px; text-align:center; background:gray; color:white;">MY정보</th>
+							</tr>
+							<tr>
+								<th style="height:50px; border:1px solid gray; font-size:15px; text-align:center;">적립금</th>
+								<th style="height:50px; border:1px solid gray; font-size:15px; text-align:center;" >주문내역</th>
+								<th style="height:50px; border:1px solid gray; font-size:15px; text-align:center;">취소/환불확인</th>
+								<th style="height:50px; border:1px solid gray; font-size:15px; text-align:center;">펀딩투자내역</th>
+							</tr>
+							<tr>
+								<td style="border:1px solid gray; text-align:center;">_P</td>
+								<td style="border:1px solid gray; text-align:center;">_건</td>
+								<td style="border:1px solid gray; text-align:center;">_건</td>
+								<td style="border:1px solid gray; text-align:center;">_건</td>
+							</tr>
+						</table>
+					</div>
+				</header>
+				
+				<section id="contents">
+					<header class="main">
+						<table>
+							<tr style="text-align:center">
+								<td style="border:1px solid gray;">No</td>
+								<td style="border:1px solid gray;">주문일</td>
+								<td style="border:1px solid gray;">상품명</td>
+								<td style="border:1px solid gray;">수량</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid gray;"></td>
+								<td style="border:1px solid gray;"></td>
+								<td style="border:1px solid gray;"></td>
+								<td style="border:1px solid gray;"></td>
+							</tr>
+						</table>
+					</header>
+					<!-- Contents area -->
+				</section>
+			</div>
+		</div>
+		<%@ include file="../common/userMenuBar.jsp" %>
+	</div>
+			
+</body>
+</html>
