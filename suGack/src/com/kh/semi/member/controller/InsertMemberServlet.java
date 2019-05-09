@@ -30,14 +30,16 @@ public class InsertMemberServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
-		String userPwd = request.getParameter("password");
+		String password = request.getParameter("password");
 		String phone = request.getParameter("phone");
+		String name = request.getParameter("name");
 		String nickName = request.getParameter("nickName");
 		
 		Member m = new Member();
 		m.setEmail(email);
-		m.setUserPwd(userPwd);
+		m.setPassword(password);
 		m.setPhone(phone);
+		m.setMemberName(name);
 		m.setNickName(nickName);
 		System.out.println(m);
 		

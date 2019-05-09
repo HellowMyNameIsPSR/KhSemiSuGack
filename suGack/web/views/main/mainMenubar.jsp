@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.semi.member.model.vo.Member"%>
+<%
+	Member loginUser = (Member)request.getSession().getAttribute("loginUser");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,6 +99,17 @@
 	<header>
 		<nav class="navbar navbar-default asdf">
 			<!-- 네비 상단   (로그인후 바뀌는건 우짤까요?? if else문 사용 가능한가요??)-->
+			
+			<% if(loginUser != null) {%>
+			<nav class="navbar navbar-top hidden-xs">
+				<ul class="nav navbar-nav pull-right">
+					<li><a><%= loginUser.getNickName() %>님 환영합니다</a></li>
+					<li><a href="<%=request.getContextPath()%>/logout.me">로그아웃</a></li>
+					<li><a href="/semi/views/member/memberUpdateForm.jsp">회원정보수정</a></li>
+					<li><a href="../application/appIntroduce.jsp">입점신청</a></li>
+				</ul>
+			</nav>
+			<%} else { %>
 			<nav class="navbar navbar-top hidden-xs">
 				<ul class="nav navbar-nav pull-right">
 					<li><a href="../member/memberLoginForm.jsp">로그인</a></li>
@@ -103,8 +117,7 @@
 					<li><a href="../application/appIntroduce.jsp">입점신청</a></li>
 				</ul>
 			</nav>
-			
-
+			<%} %>
 			<!-- 모바일 중단 네비바 -->
 			<nav class="navbar midNav-appear visible-xs">
 				<div class="container">

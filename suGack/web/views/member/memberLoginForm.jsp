@@ -5,32 +5,89 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <style>
-	tr{
-		height:50px;
+	.loginForm{
+		border:1px solid lightgray;
+		width:600px;
+		height:500px;
+		padding:30px;
+		margin-top:50px;
+	}
+	table{
+		margin-top:50px;
+	}
+	input{
+		padding:5px;
+	}
+	.btn{
+		width:50px;
+	}
+	.btn-block{
+		width:300px;
+	}
+	form{
+		margin-top:20px;
+	}
+	h2{
+		margin-bottom:20px;
 	}
 </style>
 </head>
 <body>
-	<div class="container">
-		<div class="logo" style="height:150px;" align="center">로고가 들어갈 자리</div>
-			<h3 align="center">로그인</h3>
-			<form>
-				<table align="center">
-					<tr>
-						<td>이메일</td>
-						<td><input type="email" id="email"></td>
-						<td rowspan="2"><input type="submit" value="로그인"></td>
-					</tr>
-					<tr>
-						<td>비밀번호</td>
-						<td><input type="password" id="password"></td>
-					</tr>
-				</table>
-			</form>
+<%@ include file="../main/mainMenubar.jsp" %>
+	<div class="container" align="center">
+			<div class="loginForm" align="center">
+				<h2 align="center">로그인</h2>
+			
+				<form action="<%= request.getContextPath() %>/login.me" method="post" class="form-horizontal">
+					<div class="form-group">
+						<label class="control-label col-sm-3">이메일</label>
+						<div class="col-sm-6">
+							<input type="text" name="email" class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3">비밀번호</label>
+						<div class="col-sm-6">
+							<input type="password" name="password" class="form-control">
+						</div>
+					</div>
+					<br>
+					<div class="col-sm-3"></div>
+					<div class="col-sm-6">
+						<button type="submit" class="btn btn-primary btn-md btn-block">로그인</button>
+						<button type="reset" class="btn btn-default btn-md btn-block"> 취소 </button>
+					
+					</div>
+				</form>
+					
+			
+			</div>
+			
 		
 	</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

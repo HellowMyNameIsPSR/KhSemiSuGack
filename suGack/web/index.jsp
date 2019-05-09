@@ -14,6 +14,7 @@
 <title>index.jsp</title>
 </head>
 <body>
+	<%@ include file="views/main/mainMenubar.jsp" %>
 	<!-- <script>
 		$(function(){
 			location.href = "views/main/mainMenubar.jsp";
@@ -23,3 +24,23 @@
 	<h1><a href="views/admin/adminHome.jsp">관리자메인</a></h1>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

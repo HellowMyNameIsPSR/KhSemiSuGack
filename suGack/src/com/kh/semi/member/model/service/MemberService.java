@@ -23,6 +23,16 @@ public class MemberService {
 		return result;
 	}
 
+	public Member loginMember(String email, String password) {
+		Connection con = getConnection();
+		
+		Member loginUser = new MemberDao().loginMember(con, email, password);
+		
+		close(con);
+		
+		return loginUser;
+	}
+
 }
 
 
