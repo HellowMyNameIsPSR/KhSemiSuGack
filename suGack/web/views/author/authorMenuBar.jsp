@@ -51,7 +51,6 @@
 					<span class="opener">개인정보</span>
 					<ul>
 						<li><a href="editAuthorInfo.jsp">개인정보 수정</a>
-						<li><a href="manageAccount.jsp">계좌 관리</a>
 						<li><a href="deleteAuthor.jsp">회원 탈퇴</a>
 					</ul>
 				</li>

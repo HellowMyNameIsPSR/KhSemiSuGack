@@ -6,16 +6,20 @@
 <meta charset="UTF-8">
 <title>수작 - 개인정보수정</title>
 <style>
-	.listBox {
-		border-top:1px solid black;
-		border-left:1px solid black;
-		border-right:1px solid black;
+	.authorInfo {
+		border:2px solid lightgray;
 		margin: 20px 0px 20px 0px;
+		box-shadow:2px 2px lightgray;
 	}
-	.contents {
-		border-bottom:1px solid gray;
-		margin: 20px 0px 20px 0px;
-		padding-left:20px;
+	.authorInfo tr{
+		/* border:none; */
+		padding:0 auto;
+	}
+	
+	.authorInfo tr>td{
+		background:white;
+		height:80px;
+		
 	}
 
 </style>
@@ -29,7 +33,9 @@
 				<!-- Header -->
 				<header id="header">
 					<a href="authorHome.jsp" class="logo">
-						<strong>개인정보</strong>수정
+						<span class="glyphicon glyphicon-home"></span>
+						&nbsp;
+						<strong style="font-size:20px;">HOME</strong>
 					</a>
 				</header>
 				<section id="contents">
@@ -37,43 +43,88 @@
 						<h1>판매자 정보수정</h1>
 					</header>
 					<!-- Contents area -->
-					
-					
-					
-					
-					<div class="listBox">
-						<div class="contents">
-							<h2>판매자정보</h2>
-						</div>
-						<div class="contents">
-							 <h4>판매자유형</h4>
-						</div>
-						<div class="contents">
-							 <h4>이름</h4>
-						</div>
-						<div class="contents">
-							 <h4>사업장 위치</h4>
-						</div>
-					</div>
-					
-					<div class="listBox">
-						<div class="contents">
-							<h2>배송정보</h2>
-						</div>
-						<div class="contents">
-							 <h4>출고지주소</h4>
-						</div>
-						<div class="contents">
-							 <h4>반품/교환지 주소</h4>
-						</div>
-					</div>
 
-					<div align="center">
-						<button style="width:150px">취소</button>
-						<button style="width:150px; background:lightgray;">확인</button>
-					</div>
+					<form id="updateAuthor" action="" method="post">
 
+						<table class="authorInfo">
+							<tr>
+								<td colspan="2"><h2
+										style="margin: 0 auto; padding-left: 20px">판매자 정보</h2></td>
+							</tr>
+							<tr>
+								<td style="width: 200px;">판매자 유형</td>
+								<td><input style="width: 100px;" type="text" maxlength="13"
+									name="userId" id="userId" value=""></td>
+							</tr>
+							<tr>
+								<td>판매자 이름</td>
+								<td><input style="width: 100px; display: inline;"
+									type="text" maxlength="13" name="userId" id="userId" value=""
+									readonly>
+									<button style="display: inline; margin-left: 20px;">수정</button>
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="2">사업장 위치</td>
+								<td>
+									<button>주소수정</button> <br> <br> ※주소 들어갈곳
+								</td>
+							</tr>
+						</table>
+						
+						
+						
+						
+						
 
+						<table class="authorInfo">
+							<tr>
+								<td colspan="2"><h2
+										style="margin: 0 auto; padding-left: 20px">정산관리</h2></td>
+							</tr>
+							<tr>
+								<td style="width: 200px;">대금입금계좌</td>
+								<td>
+									<input style="display:inline;width: 100px;" type="text" maxlength="13"name="userId" id="userId" value="">
+									&nbsp;&nbsp;
+									<button>계좌수정</button>
+								</td>
+							</tr>
+							
+						</table>
+						
+						
+						
+						
+
+						<table class="authorInfo">
+							<tr>
+								<td colspan="2"><h2
+										style="margin: 0 auto; padding-left: 20px">배송 정보</h2></td>
+							</tr>
+							<tr>
+
+								<td style="width: 200px;">출고지 주소</td>
+								<td>
+									<button>주소수정</button> <br> <br>※주소 들어갈곳
+								</td>
+							</tr>
+							<tr>
+								<td>반품/교환지 주소</td>
+								<td><button>주소수정</button> <br> <br>※주소 들어갈곳</td>
+							</tr>
+							<tr>
+								<td>사업장 위치</td>
+								<td><button>주소수정</button> <br> <br>※주소 들어갈곳</td>
+							</tr>
+						</table>
+
+						<div align="center">
+							<button style="width: 150px;">취소</button>
+							<button style="width: 150px;">등록하기</button>
+						</div>
+
+					</form>
 
 
 
