@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -32,9 +33,10 @@ public class MemberDao {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, m.getEmail());
-			pstmt.setString(2, m.getUserPwd());
-			pstmt.setString(3, m.getNickName());
-			pstmt.setString(4, m.getPhone());
+			pstmt.setString(2, m.getPassword());
+			pstmt.setString(3, m.getMemberName());
+			pstmt.setString(4, m.getNickName());
+			pstmt.setString(5, m.getPhone());
 			
 			result = pstmt.executeUpdate();
 			
@@ -46,6 +48,48 @@ public class MemberDao {
 		}
 		
 		return result;
+	}
+
+	public Member loginMember(Connection con, String email, String password) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member loginUser = null;
+		
+		String query = prop.getProperty("loginMember");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, email);
+			pstmt.setString(2, password);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				loginUser = new Member();
+				loginUser.setMemberId(rset.getInt("MEMBER_ID"));
+				loginUser.setEmail(rset.getString("EMAIL"));
+				loginUser.setPassword(rset.getString("PASSWORD"));
+				loginUser.setMemberName(rset.getString("MEMBER_NAME"));
+				loginUser.setNickName(rset.getString("NICK_NAME"));
+				loginUser.setPhone(rset.getString("PHONE"));
+				loginUser.setGender(rset.getString("GENDER"));
+				loginUser.setBirthDate(rset.getDate("BIRTH_DATE"));
+				loginUser.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				loginUser.setMemberType(rset.getString("MEMBER_TYPE"));
+				loginUser.setAuthorDate(rset.getDate("AUTHOR_DATE"));
+				loginUser.setPoint(rset.getInt("POINT"));
+				loginUser.setEmailYN(rset.getString("EMAIL_YN"));
+				loginUser.setOutDate(rset.getDate("OUT_DATE"));
+				loginUser.setModifyDate(rset.getDate("L_MODIFY_DATE"));
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return loginUser;
 	}
 
 }
