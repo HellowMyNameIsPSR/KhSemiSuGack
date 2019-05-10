@@ -33,14 +33,12 @@ public class InsertMemberServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String phone = request.getParameter("phone");
 		String name = request.getParameter("name");
-		String nickName = request.getParameter("nickName");
 		
 		Member m = new Member();
 		m.setEmail(email);
 		m.setPassword(password);
 		m.setPhone(phone);
 		m.setMemberName(name);
-		m.setNickName(nickName);
 		System.out.println(m);
 		
 		int result = new MemberService().insertMember(m);

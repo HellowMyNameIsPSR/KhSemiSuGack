@@ -79,13 +79,6 @@
 							<input type="text" name="name" class="form-control" placeholder="이름">
 						</div>
 					</div>
-					<div class="form-group">
-						<label class="control-label col-sm-3">닉네임</label>
-						<div class="col-sm-6">
-							<input type="text" name="nickName" class="form-control" placeholder="닉네임">
-						</div>
-						<button class="col-sm-2 btn btn-primary">중복확인</button>
-					</div>
 					<div class="col-sm-3"></div>
 					<div class="col-sm-6">
 					<button type="submit" class="btn btn-primary btn-md btn-block" id="submit">회원가입</button>
