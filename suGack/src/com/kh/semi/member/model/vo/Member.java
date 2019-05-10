@@ -4,20 +4,19 @@ import java.sql.Date;
 
 public class Member implements java.io.Serializable{
 	private int memberId;
-	private String email;
+	private String email;	
 	private String password;
 	private String memberName;
-	private String nickName;
 	private String phone;
 	private String gender;
 	private Date birthDate;
 	private Date enrollDate;
 	private String memberType;
 	private Date authorDate;
-	private int point;
-	private String emailYN;
 	private Date outDate;
 	private Date modifyDate;
+	private String status;
+	
 	
 	
 	
@@ -27,26 +26,26 @@ public class Member implements java.io.Serializable{
 
 
 
-	public Member(int memberId, String email, String password, String memberName, String nickName, String phone,
-			String gender, Date birthDate, Date enrollDate, String memberType, Date authorDate, int point,
-			String emailYN, Date outDate, Date modifyDate) {
+
+	public Member(int memberId, String email, String password, String memberName, String phone, String gender,
+			Date birthDate, Date enrollDate, String memberType, Date authorDate, Date outDate, Date modifyDate,
+			String status) {
 		super();
 		this.memberId = memberId;
 		this.email = email;
 		this.password = password;
 		this.memberName = memberName;
-		this.nickName = nickName;
 		this.phone = phone;
 		this.gender = gender;
 		this.birthDate = birthDate;
 		this.enrollDate = enrollDate;
 		this.memberType = memberType;
 		this.authorDate = authorDate;
-		this.point = point;
-		this.emailYN = emailYN;
 		this.outDate = outDate;
 		this.modifyDate = modifyDate;
+		this.status = status;
 	}
+
 
 
 
@@ -58,9 +57,11 @@ public class Member implements java.io.Serializable{
 
 
 
+
 	public void setMemberId(int memberId) {
 		this.memberId = memberId;
 	}
+
 
 
 
@@ -72,9 +73,11 @@ public class Member implements java.io.Serializable{
 
 
 
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 
 
 
@@ -86,9 +89,11 @@ public class Member implements java.io.Serializable{
 
 
 
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 
 
 
@@ -100,23 +105,11 @@ public class Member implements java.io.Serializable{
 
 
 
+
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
 	}
 
-
-
-
-	public String getNickName() {
-		return nickName;
-	}
-
-
-
-
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
-	}
 
 
 
@@ -128,9 +121,11 @@ public class Member implements java.io.Serializable{
 
 
 
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
 
 
 
@@ -142,9 +137,11 @@ public class Member implements java.io.Serializable{
 
 
 
+
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
 
 
 
@@ -156,9 +153,11 @@ public class Member implements java.io.Serializable{
 
 
 
+
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
+
 
 
 
@@ -170,9 +169,11 @@ public class Member implements java.io.Serializable{
 
 
 
+
 	public void setEnrollDate(Date enrollDate) {
 		this.enrollDate = enrollDate;
 	}
+
 
 
 
@@ -184,9 +185,11 @@ public class Member implements java.io.Serializable{
 
 
 
+
 	public void setMemberType(String memberType) {
 		this.memberType = memberType;
 	}
+
 
 
 
@@ -198,37 +201,11 @@ public class Member implements java.io.Serializable{
 
 
 
+
 	public void setAuthorDate(Date authorDate) {
 		this.authorDate = authorDate;
 	}
 
-
-
-
-	public int getPoint() {
-		return point;
-	}
-
-
-
-
-	public void setPoint(int point) {
-		this.point = point;
-	}
-
-
-
-
-	public String getEmailYN() {
-		return emailYN;
-	}
-
-
-
-
-	public void setEmailYN(String emailYN) {
-		this.emailYN = emailYN;
-	}
 
 
 
@@ -240,9 +217,11 @@ public class Member implements java.io.Serializable{
 
 
 
+
 	public void setOutDate(Date outDate) {
 		this.outDate = outDate;
 	}
+
 
 
 
@@ -254,6 +233,7 @@ public class Member implements java.io.Serializable{
 
 
 
+
 	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
 	}
@@ -261,14 +241,32 @@ public class Member implements java.io.Serializable{
 
 
 
+
+	public String getStatus() {
+		return status;
+	}
+
+
+
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+
+
+
 	@Override
 	public String toString() {
 		return "Member [memberId=" + memberId + ", email=" + email + ", password=" + password + ", memberName="
-				+ memberName + ", nickName=" + nickName + ", phone=" + phone + ", gender=" + gender + ", birthDate="
-				+ birthDate + ", enrollDate=" + enrollDate + ", memberType=" + memberType + ", authorDate=" + authorDate
-				+ ", point=" + point + ", emailYN=" + emailYN + ", outDate=" + outDate + ", modifyDate=" + modifyDate
-				+ "]";
+				+ memberName + ", phone=" + phone + ", gender=" + gender + ", birthDate=" + birthDate + ", enrollDate="
+				+ enrollDate + ", memberType=" + memberType + ", authorDate=" + authorDate + ", outDate=" + outDate
+				+ ", modifyDate=" + modifyDate + ", status=" + status + "]";
 	}
+
+	
 
 	
 

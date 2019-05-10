@@ -73,15 +73,7 @@
 							<input type="tel" name="phone" class="form-control" value="<%=loginUser.getPhone()%>">
 						</div>
 						<button class="col-sm-2 btn btn-primary">인증</button>
-					</div>
-					<div class="form-group">
-						<label class="control-label col-sm-3">닉네임</label>
-						<div class="col-sm-6">
-							<input type="text" name="nickName" class="form-control" value="<%=loginUser.getNickName()%>">
-						</div>
-						<button class="col-sm-2 btn btn-primary">중복확인</button>
-					</div>
-					
+					</div>	
 					<div class="form-group">
 						<label class="control-label col-sm-3">성별</label>
 						<div class="col-sm-6">

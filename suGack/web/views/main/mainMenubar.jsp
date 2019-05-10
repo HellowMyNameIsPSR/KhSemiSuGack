@@ -10,7 +10,8 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<%@ include file="../assets/css/allCss.html" %>
+<title></title>
 <style>
 	/* 네비 전체 */
 	.navbar{
@@ -103,7 +104,7 @@
 			<% if(loginUser != null) {%>
 			<nav class="navbar navbar-top hidden-xs">
 				<ul class="nav navbar-nav pull-right">
-					<li><a><%= loginUser.getNickName() %>님 환영합니다</a></li>
+					<li><a><%= loginUser.getMemberName() %>님 환영합니다</a></li>
 					<li><a href="<%=request.getContextPath()%>/logout.me">로그아웃</a></li>
 					<li><a href="../member/memberUpdateForm.jsp">회원정보수정</a></li>
 					<li><a href="../application/appIntroduce.jsp">입점신청</a></li>
