@@ -230,7 +230,7 @@ input[type:image]{
 						</form>
    
   </div>
-  <!--   <div id="menu31" class="tab-pane fade">
+  <!--   <div id="menu31f" class="tab-pane fade">
       <h3>문의</h3>
       	<form id="question" method="post">
       <div class="quest" style="border:1px solid black;background:beige;padding:20px; width:60%; height:200px";>

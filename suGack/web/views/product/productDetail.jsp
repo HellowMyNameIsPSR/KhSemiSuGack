@@ -310,7 +310,7 @@ input[type:image]{
 				$(".selectOpt").append($("#sel2 option:selected").text());
 		 });
 				 
-		 //최선1
+		 //최선12
 		  /* $("#sel1").change(function(){
 				$(".selectOpt").append($("#sel1 option:selected").text());
 		 })   */
