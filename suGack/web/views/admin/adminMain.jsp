@@ -9,16 +9,7 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <style>
-	/* .navbar {
-		border: 2px solid gray;
-		text-align:center;
-		margin-left: 20%;
-		margin-right: 20%;
-		background: lightgray;
-		font-size:20px;
-		
-		
-	} */
+
 	.container{
 	width: 80%;`
 	}
@@ -28,23 +19,7 @@
 </style>
 </head>
 <body>
-<!-- <nav class="navbar navbar-default">
-	<div style="float: left; width: 20%; padding:15px; border-right:2px solid gray;">
-		<a href="#" style="text-decoration:none; color:gray">홈</a>
-	</div>
-	<div style="float: left; width: 20%; padding:15px; border-right:2px solid gray; ">
-		<a href="#" style="text-decoration:none; color:gray">상품</a>
-	</div>
-	<div style="float: left; width: 20%; padding:15px;border-right:2px solid gray;">
-		<a href="#" style="text-decoration:none; color:gray">회원</a>
-	</div>
-	<div style="float: left; width: 20%; padding:15px; border-right:2px solid gray;">
-		<a href="#"  style="text-decoration:none; color:gray">운영</a>
-	</div>
-	<div style="float: left; width: 20%; padding:15px;">
-		<a href="#" style="text-decoration:none; color:gray">통계</a>
-	</div>
-</nav> -->
+
 <div class="container">
 	<div class="main-1">
 	<h3>날짜</h3>

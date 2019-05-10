@@ -50,7 +50,7 @@
 										</select>
 									</td>
 									
-									<td  colspan="2" style="width:750px;">
+									<td  colspan="2" style="width:600px;">
 										<input type="text" />
 									</td>
 								</tr>
@@ -61,16 +61,16 @@
 										<input type="radio" /><label>유형1</label>
 									</td>
 									
-									<td  colspan="2" style="width:750px;">
+									<td  colspan="2" style="width:600px;">
 										<input type="text" />
 									</td>
 								</tr>
 								<tr>
 									<td>가입일</td>
-									<td><input type="date" style="width:400px;"/></td>
+									<td><input type="date" style="width:300px;"/></td>
 									<td style="width:30px;"><label style="font-size:15px; text-align:center;">~</label></td>
 									<td style="width:500px;">
-										<input type="date" style="width:500px;"/>
+										<input type="date" style="width:300px;"/>
 									</td>
 								</tr>
 								<tr>
@@ -93,13 +93,13 @@
 										</select>
 									</td>
 									
-									<td  colspan="2" style="width:750px;">
+									<td  colspan="2" style="width:600px;">
 										<input type="text" placeholder="상품명 입력"/>
 									</td>
 								</tr>
 
 							</table>	
-							<input type="submit" value="조회"/>					
+							<input type="submit" value="조회" style="float:right">					
 						</form>
 						
 								<table class="table table-bordered" style="border:2px solid gray; text-align:center">
@@ -164,7 +164,7 @@
 				<td></td>
 			</tr>
 		</table>
-		<div class="row" style="padding-left:400px">
+		<div class="row" style="padding-left:200px">
 				<ul class="pagination justify-content-center">
 					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
 					<li class="page-item"><a class="page-link" href="#">1</a></li>
