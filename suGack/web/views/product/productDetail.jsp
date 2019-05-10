@@ -136,12 +136,14 @@ input[type:image]{
 			<hr>
 			<h5>옵션선택</h5>
 			<select id="sel1"style="width:350px; height:20px;">
-				<option value="op1" id="op1">옵션1</option>
-				<option value="op2">옵션2</option>
+				<option value=""  selected>옵션을 선택해주세요.</option>
+				<option class="sel" value="op1" id="op1">옵션1</option>
+				<option class="sel" value="op2">옵션2</option>
 			</select>
 			<select id="sel2"style="width:350px; height:20px;">
-				<option value="op1">옵션1</option>
-				<option value="op2">옵션2</option>
+				<option value=""  selected>옵션을 선택해주세요.</option>
+				<option class="sel" value="op1" id="op1">옵션1</option>
+				<option class="sel" value="op2">옵션2</option>
 			</select>
 			<hr>
 			<div class="selectOpt" style="width:100%; height:80px; background:white; margin-top:70px;">	
@@ -297,28 +299,22 @@ input[type:image]{
 
 <script>
 	$(function(){
-		/* $("#sel1").change(function(){
-			$(".selectOpt").append($(this).text());
-			
-		})	 */	
-		/* $("#sel1").change(function(){
-			$(".selectOpt").append($("#op1").text());
-		}) */
 		
-		/*  $("#sel1").change(function(){
-			 $(".selectOpt").append($("#op1 option:selected").text());
-		 }) */
 		 
 		 //최선
-		 /* $("#sel1").click(function(){
+		    $("#sel1").change(function(){
+				$(".selectOpt").append($("#sel1 option:selected").text());
+		 });
+		
+		    $("#sel2").change(function(){
+				$(".selectOpt").append($("#sel2 option:selected").text());
+		 });
+				 
+		 //최선
+		  /* $("#sel1").change(function(){
 				$(".selectOpt").append($("#sel1 option:selected").text());
 		 })   */
-		 
-		 //최선
-		 /* $("#sel1").change(function(){
-				$(".selectOpt").append($("#sel1 option:selected").text());
-		 }) */
-		 
+		
 		 
 		
 		 

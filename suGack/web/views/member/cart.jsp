@@ -56,7 +56,7 @@
 								<th>가격</th>
 							</tr>
 							<tr>
-								<td><input type="checkbox"></td>
+								<td><input type="checkbox" id="select"><label for="select"></label></td>
 								<td><img src="../images/tvxq.jpg" style="width:50px; height:50px;"></td>
 								<td><div class="explain">상품정보&옵션선택한것</div></td>
 								<td><input type="number"></td>

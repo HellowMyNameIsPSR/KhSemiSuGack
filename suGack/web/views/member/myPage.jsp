@@ -13,6 +13,10 @@
 		border:1px solid black;
 		display:block;
 	}
+	#table tr{
+	
+	border-bottom:1px solid black;
+	}
 </style>
 </head>
 <body>
@@ -32,21 +36,21 @@
 					
 					
 					<div class="table">
-						<table border="1">
+						<table id="table">
 							<tr>
 							<th colspan="4" style="font-size:20px; text-align:center; background:#9DCAFF; color:white;">MY정보</th>
 							</tr>
 							<tr>
-								<th style="height:50px; border:1px solid gray; font-size:15px; text-align:center;">적립금</th>
-								<th style="height:50px; border:1px solid gray; font-size:15px; text-align:center;" >주문내역</th>
-								<th style="height:50px; border:1px solid gray; font-size:15px; text-align:center;">취소/환불확인</th>
-								<th style="height:50px; border:1px solid gray; font-size:15px; text-align:center;">펀딩투자내역</th>
+								<th style="height:50px; font-size:15px; text-align:center;">적립금</th>
+								<th style="height:50px;  font-size:15px; text-align:center;" >주문내역</th>
+								<th style="height:50px;  font-size:15px; text-align:center;">취소/환불확인</th>
+								<th style="height:50px;  font-size:15px; text-align:center;">펀딩투자내역</th>
 							</tr>
 							<tr>
-								<td style="border:1px solid gray; text-align:center;">_P</td>
-								<td style="border:1px solid gray; text-align:center;">_건</td>
-								<td style="border:1px solid gray; text-align:center;">_건</td>
-								<td style="border:1px solid gray; text-align:center;">_건</td>
+								<td style="text-align:center;">_P</td>
+								<td style=" text-align:center;">_건</td>
+								<td style="text-align:center;">_건</td>
+								<td style=" text-align:center;">_건</td>
 							</tr>
 						</table>
 					</div>
