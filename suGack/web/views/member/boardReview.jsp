@@ -10,7 +10,7 @@
 		border:1px solid lightgray;
 		width:80%;
 		height:250px;
-		background:lightblue;
+		background:#AEE0FF;
 	}
 	.img{
 		width:100px;
@@ -62,7 +62,7 @@
 					<div class="outer">
 						<div class="row">
 						<div class="img">
-							<img src="../../images/tvxq.jpg" style="width:100px; height:100px;">
+							<img src="../images/tvxq.jpg" style="width:100px; height:100px;">
 						</div>
 						<div class="proName">
 							<label>작가명</label><br>
@@ -87,7 +87,7 @@
 					<div class="outer">
 						<div class="row">
 						<div class="img">
-							<img src="../../images/tvxq.jpg" style="width:100px; height:100px;">
+							<img src="../images/tvxq.jpg" style="width:100px; height:100px;">
 						</div>
 						<div class="proName">
 							<label>작가명</label><br>

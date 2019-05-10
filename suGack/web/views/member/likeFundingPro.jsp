@@ -39,10 +39,10 @@
 							 <div class="col-sm-4 fund" style="background-color:lavender; height:50%;">
 							 	<div class="outer">
 							 		<div class="heart">
-							 			<img src="../../images/heart.png" style="width:50px; height:50px; float:right;">
+							 			<img src="../images/heart.png" style="width:50px; height:50px; float:right;">
 							 		</div>
 							 		<div class="img" style="width:230px;">
-							 			<img src="../../images/tvxq.jpg" style="width:200px; height:200px;">
+							 			<img src="../images/tvxq.jpg" style="width:200px; height:200px;">
 							 		</div>
 							 		<div class="fundName">
 							 			<label style="margin-left:80px;">펀딩명</label>
@@ -61,10 +61,10 @@
 							  		 <div class="col-sm-4 fund" style="background-color:lavender; height:50%;">
 							 	<div class="outer">
 							 		<div class="heart">
-							 			<img src="../../images/heart.png" style="width:50px; height:50px; float:right;">
+							 			<img src="../images/heart.png" style="width:50px; height:50px; float:right;">
 							 		</div>
 							 		<div class="img" style="width:230px;">
-							 			<img src="../../images/tvxq.jpg" style="width:200px; height:200px;">
+							 			<img src="../images/tvxq.jpg" style="width:200px; height:200px;">
 							 		</div>
 							 		<div class="fundName">
 							 			<label style="margin-left:80px;">펀딩명</label>
@@ -89,10 +89,10 @@
 							 		 <div class="col-sm-4 fund" style="background-color:lavender; height:50%;">
 							 	<div class="outer">
 							 		<div class="heart">
-							 			<img src="../../images/heart.png" style="width:50px; height:50px; float:right;">
+							 			<img src="../images/heart.png" style="width:50px; height:50px; float:right;">
 							 		</div>
 							 		<div class="img" style="width:230px;">
-							 			<img src="../../images/tvxq.jpg" style="width:200px; height:200px;">
+							 			<img src="../images/tvxq.jpg" style="width:200px; height:200px;">
 							 		</div>
 							 		<div class="fundName">
 							 			<label style="margin-left:80px;">펀딩명</label>
@@ -111,10 +111,10 @@
 							  		 <div class="col-sm-4 fund" style="background-color:lavender; height:50%;">
 							 	<div class="outer">
 							 		<div class="heart">
-							 			<img src="../../images/heart.png" style="width:50px; height:50px; float:right;">
+							 			<img src="../images/heart.png" style="width:50px; height:50px; float:right;">
 							 		</div>
 							 		<div class="img" style="width:230px;">
-							 			<img src="../../images/tvxq.jpg" style="width:200px; height:200px;">
+							 			<img src="../images/tvxq.jpg" style="width:200px; height:200px;">
 							 		</div>
 							 		<div class="fundName">
 							 			<label style="margin-left:80px;">펀딩명</label>

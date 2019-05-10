@@ -17,7 +17,7 @@
 	<div class="inner">
 		<!-- Logo -->
 		<section class="alt">
-			<a href="#">LOGO</a>
+			<a href="../../index.jsp">LOGO</a>
 		</section>
 		<!-- Menu -->
 		<nav id="menu">
@@ -25,29 +25,29 @@
 				<h2>Menu</h2>
 			</header>
 			<ul>
-				<li><a href="authorHome.jsp">주문내역</a></li>
+				<li><a href="myPage.jsp">주문내역</a></li>
 				<li>
 					<span class="opener">좋아요리스트</span>
 					<ul>
-						<li><a href="enrollSaleGoods.jsp">관심작가</a>
-						<li><a href="manageSaleGoods.jsp">관심 펀딩 상품</a>
-						<li><a href="manageSale.jsp">관심 판매상품</a>
+						<li><a href="likeAuthor.jsp">관심작가</a>
+						<li><a href="likeFundingPro.jsp">관심 펀딩 상품</a>
+						<li><a href="likePro.jsp">관심 판매상품</a>
 					</ul>
 				</li>
 				<li>
 					<span class="opener">게시글관리</span>
 					<ul>
-						<li><a href="fundingGuide.jsp">응원글 및 리뷰</a>
-						<li><a href="enrollFundingGoods.jsp">문의</a>
+						<li><a href="boardReview.jsp">응원글 및 리뷰</a>
+						<li><a href="boardQna.jsp">문의</a>
 					</ul>
 				</li>
-				<li><a href="authorStory.jsp">적립금 사용 내역</a></li>
+				<li><a href="boardPoint.jsp">적립금 사용 내역</a></li>
 				<li>
 					<span class="opener">개인정보</span>
 					<ul>
-						<li><a href="editAuthorInfo.jsp">개인정보 수정</a>
-						<li><a href="manageAccount.jsp">계좌 관리</a>
-						<li><a href="deleteAuthor.jsp">회원 탈퇴</a>
+						<li><a href="modifyMe.jsp">개인정보 수정</a>
+						
+						<li><a href="withDrawal.jsp">회원 탈퇴</a>
 					</ul>
 				</li>
 				<li><a href="#">고객센터</a>

@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>상품 자세히 보기</title>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -33,6 +34,45 @@
 	img{
 		width:400px;
 	}
+	.qnaArea {
+		border:2px solid lightgray;
+		margin: 20px 0px 20px 0px;
+		box-shadow:2px 2px lightgray;
+		width:80%;
+		height:100%;
+		background:beige;
+		margin:0 auto;
+		margin-top:20px;
+	}
+	.qnaTitle {
+		border-bottom:1px solid lightgray;
+		margin: 20px 0px 20px 0px;
+		padding-left:20px;
+	}
+	.qnaContents {
+		margin: 20px 0px 20px 0px;
+		padding-left:20px;
+		padding-right:20px;
+		
+	}
+	.qnaContents div{
+		margin: 20px 0px 20px 0px;
+	}
+	
+	.qna{
+		height:40px;
+	}
+	
+	#qnaBtn{
+		width:30%;
+		padding:5px;
+		color:white;
+		border:2px solid gray; 
+		background:gray;
+		
+		
+	}
+	
 	
 /* .shortInfo{
 	margin-left:40px;
@@ -96,7 +136,7 @@ input[type:image]{
 			<hr>
 			<h5>옵션선택</h5>
 			<select id="sel1"style="width:350px; height:20px;">
-				<option value="op1">옵션1</option>
+				<option value="op1" id="op1">옵션1</option>
 				<option value="op2">옵션2</option>
 			</select>
 			<select id="sel2"style="width:350px; height:20px;">
@@ -116,16 +156,16 @@ input[type:image]{
 			<input type="image" src="../images/shopping-basket.png" style="width:70px; margin-left:5px;height:50px; border:2px solid lightblue; background:lightblue; border-radius:7px;">
 			<!-- <input type="submit" value="구매하기" style="float:right; font-size:15px;width:170px; height:50px; color:white;border:2px solid gray; background:gray; border-radius:7px;"> -->
 			<button style="float:right; font-size:15px;width:170px; height:50px; color:white;border:2px solid gray; background:gray; border-radius:7px;"
-					id="purchase">
-				구매하기
-			</button>
+					id="purchase">구매하기</button>
+				
+			
 			</div>
 	  </div>
 	 </div>
 	 <hr>
 	<div class="row information">
 	<ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#menu1">기본정보</a></li>
+    <li class="active"><a data-toggle="tab" href="#menu0">기본정보</a></li>
     <li><a data-toggle="tab" href="#menu1">배송/판매/교환/환불</a></li>
     <li><a data-toggle="tab" href="#menu2">별점 및 응원글</a></li>
     <li><a data-toggle="tab" href="#menu3">문의</a></li>
@@ -167,9 +207,50 @@ input[type:image]{
     </div>
     
     <div id="menu3" class="tab-pane fade">
+    
+    
+    			<form id="salesInsert" action="" method="post">
+   					 <div class="qnaArea">
+							<div class="qnaTitle">
+								<h2>문의하기</h2>
+							</div>
+							<div class="qnaContents">
+									<table class="searchBox" style="width:100%;" >
+										<tr class="qna">
+											<td><label >문의 제목:</label></td>
+											
+											<td><input type="text" style="width:100%;"></td>
+											
+										</tr>
+										<tr class="qna">
+											<td><label >작성자:</label></td>
+											<td><input type="text"
+												style="width: 100%;"></td>
+										</tr>
+										<tr class="qna">
+											<td><label>작성일:</label></td>
+											<td><input type="text"
+												style="width: 100%;"></td>
+										</tr>
+										<tr class="qna">
+											<td><label>내용:</label></td>
+											<td><textarea name="content" style="width:100%;"></textarea></td>
+										</tr>
+										<tr class="qna">
+											<td colspan="2"><input type="submit" value="작성하기" id="qnaBtn" style="float:right;"></td>
+										</tr>
+									</table>
+								
+								</div>
+							</div>
+							
+						</form>
+   
+  </div>
+  <!--   <div id="menu3" class="tab-pane fade">
       <h3>문의</h3>
-      <div class="quest" style="border:1px solid black;background:beige;padding:20px; width:60%; height:200px";>
       	<form id="question" method="post">
+      <div class="quest" style="border:1px solid black;background:beige;padding:20px; width:60%; height:200px";>
             <table align="center">
                <tr>
                   <td>제목 </td>
@@ -206,7 +287,7 @@ input[type:image]{
             </div>
       	</form>
       </div>
-    </div>
+     -->
   </div>
   </div>
     
@@ -216,10 +297,31 @@ input[type:image]{
 
 <script>
 	$(function(){
-		$("#sel1").change(function(){
+		/* $("#sel1").change(function(){
 			$(".selectOpt").append($(this).text());
 			
-		})		
+		})	 */	
+		/* $("#sel1").change(function(){
+			$(".selectOpt").append($("#op1").text());
+		}) */
+		
+		/*  $("#sel1").change(function(){
+			 $(".selectOpt").append($("#op1 option:selected").text());
+		 }) */
+		 
+		 //최선
+		 /* $("#sel1").click(function(){
+				$(".selectOpt").append($("#sel1 option:selected").text());
+		 })   */
+		 
+		 //최선
+		 /* $("#sel1").change(function(){
+				$(".selectOpt").append($("#sel1 option:selected").text());
+		 }) */
+		 
+		 
+		
+		 
 	});
 </script>
 <!-- <div class="container">

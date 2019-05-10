@@ -34,13 +34,13 @@
 							 <div class="col-sm-4 author" style="background-color:lavender; height:50%;">
 							 	<div class="outer">
 							 		<div class="img" style="width:230px;">
-							 			<img src="../../images/tvxq.jpg" style="width:200px; height:200px;">
+							 			<img src="../images/tvxq.jpg" style="width:200px; height:200px;">
 							 		</div>
 							 		<div class="authorName">
 							 			<label style="margin-left:80px;">작가명</label>
 							 		</div>
 							 		<div class="heart">
-							 			<img src="../../images/heart.png" style="width:50px; height:50px; float:right;">
+							 			<img src="../images/heart.png" style="width:50px; height:50px; float:right;">
 							 		</div>
 							 	</div>
 							 	
@@ -49,13 +49,13 @@
 							  <div class="col-sm-4 author" style="background-color:lavenderblush; height:50%;">
 							  	<div class="outer">
 							 		<div class="img" style="width:230px;">
-							 			<img src="../../images/tvxq.jpg" style="width:200px; height:200px;">
+							 			<img src="../images/tvxq.jpg" style="width:200px; height:200px;">
 							 		</div>
 							 		<div class="authorName">
 							 			<label style="margin-left:80px;">작가명</label>
 							 		</div>
 							 		<div class="heart">
-							 			<img src="../../images/heart.png" style="width:50px; height:50px; float:right;">
+							 			<img src="../images/heart.png" style="width:50px; height:50px; float:right;">
 							 		</div>
 							  </div>
 							  
@@ -71,13 +71,13 @@
 							 <div class="col-sm-4 author" style="background-color:lavender; height:50%;">
 							 	<div class="outer">
 							 		<div class="img" style="width:230px;">
-							 			<img src="../../images/tvxq.jpg" style="width:200px; height:200px;">
+							 			<img src="../images/tvxq.jpg" style="width:200px; height:200px;">
 							 		</div>
 							 		<div class="authorName">
 							 			<label style="margin-left:80px;">작가명</label>
 							 		</div>
 							 		<div class="heart">
-							 			<img src="../../images/heart.png" style="width:50px; height:50px; float:right;">
+							 			<img src="../images/heart.png" style="width:50px; height:50px; float:right;">
 							 		</div>
 							 	</div>
 							 	
@@ -86,13 +86,13 @@
 							  <div class="col-sm-4 author" style="background-color:lavenderblush; height:50%;">
 							  	<div class="outer">
 							 		<div class="img" style="width:230px;">
-							 			<img src="../../images/tvxq.jpg" style="width:200px; height:200px;">
+							 			<img src="../images/tvxq.jpg" style="width:200px; height:200px;">
 							 		</div>
 							 		<div class="authorName">
 							 			<label style="margin-left:80px;">작가명</label>
 							 		</div>
 							 		<div class="heart">
-							 			<img src="../../images/heart.png" style="width:50px; height:50px; float:right;">
+							 			<img src="../images/heart.png" style="width:50px; height:50px; float:right;">
 							 		</div>
 							  </div>
 							  
