@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.text.*"%>
+<%
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,18 +51,20 @@
 						<label class="control-label col-sm-3">이메일</label>
 						<div class="col-sm-6">
 							<input type="email" name="email" class="form-control" readonly value="<%=loginUser.getEmail()%>">
+							<input type="hidden" name="memberId" value="<%= loginUser.getMemberId() %>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-3">비밀번호</label>
 						<div class="col-sm-6">
-							<input type="password" name="password" class="form-control">
+							<input type="password" name="password" id="password" class="form-control">
 						</div>
+						<label class="control-label col-sm-3" id="passwordResult"></label>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-3">비밀번호확인</label>
 						<div class="col-sm-6">
-							<input type="password" name="password2" class="form-control">
+							<input type="password" name="password2" id="password2" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
@@ -80,7 +86,8 @@
 						<label class="control-label col-sm-3">성별</label>
 						<div class="col-sm-6">
 						<% if(loginUser.getGender() != null) {%>
-							<select class="form-control" id="gender" value="<%=loginUser.getGender()%>" name="gender">
+							<input type="hidden" name="gender" value="<%=loginUser.getGender()%>">
+							<select class="form-control" id="gender" disabled>
 							    <option value="M">남자</option>
 							    <option value="F">여자</option>
 							  </select>
@@ -98,7 +105,7 @@
 						<label class="control-label col-sm-3">생년월일</label>
 						<div class="col-sm-6">
 							<% if(loginUser.getBirthDate() != null) {%>
-							<input type="date" name="birthDate" class="form-control" value="<%=loginUser.getBirthDate()%>">
+							<input type="date" name="birth" class="form-control" value="<%=sdf.format(loginUser.getBirthDate())%>">
 							<%}else { %>
 							<input type="date" name="birthDate" class="form-control" value="1999-01-01">
 							<%} %>
@@ -128,6 +135,7 @@
 						<div class="col-sm-6">
 							<input type="password" name="password" class="form-control">
 						</div>
+						
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-3">비밀번호확인</label>
@@ -176,6 +184,22 @@
 			</div>
 		
 	</div>
+	<script>
+		$(function(){
+			$("#password2").change(function(){
+				var password = $("#password").val();
+				var password2 = $("#password2").val();
+				console.log(password);
+				console.log(password2);
+				
+				if(password == password2){
+					$("#passwordResult").text("일치합니다").css("color", "yellowgreen");
+				}else{
+					$("#passwordResult").text("일치하지않습니다").css("color", "red");
+				}
+			});
+		});
+	</script>
 	
 </body>
 </html>
