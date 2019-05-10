@@ -121,7 +121,9 @@
 			<!-- 모바일 중단 네비바 -->
 			<nav class="navbar midNav-appear visible-xs">
 				<div class="container">
-				<div class="navbar-brand navbar-logo" href="#">手作 秀作</div>
+				<div class="navbar-brand navbar-logo" href="#">
+					<!-- <img src="../views/images/pic01.jpg" alt="가죽"> -->
+				</div>
 					<ul class="nav navbar-nav appear-menu">
 						<li><a href="#마이페이지" class="glyphicon glyphicon-user"></a></li>
 						<li><a href="#장바구니" class="glyphicon glyphicon-briefcase"></a></li>
@@ -134,7 +136,9 @@
 			<nav class="navbar navbar-middle hidden-xs">
 				<div class="nav-middle"></div>
 				<div class="container">
-					<div class="navbar-brand " href="#">手作 秀作</div>
+					<div class="navbar-brand " href="#">
+						<!-- <img src="views/images/logo.png" alt="가죽"> -->
+					</div>
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="../member/myPage.jsp">My정보</a></li>
 							<li><a href="../member/cart.jsp">장바구니</a></li>
