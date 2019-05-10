@@ -61,74 +61,74 @@
 		</form>
 		<br>
 		<hr>
-		<h3>판매상품 조회 결과</h3>
+		<h3>펀딩 조회 결과</h3>
 		<table class="table table-bordered" style="border:2px solid gray; text-align:center">
-		<tr style="background:lightgray;">
-			<td>선택</td>
-			<td>번호</td>
-			<td>분류</td>
-			<td>펀딩명</td>
-			<td>펀딩코드</td>
-			<td>펀딩등록일</td>
-			<td>펀딩마감일</td>
-			<td>펀딩진행률</td>
-			<td>판매자</td>
-		</tr>
-		<tr>
-			<td><input type="checkbox"></td>
-			<td>1</td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td><input type="checkbox"></td>
-			<td>2</td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td><input type="checkbox"></td>
-			<td>3</td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td><input type="checkbox"></td>
-			<td>4</td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td><input type="checkbox"></td>
-			<td>5</td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
+			<tr style="background:lightgray;">
+				<td>선택</td>
+				<td>번호</td>
+				<td>분류</td>
+				<td>펀딩명</td>
+				<td>펀딩코드</td>
+				<td>펀딩등록일</td>
+				<td>펀딩마감일</td>
+				<td>펀딩진행률</td>
+				<td>판매자</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>1</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>2</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>3</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>4</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>5</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
 		</table>
 		<button onclick=delete();>삭제</button>
 		<br>

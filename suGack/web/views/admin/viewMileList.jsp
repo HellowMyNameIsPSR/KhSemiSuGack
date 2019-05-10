@@ -21,6 +21,8 @@
 				<section id="contents">
 					<header class="main">
 						<h3>마일리지 관리</h3>
+						
+						
 					</header>
 					<!-- Contents area -->
 				</section>
