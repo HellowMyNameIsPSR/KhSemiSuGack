@@ -1,12 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>수작 - 관리자홈</title>
 </head>
-<body>
-
+<body class="is-preload">
+<!-- Wrapper -->
+	<div id="wrapper">
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<!-- Header -->
+				<header id="header">
+					<a href="adminHome.jsp" class="logo">
+						Admin<strong>HOME</strong>
+					</a>
+				</header>
+				<section id="contents">
+					<header class="main">
+						<h3>고객센터 관리</h3>
+						
+						
+					</header>
+					<!-- Contents area -->
+				</section>
+			</div>
+		</div>
+		<%@ include file="adminMenubar.jsp" %>
+	</div>
+			
 </body>
 </html>
