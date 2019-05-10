@@ -249,11 +249,20 @@
 	        </div>
 	        <div class="col-sm-6 form-group">
 	        	<label class="form-control">
-	        		<input type="file" name="attachFile" id="attachFile" style="overflow:hidden;">
+	        		<input type="file" name="attachBrandFile" id="attachBrandFile" style="overflow:hidden;">
 	        	</label>
 	        </div>
 	      </div>
 	      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+       	  <label class="form-control">
+       		  <input type="file" name="attachFile" id="attachFile" style="overflow:hidden;">
+       	  </label>
+       	  <select class="form-control">
+       	  	<option>카테고리</option>
+       	  	<option>카테고리</option>
+       	  	<option>카테고리</option>
+       	  </select> <br>
+	        
 	      <div class="row">
 	        <div class="col-sm-12 form-group">
 	          <button class="btn btn-default pull-right" type="submit" id="sendBtn">신청하기</button>
