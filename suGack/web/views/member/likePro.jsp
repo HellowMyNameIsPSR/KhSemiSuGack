@@ -40,14 +40,14 @@
 							 	<div class="outer">
 							 		
 							 		<div class="img" style="width:230px;">
-							 			<img src="../../images/tvxq.jpg" style="width:200px; height:200px;">
+							 			<img src="../images/tvxq.jpg" style="width:200px; height:200px;">
 							 		</div>
 							 		<div class="productName">
 							 			<label style="margin-left:80px;">상품명</label>
 							 		</div>
 							 		
 							 		<div class="heart">
-							 			<img src="../../images/heart.png" style="width:50px; height:50px; float:left;">
+							 			<img src="../images/heart.png" style="width:50px; height:50px; float:left;">
 							 		</div>
 							 		<div>
 							 			<label style="margin-left:160px;">가격</label>
@@ -61,14 +61,14 @@
 							  	<div class="col-sm-4 product" style="background-color:lavender; height:50%;">
 							 	<div class="outer">
 							 		<div class="img" style="width:230px;">
-							 			<img src="../../images/tvxq.jpg" style="width:200px; height:200px;">
+							 			<img src="../images/tvxq.jpg" style="width:200px; height:200px;">
 							 		</div>
 							 		<div class="productName">
 							 			<label style="margin-left:80px;">상품명</label>
 							 		</div>
 							 		
 							 		<div class="heart">
-							 			<img src="../../images/heart.png" style="width:50px; height:50px; float:left;">
+							 			<img src="../images/heart.png" style="width:50px; height:50px; float:left;">
 							 		</div>
 							 		<div>
 							 			<label style="margin-left:160px;">가격</label>
@@ -86,14 +86,14 @@
 							 		 <div class="col-sm-4 product" style="background-color:lavender; height:50%;">
 							 	<div class="outer">
 							 		<div class="img" style="width:230px;">
-							 			<img src="../../images/tvxq.jpg" style="width:200px; height:200px;">
+							 			<img src="../images/tvxq.jpg" style="width:200px; height:200px;">
 							 		</div>
 							 		<div class="productName">
 							 			<label style="margin-left:80px;">상품명</label>
 							 		</div>
 							 		
 							 		<div class="heart">
-							 			<img src="../../images/heart.png" style="width:50px; height:50px; float:left;">
+							 			<img src="../images/heart.png" style="width:50px; height:50px; float:left;">
 							 		</div>
 							 		<div>
 							 			<label style="margin-left:160px;">가격</label>
@@ -105,14 +105,14 @@
 							  		 <div class="col-sm-4 product" style="background-color:lavender; height:50%;">
 							 	<div class="outer">
 							 		<div class="img" style="width:230px;">
-							 			<img src="../../images/tvxq.jpg" style="width:200px; height:200px;">
+							 			<img src="../images/tvxq.jpg" style="width:200px; height:200px;">
 							 		</div>
 							 		<div class="productName">
 							 			<label style="margin-left:80px;">상품명</label>
 							 		</div>
 							 		
 							 		<div class="heart">
-							 			<img src="../../images/heart.png" style="width:50px; height:50px; float:left;">
+							 			<img src="../images/heart.png" style="width:50px; height:50px; float:left;">
 							 		</div>
 							 		<div>
 							 			<label style="margin-left:160px;">가격</label>

@@ -34,7 +34,7 @@
 					<div class="table">
 						<table border="1">
 							<tr>
-							<th colspan="4" style="font-size:20px; text-align:center; background:gray; color:white;">MY정보</th>
+							<th colspan="4" style="font-size:20px; text-align:center; background:#9DCAFF; color:white;">MY정보</th>
 							</tr>
 							<tr>
 								<th style="height:50px; border:1px solid gray; font-size:15px; text-align:center;">적립금</th>
