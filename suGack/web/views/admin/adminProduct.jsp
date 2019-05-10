@@ -10,17 +10,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 <style>
-/* 	.navbar {
-			border: 2px solid gray;
-			text-align:center;
-			margin-left: 280px;
-			margin-right: 280px;
-			background: lightgray;
-			font-size:20px;
-			
-					
-	}
- */
+
  
  .container {
  	width: 80%;
@@ -28,23 +18,6 @@
 </style>
 </head>
 <body>
-<!-- 	<nav class="navbar navbar-default">
-		<div style="float: left; width: 20%; padding:15px; border-right:2px solid gray;">
-			<a href="#" style="text-decoration:none; color:gray">홈</a>
-		</div>
-		<div style="float: left; width: 20%; padding:15px; border-right:2px solid gray; ">
-			<a href="#" style="text-decoration:none; color:gray">상품</a>
-		</div>
-		<div style="float: left; width: 20%; padding:15px;border-right:2px solid gray;">
-			<a href="#" style="text-decoration:none; color:gray">회원</a>
-		</div>
-		<div style="float: left; width: 20%; padding:15px; border-right:2px solid gray;">
-			<a href="#"  style="text-decoration:none; color:gray">운영</a>
-		</div>
-		<div style="float: left; width: 20%; padding:15px;">
-			<a href="#" style="text-decoration:none; color:gray">통계</a>
-		</div>
-	</nav> -->
 
 	<div class="container">
 		<form action="" method="get">
@@ -55,32 +28,43 @@
 				<td>
 					<select name="product">
 						<option value="p1">가죽</option>
-						<option value="p2">가죽</option>
-						<option value="p3">가죽</option>
-						<option value="p4">가죽</option>
-						<option value="p5">가죽</option>
-						
+						<option value="p2">도자기</option>
+						<option value="p3">직물</option>
+						<option value="p4">목공</option>
+						<option value="p5">기타</option>	
+					</select>
+				</td>
+				<td colspan="2">
+					<select name="category">
+						<option value="c1">지갑</option>
+						<option value="c2">옷</option>
+						<option value="c3">기타</option>
+						<option value="c4">목공</option>
+						<option value="c5">기타</option>
 					</select>
 				</td>
 			</tr>
 			<tr>
-				<td style="text-align:center; background: lightgray; border: 1px solid gray">상품코드</td>
-				<td><input type="text" /></td>
+				<td style="text-align:center; background: lightgray; border: 1px solid gray">작가명</td>
+				<td colspan="3"><input type="text" /></td>
 			</tr>
 			<tr>
 				<td style="text-align:center; background: lightgray; border: 1px solid gray">상품명</td>
-				<td><input type="text" /></td>
+				<td colspan="3"><input type="text" /></td>
 			</tr>
 			<tr>
 				<td style="text-align:center; background: lightgray; border: 1px solid gray">상품등록일</td>
-				<td><input type="date" name="userdate" value=""> ~ <input type="date" name="userdate" value=""></td>
+				<td colspan="3"><input type="date" name="userdate" value=""> ~ <input type="date" name="userdate" value=""></td>
 			</tr>
 			<tr>
 				<td style="text-align:center; background: lightgray; border: 1px solid gray">판매가</td>
-				<td><input type="text" /> ~ <input type="text" /></td>
+				<td><input type="text" style="width:150px; align:center"></td>
+				<td>~</td>				
+				<td><input type="text" style="width:150px; align:center"></td>
+				 
 			</tr>
 		</table>
-		<input type="submit" value="검색">
+		<input type="submit" value="검색" style="float:right">
 		</form>
 		<br>
 		<hr>
@@ -98,7 +82,7 @@
 			<td>판매가격</td>
 		</tr>
 		<tr>
-			<td><input type="checkbox"></td>
+			<td><input type="checkbox" id="check"><label for="check"></label></td>
 			<td>1</td>
 			<td></td>
 			<td></td>
@@ -109,7 +93,7 @@
 			<td></td>
 		</tr>
 		<tr>
-			<td><input type="checkbox"></td>
+			<td><input type="checkbox" id="check1"><label for="check1"></label></td>
 			<td>2</td>
 			<td></td>
 			<td></td>
@@ -120,7 +104,7 @@
 			<td></td>
 		</tr>
 		<tr>
-			<td><input type="checkbox"></td>
+			<td><input type="checkbox" id="check2"><label for="check2"></label></td>
 			<td>3</td>
 			<td></td>
 			<td></td>
@@ -131,7 +115,7 @@
 			<td></td>
 		</tr>
 		<tr>
-			<td><input type="checkbox"></td>
+			<td><input type="checkbox" id="check3"><label for="check3"></label></td>
 			<td>4</td>
 			<td></td>
 			<td></td>
@@ -142,7 +126,7 @@
 			<td></td>
 		</tr>
 		<tr>
-			<td><input type="checkbox"></td>
+			<td><input type="checkbox" id="check4"><label for="check4"></label></td>
 			<td>5</td>
 			<td></td>
 			<td></td>
@@ -153,9 +137,9 @@
 			<td></td>
 		</tr>
 		</table>
-		<button onclick=delete();>삭제</button>
+		<button onclick=delete(); style="float:right">삭제</button>
 		<br>
-			<div class="row" style="padding-left:400px">
+			<div class="row" style="padding-left:270px">
 				<ul class="pagination justify-content-center">
 					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
 					<li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -166,6 +150,28 @@
 			</div>
 	</div>
 	
-	
+	<script>
+		$(function(){
+			
+		})
+	</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
