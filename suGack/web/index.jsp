@@ -22,6 +22,7 @@
 	</script> -->
 	<h1><a href="views/main/mainMenubar.jsp">사용자메인</a></h1>
 	<h1><a href="views/admin/adminHome.jsp">관리자메인</a></h1>
+	<h1><a href="views/author/authorHome.jsp">판매자메인</a></h1>
 </body>
 </html>
 
