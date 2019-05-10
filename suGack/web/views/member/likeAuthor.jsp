@@ -101,7 +101,7 @@
 					
 					</div>
 					</div>
-					<!-- Contents area -->
+					<!-- Contents area 1-->
 				</section>
 			</div>
 		</div>

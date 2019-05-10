@@ -21,7 +21,7 @@
 </head>
 <body>
 
-<!-- Wrapper -->
+<!-- Wrapper1 -->
 	<div id="wrapper">
 	
 		<!-- Main -->

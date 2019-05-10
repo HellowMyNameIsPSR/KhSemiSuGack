@@ -46,7 +46,7 @@
 					<header class="main">
 						<table>
 							<!-- <tr>
-								<td colspan="5" style="height:100px; background:gray; color:white; font-size:20px;"><div class="name">장바구니</div></td>
+								<td c1olspan="5" style="height:100px; background:gray; color:white; font-size:20px;"><div class="name">장바구니</div></td>
 							</tr> -->
 							<tr style="height:50px; font-size:18px;">
 								<th>전체선택</th>

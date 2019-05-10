@@ -150,7 +150,7 @@
     <div class="col-sm-3 product" style="background-color:lavenderblush; height:50%;">
     	<div class="content" style="background-color:green; height:300px; width:100%"></div>
     </div>
-    <!-- <div class="col-sm-1"></div> --> 
+    <!-- <div class="co1l-sm-1"></div> --> 
   </div>	
 
 </div>
