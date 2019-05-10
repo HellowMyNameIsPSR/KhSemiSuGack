@@ -46,7 +46,7 @@
 					<header class="main">
 						<table>
 							<!-- <tr>
-								<td colspan="5" style="height:100px; background:gray; color:white; font-size:20px;"><div class="name">장바구니</div></td>
+								<td c1solspan="5" style="height:100px; background:gray; color:white; font-size:20px;"><div class="name">장바구니</div></td>
 							</tr> -->
 							<tr style="height:50px; font-size:18px;">
 								<th>전체선택</th>
@@ -56,7 +56,7 @@
 								<th>가격</th>
 							</tr>
 							<tr>
-								<td><input type="checkbox"></td>
+								<td><input type="checkbox" id="select"><label for="select"></label></td>
 								<td><img src="../images/tvxq.jpg" style="width:50px; height:50px;"></td>
 								<td><div class="explain">상품정보&옵션선택한것</div></td>
 								<td><input type="number"></td>

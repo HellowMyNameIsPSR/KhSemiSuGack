@@ -90,14 +90,14 @@
   	<!-- <div class="col-sm-1"></div> -->
     <div class="col-sm-3 product" style="background-color:lavender; height:50%;">
    		<div class="content" style="background-color:green; height:300px; width:100%">
-   			<div class="img" style="height:200px;">
-   			<img src="../images/tvxq.jpg" style="width:100%; height:200px; align:center" >
+   			<div class="mainImg" style="height:200px;">
+   				<img src="../images/tvxq.jpg" style="width:100%; height:200px; align:center" >
    			</div>
    			<div class="proName" style="height:40px;">
    				<p style="text-align:center; font-size:15px; margin-top:5px;">품명</p>
    			</div>
    			<div class="heart" style="padding:7px; height:50px; width:40px; float:left;" >
-   				<img src="../images/heart.png" style="width:30px; height:30px; ">
+   				<img src="../images/fullheart.png" name="heart" style="width:30px; height:30px;" onclick="heartyn();">
    			</div>
    			<div class="heartprice" style="height:60px; margin-right:10px; margin-top:5px;">
    			<p style="float:right; font-size:20px;">5000원</p>
@@ -150,16 +150,40 @@
     <div class="col-sm-3 product" style="background-color:lavenderblush; height:50%;">
     	<div class="content" style="background-color:green; height:300px; width:100%"></div>
     </div>
-    <!-- <div class="col-sm-1"></div> --> 
+    <!-- <div class="co1sl-sm-1"></div> --> 
   </div>	
 
 </div>
 
 <script>
-	$(".product").click(function(){
+	$(".mainImg").click(function(){
 		//해당 상세 페이지로 가기
 		location.href="productDetail.jsp";
 	});
-</script>
+	
+	
+	
+	function heartyn(){
+		
+		var ctn = 2;
+		
+			if(ctn%2==0){
+				
+				heart.src="../images/emptyheart.png";
+				alert("관심상품 취소");
+			
+			}else{
+				
+				heart.src="../images/fullheart.png";
+				
+				
+			}
+			
+			ctn++;
+			
+		
+	} 
+</script>	
+
 </body>
 </html>

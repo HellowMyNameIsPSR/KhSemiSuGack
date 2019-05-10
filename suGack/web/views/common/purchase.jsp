@@ -6,8 +6,10 @@
 <meta charset="UTF-8">
 <title>구매하기</title>
 
-<link rel="stylesheet" href="assets/css/main.css" />
+<!-- <link rel="stylesheet" href="assets/css/main.css" /> -->
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 	<style>
 		<%@ include file="../assets/css/main.html" %>
 	</style>
@@ -141,34 +143,32 @@
 					
 					<hr>
 					
-					<div class="ok" style="float:right;">
-					<input type="checkbox" value="전체동의" checked><label>전체동의</label>
-					</div>
 					
 					<label>이용약관</label>
 					<textarea readonly="readonly" style="overflow-y:scroll"></textarea>
+					<div class="ok" style="float:right;" >
+					<input name="agree1" type="checkbox" value="동의" id="agree1"><label for="agree1">동의합니다.</label>
+					</div>
 					<br><br>
 					
 					
 					<label>이용약관</label>
 					<textarea readonly="readonly" style="overflow-y:scroll"></textarea>
-					
 					<div class="ok" style="float:right;" >
-					<input type="checkbox" value="동의" checked><label>동의합니다.</label>
+					<input name="agree2" type="checkbox" value="동의" id="agree2"><label for="agree2">동의합니다.</label>
 					</div>
 					
 					<br><br>
 					
 					<label>이용약관</label>
-					<textarea readonly="readonly" style="overflow-y:scroll"></textarea>
-					
+					<textarea readonly="readonly" style="overflow-y:scroll"></textarea>					
 					<div class="ok" style="float:right;" >
-					<input type="checkbox" value="동의" checked><label>동의합니다.</label>
-					</div>
+					<input name="agree3"type="checkbox" value="동의" id="agree3"><label for="agree3">동의합니다.</label>
+					</div> 
 					
 					<div class="buyArea" style="text-align:center;">
 					<br><br>
-					<input type="submit" value="구매하기" style="width:200px; height:50px;">
+					<input type="submit" value="구매하기" style="width:200px; height:50px;" class="purchase">
 					</div>
 				</div>	
 					
@@ -178,6 +178,64 @@
 		</div>
 		
 	</div>
+		<script>
+		$(window).load(function() {
+			//var IMP = window.IMP; // 생략가능
+			IMP.init("imp36844858"); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 			
+			$(".purchase").attr("disabled","true");
+			
+			$("input:checkbox").change(function(){
+				console.log("test")
+				test();
+			});
+		});
+		
+		function test(){
+			console.log('function call')
+			if ($("input:checkbox[id='agree1']").is(":checked")&& $("input:checkbox[id='agree2']").is(":checked")
+					&& $("input:checkbox[id='agree3']").is(":checked")){
+				console.log("all checked");
+				
+				$(".purchase").removeAttr("disabled");
+				
+			}else{
+			
+				$(".purchase").attr("disabled","true");
+			}
+		}
+		
+		$('.purchase').click(function(){
+			IMP.request_pay({
+			    pg : 'inicis', // version 1.1.0부터 지원b
+			    pay_method : 'card',
+			    merchant_uid : 'merchant_' + new Date().getTime(),
+			    name : '주문명:결제테스트2',
+			    amount : 14000,
+			    buyer_email : 'iamport@siot.do',
+			    buyer_name : '구매자이름',
+			    buyer_tel : '010-1234-5678',
+			    buyer_addr : '서울특별시 강남구 삼성동',
+			    buyer_postcode : '123-456',
+			    m_redirect_url : 'https://www.yourdomain.com/payments/complete'
+			}, function(rsp) {
+			    if ( rsp.success ) {
+			        var msg = '결제가 완료되었습니다.';
+			        msg += '고유ID : ' + rsp.imp_uid;
+			        msg += '상점 거래ID : ' + rsp.merchant_uid;
+			        msg += '결제 금액 : ' + rsp.paid_amount;
+			        msg += '카드 승인번호 : ' + rsp.apply_num;
+			    } else {
+			        var msg = '결제에 실패하였습니다.';
+			        msg += '에러내용 : ' + rsp.error_msg;
+			    }
+			    alert(msg);
+			});
+		})
+		
+		
+		</script>	
+		
+		
 </body>
 </html>

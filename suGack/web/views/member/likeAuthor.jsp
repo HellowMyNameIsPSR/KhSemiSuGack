@@ -29,7 +29,7 @@
 				</header>
 				
 				<section id="contents">
-					<div class="container">
+					<div class="container" style="margin-left:20px;">
 						<div class="row">
 							 <div class="col-sm-4 author" style="background-color:lavender; height:50%;">
 							 	<div class="outer">
@@ -40,7 +40,7 @@
 							 			<label style="margin-left:80px;">작가명</label>
 							 		</div>
 							 		<div class="heart">
-							 			<img src="../images/heart.png" style="width:50px; height:50px; float:right;">
+							 			<img src="../images/fullheart.png" name="heart"style="width:50px; height:50px; float:right;" onclick="heartyn();">
 							 		</div>
 							 	</div>
 							 	
@@ -101,12 +101,24 @@
 					
 					</div>
 					</div>
-					<!-- Contents area -->
+					<!-- Contents area 1s-->
 				</section>
 			</div>
 		</div>
 		<%@ include file="../common/userMenuBar.jsp" %>
 	</div>
-			
+		<script>
+		
+			function heartyn(){
+				
+				
+				
+					heart.src="../images/emptyheart.png";
+					alert("관심작가 취소");
+					
+					//$(this).removeChild(".outer");
+				
+			} 
+		</script>	
 </body>
 </html>
