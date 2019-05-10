@@ -55,7 +55,6 @@ public class UpdateMemberServlet extends HttpServlet {
 		m.setMemberId(memberId);
 		m.setPassword(password);
 		m.setPhone(phone);
-		m.setNickName(nickName);
 		m.setGender(gender);
 		m.setBirthDate(birth);
 		

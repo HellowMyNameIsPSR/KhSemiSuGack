@@ -103,7 +103,7 @@
 			<% if(loginUser != null) {%>
 			<nav class="navbar navbar-top hidden-xs">
 				<ul class="nav navbar-nav pull-right">
-					<li><a><%= loginUser.getNickName() %>님 환영합니다</a></li>
+					<li><a><%= loginUser.getMemberName() %>님 환영합니다</a></li>
 					<li><a href="<%=request.getContextPath()%>/logout.me">로그아웃</a></li>
 					<li><a href="../member/memberUpdateForm.jsp">회원정보수정</a></li>
 					<li><a href="../application/appIntroduce.jsp">입점신청</a></li>
