@@ -10,76 +10,135 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <style>
 	.listBox {
-		border:2px solid lightgray;
+		border: 2px solid lightgray;
 		margin: 20px 0px 20px 0px;
-		box-shadow:2px 2px lightgray;
+		box-shadow: 2px 2px lightgray;
+		min-width:900px;
 	}
+	
 	.listTitle {
-		border-bottom:1px solid lightgray;
+		border-bottom: 1px solid lightgray;
 		margin: 20px 0px 20px 0px;
-		padding-left:20px;
+		padding-left: 20px;
+		min-width:900px;
 	}
+	
 	.listContents {
 		margin: 20px 0px 20px 0px;
-		padding-left:20px;
-		padding-right:20px;
+		padding-left: 20px;
+		padding-right: 20px;
+		min-width:900px;
 	}
-	.listContents div{
+	
+	.listContents div {
 		margin: 20px 0px 20px 0px;
 	}
+	
 	.unit {
-		display:inline;
-		width:200px;
+		display: inline;
+		width: 200px;
+		min-width:900px;
 	}
+	
 	.optionTitle {
-		border-top:1px solid lightgray;
-		border-bottom:1px solid lightgray;
+		border-top: 1px solid lightgray;
+		border-bottom: 1px solid lightgray;
 		margin: 20px 0px 20px 0px;
-		padding:20px 0px 0px 20px;
+		padding: 20px 0px 0px 20px;
+		min-width:900px;
 	}
-	.subtext{
-		margin:10px 0 0;
-		font-size:12px;
-		ling-height:18px;
-		color:skyblue;
+	
+	.subtext {
+		margin: 10px 0 0;
+		font-size: 12px;
+		ling-height: 18px;
+		color: skyblue;
+		min-width:900px;
 	}
-	.numBox{
-		display:inline;
+	
+	
+	.priceBox tr {
+		background: white !important;
+		border-color: white !important;
 	}
-	.priceBox tr{
-		background:white !important;
-		border-color:white !important;
+	
+	.priceBox tr td {
+		border: 1px solid lightgray;
+		text-align: center;
 	}
-	.priceBox tr td{
-		border:1px solid lightgray;
-		text-align:center;
+	
+	.priceBox tr td input {
+		width: 100%;
 	}
-	.priceBox tr td input{
-		width:100%;
+	
+	.searchBox {
+		display: none;
 	}
-	.searchBox tr{
-		background:white !important;
-		border:1px solid lightgray;
-		s
+	
+	
+	searchTable tr {
+		background: white !important;
+		border: 1px solid lightgray;
+		display: block;
 	}
-	.searchBox tr td input{
-		border:none;
+	
+	.checkBox {
+		border: 1px solid skyblue;
+		display: none;
+		padding: 10px 10px 10px 10px;
+		min-width:800px;
 	}
-	.option{
-		width:150px;
-		height:40px;
-		text-align:center;
-		font-size:13px;
+	.checkBox div{
 		display:inline-block;
+		margin:0px 20px 0px 0px;
+		border-right: 1px solid skyblue;
+		width:21%;
+		min-width:120px;
+	}
+	
+	.searchBox tr td input {
+		border: none;
+	}
+	
+	.saleBtn{
+		width: 150px;
+		height: 40px;
+		text-align: center;
+		font-size: 13px;
+		display: inline-block;
 		border-radius: 5px 5px 5px 5px;
 	}
+	
 	a {
 		border-bottom: none !important;
 	}
-	.option:hover{
-		background:skyblue;
-		cursor:pointer;
+	
+	.saleBtn:hover {
+		background: skyblue;
+		cursor: pointer;
 	}
+	
+	
+	.optionBox{
+		border: 1px solid skyblue;
+		padding:10px 10px 10px 10px;
+	}
+	.optionTable{
+		border:none;
+	}
+	.optionTable tr>td{
+		background:white;
+		border: 1px solid skyblue;
+	}
+	
+	#iconBox{
+		display: table-cell;
+		border:1px solid gray;
+		width:30px !important;
+		height:30px;
+		vertical-align: middle;
+	}
+	
 	
 </style>
 </head>
@@ -107,15 +166,15 @@
 
 						<div class="listBox">
 							<div class="listTitle">
-								<h2>카테고리</h2>
+								<h2 >카테고리</h2>
 							</div>
 							<div class="listContents">
 								<div>
-									<button onclick="">카테고리명 검색</button>
-									<button onclick="">카테고리명 선택</button>
+									<button type="button" class="saleBtn" id="search" >카테고리명 검색</button>
+									<button type="button" class="saleBtn" id="checked">카테고리명 선택</button>
 								</div>
-								<div>
-									<table class="searchBox">
+								<div class="searchBox">
+									<table class="searchTable">
 										<tr>
 											<td><input type="text" placeholder="카테고리명 입력"
 												style="width: 100%;"></td>
@@ -123,6 +182,59 @@
 										</tr>
 									</table>
 								</div>
+
+
+
+								<div class="checkBox">
+									<div style="margin-left:40px;">
+										<input type="checkbox" id="category" class=""> <label for="category">가죽</label><br>
+										<input type="checkbox" id="category1" class=""> <label for="category1">가죽</label><br>
+										<input type="checkbox" id="category2" class=""> <label for="category2">가죽</label><br>
+										<input type="checkbox" id="category3" class=""> <label for="category3">가죽</label><br>
+										<input type="checkbox" id="category4" class=""> <label for="category4">가죽</label><br>
+										<input type="checkbox" id="category5" class=""> <label for="category5">가죽</label><br>
+									</div>
+									<div>
+										<input type="checkbox" id="category6" class=""> <label for="category6">가죽</label><br>
+										<input type="checkbox" id="category7" class=""> <label for="category7">가죽</label><br>
+										<input type="checkbox" id="category8" class=""> <label for="category8">가죽</label><br>
+										<input type="checkbox" id="category9" class=""> <label for="category9">가죽</label><br>
+										<input type="checkbox" id="category10" class=""> <label for="category10">가죽</label><br>
+										<input type="checkbox" id="category11" class=""> <label for="category11">가죽</label><br>
+									</div>
+									<div>
+										<input type="checkbox" id="category12" class=""> <label for="category12">가죽</label><br>
+										<input type="checkbox" id="category13" class=""> <label for="category13">가죽</label><br>
+										<input type="checkbox" id="category14" class=""> <label for="category14">가죽</label><br>
+										<input type="checkbox" id="category15" class=""> <label for="category15">가죽</label><br>
+										<input type="checkbox" id="category16" class=""> <label for="category16">가죽</label><br>
+										<input type="checkbox" id="category17" class=""> <label for="category17">가죽</label><br>
+									</div>
+									<div style="border-right:none;">
+										<input type="checkbox" id="category18" class=""> <label for="category18">가죽</label><br>
+										<input type="checkbox" id="category19" class=""> <label for="category19">가죽</label><br>
+										<input type="checkbox" id="category20" class=""> <label for="category20">가죽</label><br>
+										<input type="checkbox" id="category21" class=""> <label for="category21">가죽</label><br>
+										<input type="checkbox" id="category22" class=""> <label for="category22">가죽</label><br>
+										<input type="checkbox" id="category23" class=""> <label for="category23">가죽</label><br>
+									</div>
+								
+								</div>
+
+
+
+								<script>
+									$(function(){
+										$("#search").click(function(){
+											$(".searchBox").show();
+											$(".checkBox").hide()
+										});
+										$("#checked").click(function(){
+											$(".searchBox").hide();
+											$(".checkBox").show()
+										});
+									});
+								</script>
 								<p class="subtext">※ 상품과 맞지 않는 카테고리에 등록할 경우 강제 이동되거나 판매중지,
 									판매금지 될 수 있습니다.</p>
 							</div>
@@ -163,56 +275,62 @@
 							</div>
 						</div>
 
+
+
+
+
+
+
+
+
 						<div class="listBox">
 							<div class="listTitle">
 								<h2>옵션 선택</h2>
 							</div>
-
-
-
 							<div class="listContents">
-
 								<div>
-									<a data-toggle="collapse" href="#collapse1">
-										<button class="option">설정함</button>
-									</a> <a data-toggle="collapse" href="#collapse1">
-										<button class="option">설정안함</button>
-									</a>
+									<button type="button" class="saleBtn">설정함</button>
+									<button type="button" class="saleBtn">설정안함</button>
 								</div>
-								<div id="collapse1" class="panel-collapse collapse">
-									<table class="panel-body">
-										<tr>
-											<th>옵션입력</th>
-											<th>옵션명</th>
-											<th>옵션값</th>
-											<th>추가비용</th>
+								<div class="optionBox">
+									<table class="optionTable">
+										<tr align="center">
+											<td>옵션명</td>
+											<td>옵션값</td>
+											<td colspan="3">추가비용</td>
 										</tr>
 										<tr>
-											<td></td>
-											<td><input type="text" placeholder="ex) 색상, 크기, 재질"></td>
-											<td><input type="text" placeholder="ex) 색상, 크기, 재질"></td>
-											<td><input type="text" placeholder="숫자입력"></td>
-										</tr>
-										<tr>
-											<td></td>
-											<td></td>
-											<td><input type="text" placeholder="ex) 색상, 크기, 재질"></td>
-											<td><input type="text" placeholder="숫자입력"></td>
-										</tr>
-										<tr>
-											<td></td>
-											<td></td>
-											<td><input type="text" placeholder="ex) 색상, 크기, 재질"></td>
-											<td><input type="text" placeholder="숫자입력"></td>
-										</tr>
-										<tr>
-											<td colspan="4" align="center">+ 옵션추가</td>
+											<td  style="padding-left:20px;">
+												<input type="text" placeholder="옵션명 입력">
+											</td>
+											<td>
+												<input type="text" placeholder="옵션값 입력">
+											</td>
+											<td>
+												<input type="number" placeholder="추가비용 입력">
+											</td>
+											<td align="center">
+												<span id="iconBox" class="glyphicon glyphicon-minus"></span>
+											</td>
+											<td align="center">
+												<span id="iconBox"class="glyphicon glyphicon-plus"></span>
+											</td>
 										</tr>
 									</table>
 								</div>
+								
+								
 							</div>
-
 						</div>
+
+
+
+
+
+
+
+
+
 
 
 

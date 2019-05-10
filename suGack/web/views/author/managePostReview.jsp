@@ -4,34 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>수작 - 판매 관리</title>
+<title>수작 - 문의및리뷰 관리</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <style>
-	.manageSaleTitle{
+	.managePostTitle{
 		margin: 20px 0px 20px 0px;
 		height:70px;
 		padding-top:15px;
 		padding-left:20px;
 		min-width:650px;
 	}
-	.saliMenu{
-		margin-bottom:70px;
-		min-width:650px;
-	}
-	.saliMenu tr>td{
-		border:1px solid gray;
-		box-shadow:2px 2px lightgray;
-		background:rightgray;
-		text-align:center;
-	}
-	
-	.menuA:hover{
-		background:skyblue;
-		cursor:pointer
-	}
-	
 	
 	.subTitle{
 		border:1px solid gray;
@@ -45,16 +29,31 @@
 		min-width:650px;
 	}
 	
-
-
-	.manageSaleContents{
+	.postMenu{
+		margin-bottom:70px;
+		min-width:650px;
+		width:40%
+	}
+	.postMenu tr>td{
+		border:1px solid gray;
+		box-shadow:2px 2px lightgray;
+		background:rightgray;
+		text-align:center;
+	}
+	.menuA:hover{
+		background:skyblue;
+		cursor:pointer
+	}
+	
+	.managePostContents{
 		border:2px solid lightgray;
 		margin: 20px 0px 20px 0px;
 		box-shadow:2px 2px lightgray;
 		height:150px;
 		min-width:650px;
 	}
-	.manageSaleTable{
+	
+	.managePostTable{
 		border:2px solid lightgray;
 		margin: 20px 0px 20px 0px;
 		box-shadow:2px 2px lightgray;
@@ -77,11 +76,6 @@
 		padding-top:7px;
 		padding-botton:7px;
 	}
-	
-
-
-
-
 </style>
 </head>
 <body class="is-preload">
@@ -98,70 +92,55 @@
 					</a>
 				</header>
 				<section id="contents">
-					<header class="main manageSaleTitle">
-						<h2>판매 관리</h2>
+					<header class="main managePostTitle">
+						<h2>문의/리뷰관리</h2>
 					</header>
-					<!-- Contents area -->
-					<div class="subTitle">
-						<p><strong>주문조회</strong></p>
-					</div>
 					
+					<div class="subTitle">
+						<p><strong>리뷰관리</strong></p>
+					</div>
+					<!-- Contents area -->
 					
 					<nav>
-						<table class="saliMenu">
+						<table class="postMenu">
 							<tr>
-								<td class="menuA" onClick = " location.href='manageSale.jsp'">주문조회</td>
-								<td class="menuA" onClick = " location.href='manageSaleExchange.jsp'">교환관리</td>
-								<td class="menuA" onClick = " location.href='manageSaleReturn.jsp'">반품관리</td>
-								<td class="menuA" onClick = " location.href='manageSaleCancel.jsp'">취소관리</td>
+								<td class="menuA" onClick = " location.href='managePost.jsp'">문의관리</td>
+								<td class="menuA" onClick = " location.href='managePostReview.jsp'">리뷰관리</td>
+				
 							</tr>
 						</table>
 					</nav>
-
 					
-					<div class="manageSaleContents" align="center">
+					
+					<div class="managePostContents" align="center">
 						<br>
-						<p>주문 조회 날짜로 검색 api 찾아서 하기</p>
+						<p>리뷰 날짜 조회 날짜로 검색 api 찾아서 하기</p>
 						<button style="width: 150px;">검색</button>
 					</div>
-
-
-
 					
-					<div class="manageSaleTable">
+					
+					<div class="managePostTable">
 						<table class="listTable">
 							<tr>
 								<th style="width:30px;"><strong>NO.</strong></th>
-								<th><strong>상품주문번호</strong></th>
-								<th><strong>주문일시</strong></th>
-								<th><strong>주문상태</strong></th>
-								<th><strong>상품명</strong></th>
-								<th><strong>수량</strong></th>
-								<th><strong>구매자명</strong></th>
-								<th><strong>구매자ID</strong></th>
+								<th><strong>리뷰 상품명</strong></th>
+								<th><strong>리뷰 제목</strong></th>
+								<th><strong>리뷰 내용</strong></th>
 							</tr>
-							<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-							<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-							<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-							<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-							<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-							<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-							<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-							<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+							<tr><td></td><td></td><td></td><td></td>
+							<tr><td></td><td></td><td></td><td></td>
+							<tr><td></td><td></td><td></td><td></td>
+							<tr><td></td><td></td><td></td><td></td>
+							<tr><td></td><td></td><td></td><td></td>
+							<tr><td></td><td></td><td></td><td></td>
+							<tr><td></td><td></td><td></td><td></td>
+							<tr><td></td><td></td><td></td><td></td>
 							</tr>
 						</table>
 					</div>
 					
 					
 					
-
-
-
-
-
-
-
-
 				</section>
 			</div>
 		</div>
