@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
 <style>
 	.listBox {
 		border: 2px solid lightgray;
@@ -120,6 +122,7 @@
 	
 	
 	.optionBox{
+		display:none;
 		border: 1px solid skyblue;
 		padding:10px 10px 10px 10px;
 	}
@@ -128,15 +131,35 @@
 	}
 	.optionTable tr>td{
 		background:white;
-		border: 1px solid skyblue;
+		/* border:1px solid gray; */
 	}
 	
 	#iconBox{
+		cursor: pointer;
 		display: table-cell;
 		border:1px solid gray;
 		width:30px !important;
 		height:30px;
 		vertical-align: middle;
+	}
+	#iconBox:hover{
+		background-color:lightgray;
+	}
+	
+	.optionBtn{
+		display:inline-block;
+		padding-top:2px;
+		font-size:17px;
+		height:35px;
+		width:120px;
+		border:1px solid #89C3F6;
+		background-color:#CFE9FF;
+		border-radius: 5px 5px 5px 5px;
+		color:#1176CE;
+	}
+	.optionBtn:hover{
+		cursor: pointer;
+		background-color:#9ECDF6;
 	}
 	
 	
@@ -289,41 +312,251 @@
 							</div>
 							<div class="listContents">
 								<div>
-									<button type="button" class="saleBtn">설정함</button>
-									<button type="button" class="saleBtn">설정안함</button>
+									<button type="button" class="saleBtn openOption">설정함</button>
+									<button type="button" class="saleBtn closeOption">설정안함</button>
 								</div>
+								
+								
+								
 								<div class="optionBox">
 									<table class="optionTable">
 										<tr align="center">
 											<td>옵션명</td>
 											<td>옵션값</td>
-											<td colspan="3">추가비용</td>
-										</tr>
-										<tr>
-											<td  style="padding-left:20px;">
-												<input type="text" placeholder="옵션명 입력">
-											</td>
-											<td>
-												<input type="text" placeholder="옵션값 입력">
-											</td>
-											<td>
-												<input type="number" placeholder="추가비용 입력">
+											<td>추가비용</td>
+											<td align="center">
+												<span id="iconBox" class="glyphicon glyphicon-minus minus0"></span>
 											</td>
 											<td align="center">
-												<span id="iconBox" class="glyphicon glyphicon-minus"></span>
-											</td>
-											<td align="center">
-												<span id="iconBox"class="glyphicon glyphicon-plus"></span>
+												<span id="iconBox"class="glyphicon glyphicon-plus plus0"></span>
 											</td>
 										</tr>
+										
+										<tbody class="optiontbody">
+											<tr align="center">
+												<td >
+													<input type="text" name="optionName" placeholder="옵션명 입력">
+												</td>
+												<td>
+													<input type="text" name="optionVal" placeholder="옵션값 입력">
+												</td>
+												<td>
+													<input type="number" name="plusSale" placeholder="추가비용 입력">
+												</td>
+												<td colspan="2"></td>
+											</tr>
+										</tbody>
 									</table>
+									
+									
+									<div class="plusTable">
+										
+									</div>
+									
+									
+									<div align="center">
+										<div class="optionBtn" id="deleteBtn">
+											<span class="glyphicon glyphicon-minus"></span>&nbsp;옵션 삭제
+										</div>
+										<div class="optionBtn" id="addBtn">
+											<span class="glyphicon glyphicon-plus"></span>&nbsp;옵션 추가
+										</div>
+									</div>
 								</div>
+								
 								
 								
 							</div>
 						</div>
 
-
+						<script>
+						//옵션 목록 추가,삭제
+						var num = 0;
+						var cnt = 0;
+							$(function(){
+								//옵션 설정 추가
+								$(".openOption").click(function(){
+									$(".optionBox").show();
+								});
+								
+								$(".closeOption").click(function(){
+									$(".optionBox").hide();
+								});
+								
+								
+								
+								
+								
+								$(".plus0").on("click", function() {
+									console.log(num);
+									cnt++;
+									$(".optiontbody:last").append(
+										'<tr align="center">' +
+											'<td></td>' +		
+											'<td>' + '<input type="text" name="optionVal" placeholder="옵션값 입력">' +'</td>' +
+											'<td>' + '<input type="number" name="plusSale" placeholder="추가비용 입력">' +'</td>' +
+											'<td colspan="2"></td>' +
+										'</tr>'
+									);
+								});
+								
+								$(".minus0").on("click", function(){
+									cnt--;
+									if(cnt < 0){
+										cnt = 0;
+									}else if(cnt >= 0){
+										$(".optiontbody tr:last").remove();
+									}
+								});
+								
+								
+								
+								$(".plus1").on("click", function() {
+									console.log(num);
+									cnt++;
+									$(".optiontbody:last").append(
+										'<tr align="center">' +
+											'<td></td>' +		
+											'<td>' + '<input type="text" name="optionVal" placeholder="옵션값 입력">' +'</td>' +
+											'<td>' + '<input type="number" name="plusSale" placeholder="추가비용 입력">' +'</td>' +
+											'<td colspan="2"></td>' +
+										'</tr>'
+									);
+								});
+								
+								$(".minus1").on("click", function(){
+									cnt--;
+									if(cnt < 0){
+										cnt = 0;
+									}else if(cnt >= 0){
+										$(".optiontbody tr:last").remove();
+									}
+								});
+								
+								
+								
+								
+								$(".plus2").on("click", function() {
+									console.log(num);
+									cnt++;
+									$(".optiontbody:last").append(
+										'<tr align="center">' +
+											'<td></td>' +		
+											'<td>' + '<input type="text" name="optionVal" placeholder="옵션값 입력">' +'</td>' +
+											'<td>' + '<input type="number" name="plusSale" placeholder="추가비용 입력">' +'</td>' +
+											'<td colspan="2"></td>' +
+										'</tr>'
+									);
+								});
+								
+								$(".minus2").on("click", function(){
+									cnt--;
+									if(cnt < 0){
+										cnt = 0;
+									}else if(cnt >= 0){
+										$(".optiontbody tr:last").remove();
+									}
+								});
+								
+								
+								
+								
+								
+								$(".plus3").on("click", function() {
+									console.log(num);
+									cnt++;
+									$(".optiontbody:last").append(
+										'<tr align="center">' +
+											'<td></td>' +		
+											'<td>' + '<input type="text" name="optionVal" placeholder="옵션값 입력">' +'</td>' +
+											'<td>' + '<input type="number" name="plusSale" placeholder="추가비용 입력">' +'</td>' +
+											'<td colspan="2"></td>' +
+										'</tr>'
+									);
+								});
+								
+								$(".minus3").on("click", function(){
+									cnt--;
+									if(cnt < 0){
+										cnt = 0;
+									}else if(cnt >= 0){
+										$(".optiontbody tr:last").remove();
+									}
+								});
+								
+								
+								
+								
+								$(".plus4").on("click", function() {
+									console.log(num);
+									cnt++;
+									$(".optiontbody:last").append(
+										'<tr align="center">' +
+											'<td></td>' +		
+											'<td>' + '<input type="text" name="optionVal" placeholder="옵션값 입력">' +'</td>' +
+											'<td>' + '<input type="number" name="plusSale" placeholder="추가비용 입력">' +'</td>' +
+											'<td colspan="2"></td>' +
+										'</tr>'
+									);
+								});
+								
+								$(".minus4").on("click", function(){
+									cnt--;
+									if(cnt < 0){
+										cnt = 0;
+									}else if(cnt >= 0){
+										$(".optiontbody tr:last").remove();
+									}
+								});
+								
+								
+								
+								
+								
+								var opCnt = 0;
+								
+								$("#addBtn").click(function() {
+									opCnt++;
+									num++;
+									$(".plusTable").last().append(
+										'<table class="optionTable'+ num +'">' +
+											'<tr align="center">' +
+												'<td>옵션명</td>' +
+												'<td>옵션값</td>' +
+												'<td>추가비용</td>' +
+												'<td align="center">' +
+													'<span id="iconBox" class="glyphicon glyphicon-minus minus' + num + '"></span>' +
+												'</td>' +
+												'<td align="center">' +
+													'<span id="iconBox" class="glyphicon glyphicon-plus plus' + num + '"></span>' +
+												'</td>' +
+											'</tr>' +
+											'<tbody class="optiontbody' + num + '">' +
+												'<tr align="center">' +
+													'<td>' +
+														'<input type="text" name="optionName" placeholder="옵션명 입력">' +
+													'</td>' +		
+													'<td>' + '<input type="text" name="optionVal" placeholder="옵션값 입력">' +'</td>' +
+													'<td>' + '<input type="number" name="plusSale" placeholder="추가비용 입력">' +'</td>' +
+													'<td colspan="2"></td>' +
+												'</tr>' +
+											'</tbody>' +
+										'</table>'
+									);
+									
+								});
+								$("#deleteBtn").on("click", function(){
+									opCnt--;
+									num--;
+									console.log(opCnt);
+									if(opCnt < 0){
+										opCnt = 0;
+									}else if(opCnt >= 0){
+										$(".plusTable").children().last().remove();
+									}
+								});
+							});
+						</script>
 
 
 
