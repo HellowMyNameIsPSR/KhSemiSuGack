@@ -14,7 +14,6 @@
 <title>index.jsp</title>
 </head>
 <body>
-	<%@ include file="views/main/mainMenubar.jsp" %>
 	<!-- <script>
 		$(function(){
 			location.href = "views/main/mainMenubar.jsp";
