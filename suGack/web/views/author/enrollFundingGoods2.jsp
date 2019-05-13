@@ -9,6 +9,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	<script src="js/fundingBtn.js"></script>
+	<script src="js/enrollFundGoods.js"></script>
 	<%@ include file="stylesheet/eroll.html" %>
 </head>
 <body class="is-preload">
@@ -56,19 +57,10 @@
 								<h2>프로젝트 기간</h2>
 							</div>
 							<div class="listContents">
-								<p class="subtext">※프로젝트의 기간을 설정하세요</p>
+								<p class="subtext">※프로젝트를 몇 일동안 진행하시겠습니까?</p>
 								<div class="row">
-									<div>
-										<label>시작일</label>
-										<input type="date" id="startFundDate" name="startFundDate">
-									</div>
-									<div>
-										<label> ~ </label>
-									</div>
-									<div>
-										<label>종료일</label>
-										<input type="date" id="endFundDate" name="endFundDate">
-									</div>
+									<input type="number" id="fundingTerm" name="fundingTerm" placeholder="진행일수">
+									<label>일</label>
 								</div>
 							</div>
 						</div>
@@ -80,20 +72,17 @@
 							<div class="listContents">
 							<div class="row">
 								<p class="subtext">
-									※ 후원자들을 위한 리워드 내용을 입려하세요.
+									※ 후원자들을 위한 리워드 내용을 입려하세요. 
 								</p>
-								<input type="button" value="+">
+								<input type="button" value="+" class="all-btn">
 							</div>
 								<div class="row">          
-									  <table class="table table-bordered">
-									    <thead>
+									  <table class="table table-bordered" id="fundOptionTable">
 									      <tr>
-									        <th>Firstname</th>
-									        <th>Lastname</th>
-									        <th>Email</th>
+									        <th>작품 명</th>
+									        <th>구성품</th>
+									        <th>추가금액</th>
 									      </tr>
-									    </thead>
-									    <tbody>
 									      <tr>
 									        <td>John</td>
 									        <td>Doe</td>
@@ -109,7 +98,6 @@
 									        <td>Dooley</td>
 									        <td>july@example.com</td>
 									      </tr>
-									    </tbody>
 									  </table>
 									</div>
 							</div>
@@ -155,14 +143,8 @@
 						</div>
 					</form>
 					<div align="center">
-						<button style="width: 150px;" id="enrollFundingGoods2">Next > </button>
+						<button class="all-btn" style="width: 150px;" id="enrollFundingGoods2">Next > </button>
 					</div>
-
-
-
-
-
-
 				</section>
 			</div>
 		</div>

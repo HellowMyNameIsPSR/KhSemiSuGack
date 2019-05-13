@@ -60,7 +60,6 @@
 					<div class="col-sm-6">
 						<button type="submit" class="btn btn-primary btn-md btn-block">로그인</button>
 						<button type="reset" class="btn btn-default btn-md btn-block"> 취소 </button>
-					
 					</div>
 				</form>
 					

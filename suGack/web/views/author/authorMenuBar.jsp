@@ -6,6 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<%@ include file="../assets/css/main.html" %>
+	<%@ include file="../assets/css/allCss.html" %>
 	<title></title>
 </head>
 <!-- Sidebar -->
@@ -67,8 +68,8 @@
 	</div>
 </div>
 <!-- script -->
-<script src="../assets/js/jquery.min.js"></script>
-<script src="../assets/js/browser.min.js"></script>
-<script src="../assets/js/breakpoints.min.js"></script>
-<script src="../assets/js/util.js"></script>
-<script src="../assets/js/main.js"></script>
+<script src="<%= request.getContextPath() %>/views/assets/js/jquery.min.js"></script>
+<script src="<%= request.getContextPath() %>/views/assets/js/browser.min.js"></script>
+<script src="<%= request.getContextPath() %>/views/assets/js/breakpoints.min.js"></script>
+<script src="<%= request.getContextPath() %>/views/assets/js/util.js"></script>
+<script src="<%= request.getContextPath() %>/views/assets/js/main.js"></script>
