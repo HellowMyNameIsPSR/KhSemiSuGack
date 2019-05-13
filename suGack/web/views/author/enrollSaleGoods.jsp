@@ -8,7 +8,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <%@ include file="../assets/css/allCss.html" %>
-
+<%@ include file="../assets/SE2/css/smart_editor2.html" %>
+<script type="text/javascript" src="../assets/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
 <style>
 	body{
 		background: radial-gradient(white, #F6FFFF) fixed;
@@ -191,6 +192,7 @@
 					</header>
 					<!-- Contents area -->
 					<!-- 확인후 지우기 -->
+					
 					<form action="<%=request.getContextPath()%>/insertSale.wo" method="post">
 						<div class="listBox">
 							<div class="listTitle">
@@ -619,6 +621,12 @@
 							});
 						</script>
 
+
+
+
+
+
+
 						<!-- 상품이미지 -->
 						<div class="listBox" >
 							<div class="listTitle">
@@ -742,21 +750,55 @@
 						
 						
 						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 
 						<!-- 상품상세설명 -->
-						<div class="listBox">
+						<div class="listBox" style="height:100%; padding-botton:50px;">
 							<div class="listTitle">
 								<h2>상품상세설명</h2>
 							</div>
-							<div class="listContents" style="height: 100px;">
-								<textarea name="workContent" cols="60" rows="15" style="width:700px;height:100px;resize:none"></textarea>
+							<div class="listContents">
+								<textarea name="workContent" id="workContent" rows="10" cols="100">
+									내용
+								</textarea>
 							</div>
 						</div>
+						<script type="text/javascript">
+							var oEditors = [];
+							nhn.husky.EZCreator.createInIFrame({
+								oAppRef : oEditors,
+								elPlaceHolder : "workContent",
+								sSkinURI : "../assets/SE2/SmartEditor2Skin.html",
+								fCreator : "createSEditor2"
+							});
+							
+							$("#submitBtn").click(function() {
+								oEditors.getById["workContent"].exec("UPDATE_CONTENTS_FIELD", []);
+							});
+
+
+
+
+						</script>
+
+
 
 						<!-- 버튼 -->
 						<div align="center">
 							<button type="reset" class="all-btn" style="width:150px;">취소</button>
-							<button type="submit" class="all-btn" style="width:150px;">등록하기</button>
+							<button id="submitBtn"type="submit" class="all-btn" style="width:150px;">등록하기</button>
 						</div>
 
 
@@ -768,6 +810,6 @@
 		</div>
 		<%@ include file="authorMenuBar.jsp" %>
 	</div>
-			
+			<div style="height:300px;"></div>
 </body>
 </html>
