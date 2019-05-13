@@ -38,32 +38,29 @@
 						<h3>회원정보조회</h3>
 	
 									
-						<form action="">
+						<form action="<%= request.getContextPath() %>/memberCheck.ad" method="get">
 							<table class="table table-bordered">
 								<tr>
 									<td style="width:180px;">개인정보</td>
 									<td style="width:150px;">
-										<select name="" id="" style="width: 330px;">
-											<option value="">이메일</option>
-											<option value="">이름</option>
-											<option value="">닉네임</option>
+										<select name="searchType" id="searchType" style="width: 330px;">
+											<option value="email">이메일</option>
+											<option value="name">이름</option>d
 										</select>
 									</td>
 									
 									<td  colspan="2" style="width:600px;">
-										<input type="text" />
+										<input type="text" name="searchType1">
 									</td>
 								</tr>
 								
 								<tr>
 									<td>회원유형</td>
 									<td style="width:150px;">
-										<input type="radio" /><label>유형1</label>
+										<input type="radio" name="type2" value="일반회원 " id="radio1"/><label for="radio1">일반회원</label>
+										<input type="radio" name="type2" value="판매회원" id="radio2" /><label for="radio2">판매회원</label>
 									</td>
 									
-									<td  colspan="2" style="width:600px;">
-										<input type="text" />
-									</td>
 								</tr>
 								<tr>
 									<td>가입일</td>
@@ -74,12 +71,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td>
-										<select name="" id="">
-											<option value="">주문일</option>
-											<option value="">결제일</option>
-										</select>
-									</td>
+									<td>주문일</td>
 									<td colspan="3">
 									<input type="date" style="width:600px;"/>
 									</td>
@@ -105,13 +97,13 @@
 								<table class="table table-bordered" style="border:2px solid gray; text-align:center">
 			<tr style="background:lightgray;">
 				<td>번호</td>
-				<td>분류</td>
-				<td>펀딩명</td>
-				<td>펀딩코드</td>
-				<td>펀딩등록일</td>
-				<td>펀딩마감일</td>
-				<td>펀딩진행률</td>
-				<td>판매자</td>
+				<td>회원유형</td>
+				<td>회원이메일</td>
+				<td>회원이름</td>
+				<td>회원가입일</td>
+				<td>최근 주문일</td>
+				<td>주문 상품</td>
+				<td>경고단계</td>
 			</tr>
 			<tr>
 				<td>1</td>
