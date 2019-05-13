@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문의글내역</title>
+<title>문의글내역!</title>
 <style>
 	.name{
 		width:100%;

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>응원 및 리뷰</title>
+<title>응원 및 리뷰!</title>
 <style>
 	.outer{
 		border:1px solid lightgray;

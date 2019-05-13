@@ -101,7 +101,7 @@ public class Review implements java.io.Serializable{
 	public void setWorkId(int workId) {
 		this.workId = workId;
 	}
-
+ 
 
 	public Date getModifyDate() {
 		return modifyDate;

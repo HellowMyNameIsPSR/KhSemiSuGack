@@ -14,7 +14,7 @@ public class ProQna implements java.io.Serializable{
 	private Date modifyDate;
 	private String category;
 	
-	
+  
 	public ProQna() {}
 
 

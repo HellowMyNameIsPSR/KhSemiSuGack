@@ -62,7 +62,7 @@ public class InsertProQnaServlet extends HttpServlet {
 		}else {
 			System.out.println("실패: "+result);
 			request.setAttribute("msg", "문의 작성 실패!");
-			
+			   
 		
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 			

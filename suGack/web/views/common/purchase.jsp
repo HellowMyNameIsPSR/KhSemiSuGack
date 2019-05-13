@@ -160,7 +160,7 @@
 					
 					<br><br>
 					
-					<label>이용약관</label>
+					<label>이용약관!</label>
 					<textarea readonly="readonly" style="overflow-y:scroll"></textarea>					
 					<div class="ok" style="float:right;" >
 					<input name="agree3"type="checkbox" value="동의" id="agree3"><label for="agree3">동의합니다.</label>

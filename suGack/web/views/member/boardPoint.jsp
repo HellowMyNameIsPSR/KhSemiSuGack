@@ -25,7 +25,7 @@
 				<!-- Header -->
 				
 				<header id="header">
-					<div class="name">적립금 내역</div>
+					<div class="name">적립금 내역!</div>
 				</header>
 				
 				<section id="contents">

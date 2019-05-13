@@ -34,7 +34,7 @@ public class InsertReviewServlet extends HttpServlet {
 		
 		Review r = new Review();
 		r.setContent(content);
-		
+		  
 	}
 
 	/**

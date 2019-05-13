@@ -45,7 +45,7 @@ public class ProQnaService {
 		return list;
 	}
 
-	
+
 	//게시물의 갯수 조회용 메소드
 	public int getListCount() {
 		Connection con = getConnection();

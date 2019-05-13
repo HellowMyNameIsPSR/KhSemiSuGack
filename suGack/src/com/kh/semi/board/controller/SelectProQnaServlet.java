@@ -46,7 +46,7 @@ public class SelectProQnaServlet extends HttpServlet {
 		}else {
 			page = "views/common/errorPage.jsp";
 			request.setAttribute("msg", "문의내역 조회 실패!");
-		}
+		} 
 //		RequestDispatcher view = request.getRequestDispatcher(page);
 //		view.forward(request, response);
 	}

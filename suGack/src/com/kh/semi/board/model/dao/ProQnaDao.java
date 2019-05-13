@@ -80,7 +80,7 @@ public class ProQnaDao {
 			rset = stmt.executeQuery(query);
 			
 			list = new ArrayList<ProQna>();
-			
+		
 			while(rset.next()) {
 				ProQna qna = new ProQna();
 				qna.setBno(rset.getInt("BNO"));
