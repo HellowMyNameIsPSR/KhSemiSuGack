@@ -37,9 +37,9 @@ public class ProQnaService {
 		
 	}
 
-	public ArrayList<ProQna> selectList() {
+	public ArrayList<ProQna> selectList(int memberId) {
 		Connection con = getConnection();
-		ArrayList<ProQna> list =  new ProQnaDao().selectList(con);
+		ArrayList<ProQna> list =  new ProQnaDao().selectList(con, memberId);
 		
 		close(con);
 		return list;
@@ -53,5 +53,25 @@ public class ProQnaService {
 		close(con);
 		return listCount;
 	}
+	
+	//문의내역 자세히보기
+	public ProQna selectOne(int num) {
+		
+		Connection con = getConnection();
+		
+		
+		ProQna qna = new ProQnaDao().selectOne(con,num);
+		
+		if(qna !=null) {
+			commit(con);
+			
+		}else {
+			rollback(con);
+		}
+		close(con);
+		
+		return qna;
+	}
+	
 
 }
