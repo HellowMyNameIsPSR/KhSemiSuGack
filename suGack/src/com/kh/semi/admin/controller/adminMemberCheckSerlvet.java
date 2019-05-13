@@ -2,6 +2,7 @@ package com.kh.semi.admin.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.admin.model.service.adminService;
+import com.kh.semi.admin.model.vo.SearchMember;
 import com.kh.semi.member.model.vo.Member;
 
 
@@ -27,43 +29,58 @@ public class adminMemberCheckSerlvet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String type = request.getParameter("searchType");
-		String searchType1 = request.getParameter("searchType1");
-		String type2 = request.getParameter("type2");
-
+		String searchType = request.getParameter("searchType");
+		String searchText = request.getParameter("searchText");
+		String memberType = request.getParameter("memberType");
+		String joinStart = request.getParameter("joinStart");
+		String joinLast = request.getParameter("joinLast");
+		String birthDateStart = request.getParameter("birthDateStart");
+		String birthDateLast = request.getParameter("birthDateLast");
+		String gender = request.getParameter("gender");
 		
-		System.out.println("검색값 : " + searchType1);
-		Member m = new Member();
-		PrintWriter out = response.getWriter();
-		if(type.equals("email")) {
+		
+		java.sql.Date joinStartday =  java.sql.Date.valueOf(joinStart);
+		java.sql.Date joinLastday =  java.sql.Date.valueOf(joinLast);
+		java.sql.Date birthDayStart = java.sql.Date.valueOf(birthDateStart);
+		java.sql.Date birthDayLast = java.sql.Date.valueOf(birthDateLast);
+		
+		SearchMember m = new SearchMember();
+		
+		if(searchType.equals("email")) {
 			System.out.println("이메일이다!");
-			
-			m.setEmail(searchType1);
-			
-		}else if(type.equals("name")) {
+			m.setEmailText(searchText);		
+		}else if(searchType.equals("name")) {
 			System.out.println("이름!");
-			m.setMemberName(searchType1);
-
+			m.setNameText(searchText);
 		}else {
 			System.out.println("안된다!");
 		}
-		
-		if(type2.equals("일반회원")) {
+		if(memberType.equals("일반회원")) {
 			m.setMemberType("N");
 		}else {
 			m.setMemberType("W");
 		}
 		
-		ArrayList<Member> list = new adminService().searchMember(m);
+		m.setJoinStart(joinStartday);
+		m.setJoinLast(joinLastday);
+		m.setBirthDateStart(birthDayStart);
+		m.setBirthDateLast(birthDayLast);
+		m.setGender(gender);
+		
+		
+		ArrayList<SearchMember> list = new adminService().searchMember(m);
+		System.out.println(m);
+		
 		
 		String page = "";
+		System.out.println(list);
 		
 		if(list != null) {
-			page = "views/notice/noticeList.jsp";
+			page = "views/admin/viewMemList.jsp";
 			request.setAttribute("list", list);
 			
 		}else {
-			page = "views/common/errorPage.jsp";
+			page = "views/admin/errorPage.jsp";
 			request.setAttribute("msg", "공지사항 조회 실패!");
 			
 		}
@@ -72,11 +89,7 @@ public class adminMemberCheckSerlvet extends HttpServlet {
 		
 		view.forward(request, response);
 		
-		//Member m = new adminService().searchId();
 		
-		/*System.out.println(type);
-		
-		out.print(type);*/
 		
 		
 	}
