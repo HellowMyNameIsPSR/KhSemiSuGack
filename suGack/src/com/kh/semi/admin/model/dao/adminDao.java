@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.semi.admin.model.dao.adminDao;
+import com.kh.semi.admin.model.vo.SearchMember;
 import com.kh.semi.member.model.vo.Member;
 import static com.kh.semi.common.JDBCTemplate.*;
 
@@ -31,53 +32,56 @@ public class adminDao {
 		
 	}
 
-	public ArrayList<Member> searchMember(Member m, Connection con) {
-		ArrayList<Member> list = null;
+	public ArrayList<SearchMember> searchMember(SearchMember m, Connection con) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "";
+		ArrayList<SearchMember> list = null;
 		
-		if(m.getEmail() != null) {
-			query = prop.getProperty("searchMemberEmail");
-		}else if(m.getMemberName() != null){
-			query = prop.getProperty("searchMemberName");
-		}
-		
-		
-		
-		
-		
-		
-		
-		return list;
-	}
-
-	public ArrayList selectMemberForMonth(Connection con) {
-		Statement stmt = null;
-		ResultSet rset = null;
-		ArrayList<Integer> list =  null;
-		int num = 0;
-		String query = prop.getProperty("selectMemberForMonth");
+		String query = prop.getProperty("searchMember");
 		
 		try {
-			stmt = con.createStatement();
+			pstmt = con.prepareStatement(query);
 			
-			rset = stmt.executeQuery(query);
+			pstmt.setString(1, m.getNameText());
+			pstmt.setString(2, m.getMemberType());
+			pstmt.setDate(3, m.getJoinStart());
+			pstmt.setDate(4, m.getJoinLast());
+			pstmt.setDate(5, m.getBirthDateStart());
+			pstmt.setDate(6, m.getBirthDateLast());
+			pstmt.setString(7, m.getGender());
 			
-			list = new ArrayList<Integer>();
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<>();
+			
+			System.out.println("첫번째 list" + list);
 			
 			while(rset.next()) {
-				list.add(num, rset.getInt("MEMBERCOUNT"));
-				num++;
+				SearchMember sm = null;
+				sm.setNameText(rset.getString("MEMBER_NAME"));
+				sm.setMemberType(rset.getString("MEMBER_TYPE"));
+				sm.setBirthDay(rset.getDate("BIRTH_DATE"));
+				sm.setJoinDay(rset.getDate("ENROLL_DATE"));
+				sm.setGender(rset.getString("GENDER"));
+				
+				
+				System.out.println(sm);
+				
+				list.add(sm);
+				
 			}
 			
+				System.out.println("최종 list" + list);
+			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} finally {
+			close(pstmt);
 			close(rset);
-			close(stmt);
+			
 		}
+		
 		
 		return list;
 	}

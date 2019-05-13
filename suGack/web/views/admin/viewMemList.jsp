@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*, com.kh.semi.admin.model.vo.*"%>
+<% 
+ArrayList<SearchMember> list = (ArrayList<SearchMember>) request.getAttribute("list");
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +41,7 @@
 						<h3>회원정보조회</h3>
 	
 									
-						<form action="<%= request.getContextPath() %>/memberCheck.ad" method="get">
+						<div>
 							<table class="table table-bordered">
 								<tr>
 									<td style="width:180px;">개인정보</td>
@@ -50,49 +53,47 @@
 									</td>
 									
 									<td  colspan="2" style="width:600px;">
-										<input type="text" name="searchType1">
+										<input type="text" name="searchText">
 									</td>
 								</tr>
 								
 								<tr>
 									<td>회원유형</td>
 									<td style="width:150px;">
-										<input type="radio" name="type2" value="일반회원 " id="radio1"/><label for="radio1">일반회원</label>
-										<input type="radio" name="type2" value="판매회원" id="radio2" /><label for="radio2">판매회원</label>
+										<input type="radio" name="memberType" value="일반회원 " id="radio1"/><label for="radio1">일반회원</label>
+										<input type="radio" name="memberType" value="판매회원" id="radio2" /><label for="radio2">판매회원</label>
 									</td>
 									
 								</tr>
 								<tr>
 									<td>가입일</td>
-									<td><input type="date" style="width:300px;"/></td>
+									<td><input type="date" name="joinStart" style="width:300px;"/></td>
 									<td style="width:30px;"><label style="font-size:15px; text-align:center;">~</label></td>
 									<td style="width:500px;">
-										<input type="date" style="width:300px;"/>
+										<input type="date" name="joinLast" style="width:300px;"/>
 									</td>
 								</tr>
 								<tr>
-									<td>주문일</td>
-									<td colspan="3">
-									<input type="date" style="width:600px;"/>
+									<td>생년월일</td>
+									<td><input type="date" name="birthDateStart" style="width:300px;"/></td>
+									<td style="width:30px;"><label style="font-size:15px; text-align:center;">~</label></td>
+									<td style="width:500px;">
+										<input type="date" name="birthDateLast" style="width:300px;"/>
 									</td>
 								</tr>
 								<tr>
-									<td style="width:180px;">주문정보</td>
-									<td style="width:150px;">
-										<select name="" id="" style="width: 330px;">
-											<option value="">상품</option>
-											<option value="">펀딩</option>
-										</select>
+									<td style="width:180px;">성별</td>
+									<td colspan="3" style="width:150px;">
+										<input type="radio" name="gender" value="M" id="radio3"/><label for="radio3">남자</label>
+										<input type="radio" name="gender" value="F" id="radio4" /><label for="radio4">여자</label>
 									</td>
 									
-									<td  colspan="2" style="width:600px;">
-										<input type="text" placeholder="상품명 입력"/>
-									</td>
+									
 								</tr>
 
 							</table>	
-							<input type="submit" value="조회" style="float:right">					
-						</form>
+							<button id="search" style="float:right;">조회</button>				
+						</div>
 						
 								<table class="table table-bordered" style="border:2px solid gray; text-align:center">
 			<tr style="background:lightgray;">
@@ -101,60 +102,12 @@
 				<td>회원이메일</td>
 				<td>회원이름</td>
 				<td>회원가입일</td>
-				<td>최근 주문일</td>
-				<td>주문 상품</td>
-				<td>경고단계</td>
+				<td>생년월일</td>
+				<td>성별</td>
+				
 			</tr>
-			<tr>
-				<td>1</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>5</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
+			
+			
 		</table>
 		<div class="row" style="padding-left:200px">
 				<ul class="pagination justify-content-center">
@@ -173,6 +126,36 @@
 			</div>
 		<%@ include file="adminMenubar.jsp" %>
 	</div>
+	<script>
+	$("#search").click(function(){
+		var searchType = $("#searchType").val();
+		var joinStart = $("input[name='joinStart']").val();
+		$.ajax({
+			url:"memberCheck.ad",
+			data:
+			type:"get",
+			success:function(data){
+				console.log(data);
+				$tableBody = $("#userInfoTable tbody");
+				
+				$tableBody.html('');
+				
+				$.each(data, function(index, value){
+					var $tr = $("<tr>");
+					var $noTd = $("<td>").text(value.userNo);
+					var $nameTd = $("<td>").text(decodeURIComponent(value.userName));
+					var $nationTd = $("<td>").text(decodeURIComponent(value.userNation));
+					
+					$tr.append($noTd);
+					$tr.append($nameTd);
+					$tr.append($nationTd);
+					$tableBody.append($tr);
+					
+				})
+			}
 			
+		});
+	})
+	</script>
 </body>
 </html>

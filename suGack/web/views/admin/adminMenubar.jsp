@@ -17,7 +17,7 @@
 	<div class="inner">
 		<!-- Logo -->
 		<section class="alt">
-			<a href="#">LOGO</a>
+			<a href="../../index.jsp">LOGO</a>
 		</section>
 		<!-- Menu -->
 		<nav id="menu">
