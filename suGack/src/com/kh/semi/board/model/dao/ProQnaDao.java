@@ -15,8 +15,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
-
-
 import com.kh.semi.board.model.vo.ProQna;
 
 public class ProQnaDao {
@@ -67,25 +65,28 @@ public class ProQnaDao {
 
 
 	//게시글 리스트 조회
-	public ArrayList<ProQna> selectList(Connection con) {
+	public ArrayList<ProQna> selectList(Connection con, int memberId) {
 		ArrayList<ProQna> list = null;
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String query = prop.getProperty("selectNotice");
+		String query = prop.getProperty("selectQna");
 		
 		try {
-			stmt = con.createStatement();
-			
-			rset = stmt.executeQuery(query);
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, memberId);
+			rset = pstmt.executeQuery();
 			
 			list = new ArrayList<ProQna>();
 		
 			while(rset.next()) {
+				
 				ProQna qna = new ProQna();
+				qna.setRowNum(rset.getInt("ROWNUM"));
 				qna.setBno(rset.getInt("BNO"));
 				qna.setcategory(rset.getString("TITLE"));
 				qna.setWriteDate(rset.getDate("WRITE_DATE"));
+				qna.setMid(rset.getInt("MEMBER_ID"));
 				
 				list.add(qna);
 				
@@ -95,7 +96,7 @@ public class ProQnaDao {
 			e.printStackTrace();
 		}finally {
 			close(rset);
-			close(stmt);
+			close(pstmt);
 		}
 		
 		return list;
@@ -128,6 +129,44 @@ public class ProQnaDao {
 		
 		
 		return listCount;
+	}
+
+
+	
+	public ProQna selectOne(Connection con, int num) {
+		
+		ProQna qna = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String query = prop.getProperty("selectQnaOne");
+		System.out.println(query);
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, num);
+			
+			rset = pstmt.executeQuery();
+			System.out.println("ProQnaDao에서");
+			if(rset.next()) {
+				qna = new ProQna();
+				
+			
+				qna.setContent(rset.getString("CONTENT"));
+				qna.setcategory(rset.getString("TITLE"));
+				qna.setWriteDate(rset.getDate("WRITE_DATE"));
+				qna.setWriter(rset.getString("MEMBER_NAME"));
+				
+				
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		System.out.println(qna);
+		return qna;
 	}
 
 
