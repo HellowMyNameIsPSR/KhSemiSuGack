@@ -184,15 +184,20 @@ input[type:image]{
     </div>
     <div id="menu2" class="tab-pane fade">
       <h3>별점 및 응원글</h3>
-      <div class="star"; style="background:beige;  padding:10px; width:100%; height:150px;">
-      	<textarea style="width:100%; height:80px;"></textarea>
-      	<select style="float:left; width:200px; height:40px;">
-      		<option>★★★★★ 아주좋아요</option>
-      		<option>★★★★☆ 마음에 들어요</option>
-      		<option>★★★☆☆ 보통이에요</option>
-      		<option>★★☆☆☆ 별로에요</option>
+      
+      <div class="star" style="background:beige;  padding:10px; width:100%; height:150px;">
+      <form id="review" action="<%=request.getContextPath() %>/insertReview.bo" method="post">
+      	<textarea style="width:100%; height:80px;" name="content"></textarea>
+      	<select name="star" style="float:left; width:200px; height:40px;">
+      		<option value="5">★★★★★ 아주좋아요</option>
+      		<option value="4">★★★★☆ 마음에 들어요</option>
+      		<option value="3">★★★☆☆ 보통이에요</option>
+      		<option value="2">★★☆☆☆ 그냥그래요</option>
+      		<option value="1">★★☆☆☆ 별로에요</option>
       	</select>
-        <button style=" float:right; width:150px; height:40px; background:gray; color:white; border:1px solid gray;">리뷰등록하기</button>
+      	<input type="submit" value="리뷰등록하기" style=" float:right; width:150px; height:40px; background:gray; color:white; border:1px solid gray;">
+       <!--  <button style=" float:right; width:150px; height:40px; background:gray; color:white; border:1px solid gray;">리뷰등록하기</button> -->
+      </form>
       </div>
       
       <!-- <div class="row">
@@ -211,7 +216,7 @@ input[type:image]{
     <div id="menu3" class="tab-pane fade">
     
     
-    			<form id="salesInsert" action="" method="post">
+    			<form id="qna" action="<%=request.getContextPath() %>/insertProQna.bo" method="post">
    					 <div class="qnaArea">
 							<div class="qnaTitle">
 								<h2>문의하기</h2>
@@ -221,25 +226,38 @@ input[type:image]{
 										<tr class="qna">
 											<td><label >문의 제목:</label></td>
 											
-											<td><input type="text" style="width:100%;"></td>
+											<!-- <td><input type="text" name="title" style="width:100%;"></td> -->
+											<td>
+												<select name="category" style="width:100%;">
+													<!-- <option value="10" id="product">상품문의</option>
+													<option value="20" id="delivery">배송문의</option>
+													<option value="30" id="change">교환/환불문의</option>
+													<option value="40" id="etc">기타문의</option> -->
+													
+													<option value="상품문의" id="product">상품문의</option>
+													<option value="배송문의" id="delivery">배송문의</option>
+													<option value="교환/환불문의" id="change">교환/환불문의</option>
+													<option value="기타문의" id="etc">기타문의</option>
+												</select>
+											</td>
 											
 										</tr>
-										<tr class="qna">
+										<!-- <tr class="qna">
 											<td><label >작성자:</label></td>
-											<td><input type="text"
+											<td><input type="text" name="writer"
 												style="width: 100%;"></td>
-										</tr>
-										<tr class="qna">
+										</tr> -->
+										<!-- <tr class="qna">
 											<td><label>작성일:</label></td>
-											<td><input type="text"
+											<td><input type="text" name="writeDate"
 												style="width: 100%;"></td>
-										</tr>
+										</tr> -->
 										<tr class="qna">
 											<td><label>내용:</label></td>
-											<td><textarea name="content" style="width:100%;"></textarea></td>
+											<td><textarea name="content" style="width:100%;" rows="7"></textarea></td>
 										</tr>
 										<tr class="qna">
-											<td colspan="2"><input type="submit" value="작성하기" id="qnaBtn" style="float:right;"></td>
+											<td colspan="2"><input type="submit" name="writeBtn"value="작성하기" id="qnaBtn" style="float:right;"></td>
 										</tr>
 									</table>
 								
