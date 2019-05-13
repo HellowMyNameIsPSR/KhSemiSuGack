@@ -1,8 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- <%
-	String msg = (String)request.getAttribute("msg");
-%> --%>
+<%
+	String addressName = request.getParameter("addressName");
+	String addressId = request.getParameter("addressId");
+	String phone1 = request.getParameter("phone1");
+	String phone2 = request.getParameter("phone2");
+	if(phone1.equals("undefined")) {
+		phone1 = "";
+	}
+	if(phone2.equals("undefined")) {
+		phone2 = "";
+	}
+	String memberId = request.getParameter("memberId");
+	System.out.println(addressName + addressId + phone1 + phone2 + memberId);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,13 +27,14 @@
 <body>
 	<div class="container" align="center">
 		<div class="addressForm">
-			<h3>주소입력</h3><br>
+			<h3>주소수정</h3><br>
 			
 			<div class="form-horizontal" <%-- action="<%=request.getContextPath()%>/inputAddress.me" --%>>
 				<div class="form-group" >
 					<label class="control-label col-xs-3">배송지명</label>
 					<div class="col-xs-6">
-						<input type="text" name="addressName" id="addressName" class="form-control">
+						<input type="hidden" name="addressId" id="addressId" value="<%=addressId%>">
+						<input type="text" name="addressName" id="addressName" class="form-control" value="<%=addressName %>">
 					</div>
 				</div>
 				<div class="form-group" >
@@ -53,13 +65,13 @@
 				<div class="form-group" >
 					<label class="control-label col-xs-3">연락처</label>
 					<div class="col-xs-6">
-						<input type="tel" name="phone1" id="phone1" class="form-control">
+						<input type="tel" name="phone1" id="phone1" class="form-control" value="<%=phone1%>">
 					</div>
 				</div>
 				<div class="form-group" >
 					<label class="control-label col-xs-3">연락처2</label>
 					<div class="col-xs-6">
-						<input type="tel" name="phone2" id="phone2" class="form-control">
+						<input type="tel" name="phone2" id="phone2" class="form-control" value="<%=phone2%>">
 					</div>
 				</div>
 				<button class="btn btn-primary btn-md" id="submit">저장</button>
@@ -147,18 +159,15 @@
             		var phone1 = $("#phone1").val();
             		var phone2 = $("#phone2").val();
             		$.ajax({
-            			url:"<%=request.getContextPath()%>/inputAddress.me",
+            			url:"<%=request.getContextPath()%>/updateAddress.me",
             			data:{addressName:addressName, postCode:postCode, address:address, detailAddress:detailAddress,
             				extraAddress:extraAddress, phone1:phone1, phone2:phone2},
             			type:"post",
             			success:function(data){
             				if(data == "ok"){
+            					alert("수정이 완료되었습니다");
             					opener.document.location.reload();
 								self.close();            					
-            				}else if(data == "manyAddress"){
-            					alert("주소는 3개까지만 저장 가능합니다.");
-            					opener.document.location.reload();
-								self.close();
             				}else {
             					alert("다시입력해 주세요");
             				}
@@ -172,6 +181,7 @@
             		window.close();
             	});
             });
+           
             
         </script>
 	</div>

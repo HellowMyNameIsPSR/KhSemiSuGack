@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.semi.member.model.vo.*"%>
+<%
+	Member loginUser = (Member)request.getSession().getAttribute("loginUser");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +49,7 @@
 					<span class="opener">개인정보</span>
 					<ul>
 						<li><a href="modifyMe.jsp">개인정보 수정</a>
-						
+						<li><a href="<%=request.getContextPath()%>/addressList.me?num=<%=loginUser.getMemberId()%>">내 주소 관리</a>
 						<li><a href="withDrawal.jsp">회원 탈퇴</a>
 					</ul>
 				</li>
@@ -72,3 +75,10 @@
 <script src="../assets/js/breakpoints.min.js"></script>
 <script src="../assets/js/util.js"></script>
 <script src="../assets/js/main.js"></script>
+
+
+
+
+
+
+
