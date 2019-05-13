@@ -1,27 +1,28 @@
 package com.kh.semi.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.kh.semi.member.model.service.MemberService;
-import com.kh.semi.member.model.vo.Member;
+import com.kh.semi.member.model.vo.Address;
 
 /**
- * Servlet implementation class LoginMemberServlet
+ * Servlet implementation class AddressListServlet
  */
-@WebServlet("/login.me")
-public class LoginMemberServlet extends HttpServlet {
+@WebServlet("/addressList.me")
+public class AddressListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginMemberServlet() {
+    public AddressListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,24 +31,20 @@ public class LoginMemberServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		System.out.println(password);
-		Member loginUser = new MemberService().loginMember(email, password);
 		
-		String page = "";
-		if(loginUser != null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("loginUser", loginUser);
-			if(loginUser.getEmail().equals("admin@sg.com")) {
-				page = "views/admin/adminHome.jsp";
-			} else {
-				page = "index.jsp";
-			}			
-			response.sendRedirect(page);
-		}else {
-			System.out.println("실패 원인을 찾아라");
+		int memberId = Integer.parseInt(request.getParameter("num"));
+		System.out.println(memberId);
+		ArrayList<Address> list = new MemberService().addressList(memberId);
+		
+		System.out.println(list);
+		
+		if(list != null) {
+			request.setAttribute("list", list);
+			request.getRequestDispatcher("views/member/memberAddressList.jsp").forward(request, response);
 		}
+		
+		
+		
 		
 	}
 
@@ -60,19 +57,3 @@ public class LoginMemberServlet extends HttpServlet {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
