@@ -5,7 +5,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<%@ include file="../assets/css/allCss.html" %>
 	<%@ include file="../assets/css/main.html" %>
+	<%@ include file="../assets/css/allCss.html" %>
 	<title></title>
 </head>
 <!-- Sidebar -->
@@ -25,13 +27,19 @@
 				<li>
 					<span class="opener">판매 작품</span>
 					<ul>
-						<li><a href="enrollSaleGoods.jsp">판매 작품 등록</a>
-						<li><a href="manageSaleGoods.jsp">판매 작품 관리</a>
-						<li><a href="manageSale.jsp">판매 관리</a>
-						<li><a href="managePost.jsp">문의 / 리뷰 관리</a>
-						<li><a href="saleStatistics.jsp">판매 통계</a>
-					</ul>
+						<li><a href="/sg/views/author/enrollSaleGoods.jsp">판매 작품 등록</a>
+						<li><a onclick="manageSaleGoods()">판매 작품 관리</a>
+						<li><a href="/sg/views/author/manageSale.jsp" >판매 관리</a>
+						<li><a href="/sg/views/author/managePost.jsp">문의 / 리뷰 관리</a>
+						<li><a href="/sg/views/author/saleStatistics.jsp">판매 통계</a>
+					</ul> 
+					<script>
+						function manageSaleGoods() {
+							location.href="<%=request.getContextPath()%>/selectSale.wo";
+						}
+					</script>
 				</li>
+				
 				<li>
 					<span class="opener">펀딩 작품</span>
 					<ul>
@@ -66,9 +74,11 @@
 		</footer>
 	</div>
 </div>
+<!--  
 <!-- script -->
-<script src="../assets/js/jquery.min.js"></script>
-<script src="../assets/js/browser.min.js"></script>
-<script src="../assets/js/breakpoints.min.js"></script>
-<script src="../assets/js/util.js"></script>
-<script src="../assets/js/main.js"></script>
+<!-- script -->
+<script src="<%= request.getContextPath() %>/views/assets/js/jquery.min.js"></script>
+<script src="<%= request.getContextPath() %>/views/assets/js/browser.min.js"></script>
+<script src="<%= request.getContextPath() %>/views/assets/js/breakpoints.min.js"></script>
+<script src="<%= request.getContextPath() %>/views/assets/js/util.js"></script>
+<script src="<%= request.getContextPath() %>/views/assets/js/main.js"></script>

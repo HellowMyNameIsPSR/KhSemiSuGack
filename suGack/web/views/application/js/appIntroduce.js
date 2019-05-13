@@ -3,7 +3,7 @@ $(document).ready(function(){
 	//신청하기 버튼 클릭 했을 때
   $("#sendBtn").click(function(){
 	  //신청 내역으로 가기
-	  location.href = "applyTable.jsp";
+	  location.href = "application2.jsp";
   });
 	
 	// Add smooth scrolling to all links in navbar + footer link

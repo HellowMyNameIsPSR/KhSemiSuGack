@@ -1,10 +1,12 @@
 package com.kh.semi.member.model.service;
 
 import com.kh.semi.member.model.dao.MemberDao;
+import com.kh.semi.member.model.vo.Address;
 import com.kh.semi.member.model.vo.Member;
 import static com.kh.semi.common.JDBCTemplate.*;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 public class MemberService {
 
@@ -58,6 +60,67 @@ public class MemberService {
 		close(con);
 		
 		return result;
+	}
+
+	public int insertAddress(Address add) {
+		Connection con = getConnection();
+		int result = 0;
+		ArrayList<Address> list = new MemberDao().addressList(con, add.getMemberId());
+		
+		
+		if(list.size() < 3) {
+			result = new MemberDao().insertAddress(con, add);
+		}else {
+			result = -1;
+		}
+		
+		
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		close(con);
+		
+		
+		return result;
+	}
+
+	public ArrayList<Address> addressList(int memberId) {
+		Connection con = getConnection();
+		
+		ArrayList<Address> list = new MemberDao().addressList(con, memberId);
+		
+		close(con);
+		
+		return list;
+	}
+
+	public int deleteAddress(int addressId) {
+		Connection con = getConnection();
+		
+		int result = new MemberDao().deleteAddress(con, addressId);
+		
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
+	public Address selectAddress(int addressId) {
+		Connection con = getConnection();
+		
+		Address add = new MemberDao().selectAddress(con, addressId);
+		
+		close(con);
+		
+		
+		return add;
 	}
 
 }

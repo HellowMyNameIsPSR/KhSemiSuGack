@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- <%
+	String msg = (String)request.getAttribute("msg");
+%> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,54 +18,54 @@
 		<div class="addressForm">
 			<h3>주소입력</h3><br>
 			
-			<form method="post" class="form-horizontal">
+			<div class="form-horizontal" <%-- action="<%=request.getContextPath()%>/inputAddress.me" --%>>
 				<div class="form-group" >
 					<label class="control-label col-xs-3">배송지명</label>
 					<div class="col-xs-6">
-						<input type="text" name="addressName" class="form-control">
+						<input type="text" name="addressName" id="addressName" class="form-control">
 					</div>
 				</div>
 				<div class="form-group" >
 					<label class="control-label col-xs-3">우편번호</label>
 					<div class="col-xs-4">
-						<input type="text" id="postcode" class="d_form mini form-control" placeholder="우편번호">
+						<input type="text" id="postCode" class="d_form mini form-control" name="postCode" placeholder="우편번호">
 					</div>
 					<input type="button" onclick="searchAddress()" value="주소검색" class="d_btn col-xs-2 btn btn-primary">
 				</div> 
 				<div class="form-group">
 					<span class="col-xs-3"></span>
 					<div class="col-xs-6">
-						<input type="text" id="address" class="d_form large form-control" placeholder="주소">
+						<input type="text" id="address" class="d_form large form-control" name="address" placeholder="주소">
 					</div>
 				</div>
 				<div class="form-group">
 					<span class="col-xs-3"></span>
 					<div class="col-xs-6">
-						<input type="text" id="detailAddress" class="d_form form-control" placeholder="상세주소">
+						<input type="text" id="detailAddress" class="d_form form-control" name="detailAddress" placeholder="상세주소">
 					</div>
 				</div>
 				<div class="form-group">
 					<span class="col-xs-3"></span>
 					<div class="col-xs-6">
-						 <input type="text" id="extraAddress" class="d_form form-control" placeholder="참고항목">
+						 <input type="text" id="extraAddress" class="d_form form-control" name="extraAddress" placeholder="참고항목">
 					</div>
 				</div>
 				<div class="form-group" >
 					<label class="control-label col-xs-3">연락처</label>
 					<div class="col-xs-6">
-						<input type="tel" name="phone1" class="form-control">
+						<input type="tel" name="phone1" id="phone1" class="form-control">
 					</div>
 				</div>
 				<div class="form-group" >
 					<label class="control-label col-xs-3">연락처2</label>
 					<div class="col-xs-6">
-						<input type="tel" name="phone2" class="form-control">
+						<input type="tel" name="phone2" id="phone2" class="form-control">
 					</div>
 				</div>
-				<button type="submit" class="btn btn-primary btn-md">저장</button>
-					<button type="reset" class="btn btn-default btn-md">닫기</button>        
+				<button class="btn btn-primary btn-md" id="submit">저장</button>
+				<button id="close" class="btn btn-default btn-md">닫기</button>        
 				       
-			</form>
+			</div>
 		</div>
 		
 		
@@ -126,14 +129,82 @@
                         }
 
                         // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                        document.getElementById('postcode').value = data.zonecode;
+                        document.getElementById('postCode').value = data.zonecode;
                         document.getElementById("address").value = addr;
                         // 커서를 상세주소 필드로 이동한다.
                         document.getElementById("detailAddress").focus();
                     }
                 }).open();
             }
+            
+           $(function(){
+            	$("#submit").click(function(){
+            		var addressName = $("#addressName").val();
+            		var postCode = $("#postCode").val();
+            		var address = $("#address").val();
+            		var detailAddress = $("#detailAddress").val();
+            		var extraAddress = $("#extraAddress").val();
+            		var phone1 = $("#phone1").val();
+            		var phone2 = $("#phone2").val();
+            		$.ajax({
+            			url:"<%=request.getContextPath()%>/inputAddress.me",
+            			data:{addressName:addressName, postCode:postCode, address:address, detailAddress:detailAddress,
+            				extraAddress:extraAddress, phone1:phone1, phone2:phone2},
+            			type:"post",
+            			success:function(data){
+            				if(data == "ok"){
+            					opener.document.location.reload();
+								self.close();            					
+            				}else if(data == "manyAddress"){
+            					alert("주소는 3개까지만 저장 가능합니다.");
+            					opener.document.location.reload();
+								self.close();
+            				}else {
+            					alert("다시입력해 주세요");
+            				}
+            			},
+            			error:function(data){
+            				console.log("에러발생!");
+            			}
+            		});
+            	});
+            	$("#close").click(function(){
+            		window.close();
+            	});
+            });
+            
         </script>
 	</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

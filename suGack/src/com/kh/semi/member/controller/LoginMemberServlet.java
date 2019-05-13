@@ -35,11 +35,16 @@ public class LoginMemberServlet extends HttpServlet {
 		System.out.println(password);
 		Member loginUser = new MemberService().loginMember(email, password);
 		
-		
+		String page = "";
 		if(loginUser != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", loginUser);
-			response.sendRedirect("index.jsp");
+			if(loginUser.getEmail().equals("admin@sg.com")) {
+				page = "views/admin/adminHome.jsp";
+			} else {
+				page = "index.jsp";
+			}			
+			response.sendRedirect(page);
 		}else {
 			System.out.println("실패 원인을 찾아라");
 		}
