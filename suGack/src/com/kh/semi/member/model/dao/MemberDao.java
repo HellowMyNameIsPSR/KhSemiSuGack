@@ -277,6 +277,32 @@ public class MemberDao {
 		return add;
 	}
 
+	public int updateAddress(Connection con, Address add) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updateAddress");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, add.getAddressName());
+			pstmt.setString(2, add.getAddress());
+			pstmt.setString(3, add.getPhone1());
+			pstmt.setString(4, add.getPhone2());
+			pstmt.setInt(5, add.getAddressId());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 }
 
 

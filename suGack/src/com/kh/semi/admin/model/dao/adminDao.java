@@ -5,12 +5,14 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.semi.admin.model.dao.adminDao;
 import com.kh.semi.member.model.vo.Member;
+import static com.kh.semi.common.JDBCTemplate.*;
 
 public class adminDao {
 	private Properties prop = new Properties();
@@ -50,4 +52,56 @@ public class adminDao {
 		return list;
 	}
 
+	public ArrayList selectMemberForMonth(Connection con) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		ArrayList<Integer> list =  null;
+		int num = 0;
+		String query = prop.getProperty("selectMemberForMonth");
+		
+		try {
+			stmt = con.createStatement();
+			
+			rset = stmt.executeQuery(query);
+			
+			list = new ArrayList<Integer>();
+			
+			while(rset.next()) {
+				list.add(num, rset.getInt("MEMBERCOUNT"));
+				num++;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return list;
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
