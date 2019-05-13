@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class ProQna implements java.io.Serializable{
 	
+	private int rowNum;
 	private int bno;
 	private int mid;
 	private String content;
@@ -13,14 +14,19 @@ public class ProQna implements java.io.Serializable{
 	private int workId;
 	private Date modifyDate;
 	private String category;
+	private String writer;
 	
   
 	public ProQna() {}
 
 
-	public ProQna(int bno, int mid, String content, Date writeDate, int bCount, int division, int workId,
-			Date modifyDate, String category) {
+	
+
+
+	public ProQna(int rowNum, int bno, int mid, String content, Date writeDate, int bCount, int division, int workId,
+			Date modifyDate, String category, String writer) {
 		super();
+		this.rowNum = rowNum;
 		this.bno = bno;
 		this.mid = mid;
 		this.content = content;
@@ -30,7 +36,27 @@ public class ProQna implements java.io.Serializable{
 		this.workId = workId;
 		this.modifyDate = modifyDate;
 		this.category = category;
+		this.writer = writer;
 	}
+
+
+
+
+
+	public String getWriter() {
+		return writer;
+	}
+
+
+
+
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+
+
+
 
 
 	public int getBno() {
@@ -122,13 +148,39 @@ public class ProQna implements java.io.Serializable{
 		this.category = category;
 	}
 
+	
+	public int getRowNum() {
+		return rowNum;
+	}
+
+
+	public void setRowNum(int rowNum) {
+		this.rowNum = rowNum;
+	}
+
+
+	public String getCategory() {
+		return category;
+	}
+
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+
+
+
 
 	@Override
 	public String toString() {
-		return "ProQna [bno=" + bno + ", mid=" + mid + ", content=" + content + ", writeDate=" + writeDate + ", bCount="
-				+ bCount + ", division=" + division + ", workId=" + workId + ", modifyDate=" + modifyDate + ", category="
-				+ category + "]";
+		return "ProQna [rowNum=" + rowNum + ", bno=" + bno + ", mid=" + mid + ", content=" + content + ", writeDate="
+				+ writeDate + ", bCount=" + bCount + ", division=" + division + ", workId=" + workId + ", modifyDate="
+				+ modifyDate + ", category=" + category + ", writer=" + writer + "]";
 	}
+
+
+	
 	
 	
 
