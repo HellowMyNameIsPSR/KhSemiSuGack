@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>수작 - 펀딩 작품 등록2</title>
+	<title>수작 - 펀딩 작품 등록3</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -34,17 +34,16 @@
 
 						<div class="listBox">
 							<div class="listTitle">
-								<h2>펀딩 목표 금액</h2>
+								<h2>작품 설명</h2>
 							</div>
 							<div class="listContents">
 								<p class="subtext">
-									※ 펀딩의 총 목표 금액을 설정해 주세요.<br>
-									마감일 자정까지 100%이상을 달성했을 시 후원금이 전달됩니다. 마감일 전 후원을 취소하시는 분들이 있어 초과달성을 목표로 하는 것이 유리합니다. <br>
-									목표 금액은 제작비, 인건비, 배송료, 예비 비용 등을 고려하시기 바랍니다.
+									※ 작품 상세 페이지에 넣을 상세페이지 이미지 파일을 첨부해 주세요.
 								</p>
 								<div class="row">
-									<input type="text" placeholder="목표금액" id="targetAmount" name="targetAmount" style="width:60%">
-									<label>원</label>
+									<label class="form-control">상세페이지 이미지
+							       		<input type="file" name="fundDetailPage" id="fundDetailPage" style="overflow:hidden;opacity:0;">
+							       	</label>
 								</div>
 								
 							</div>
@@ -53,87 +52,49 @@
 
 						<div class="listBox">
 							<div class="listTitle">
-								<h2>프로젝트 기간</h2>
+								<h2>제작자 사전모집</h2>
 							</div>
 							<div class="listContents">
-								<p class="subtext">※프로젝트의 기간을 설정하세요</p>
-								<div class="row">
-									<div>
-										<label>시작일</label>
-										<input type="date" id="startFundDate" name="startFundDate">
-									</div>
-									<div>
-										<label> ~ </label>
-									</div>
-									<div>
-										<label>종료일</label>
-										<input type="date" id="endFundDate" name="endFundDate">
-									</div>
+								<p class="subtext"> 
+									※ 프로젝트 펀딩 공개 전 프로젝트에 함께 참여할 작가들을 모집할 수 있습니다. <br>
+									신청 내역은 따로 볼 수 있으면 지원한 작가에 대해 수락, 거절이 가능합니다. <br>
+									지원 시 필요한 자격 조건 또는 주의 사항에 대해 상세히 적어주세요.
+								</p>
+								<div class="listContents">
+									<textarea id="projectComment" name="projectComment" placeholder="Comment" rows="10" cols="50"></textarea><br>
 								</div>
 							</div>
 						</div>
 
 						<div class="listBox">
 							<div class="listTitle">
-								<h2>리워드 구성</h2>
+								<h2>연락처 인증</h2>
 							</div>
 							<div class="listContents">
 							<div class="row">
 								<p class="subtext">
-									※ 후원자들을 위한 리워드 내용을 입려하세요.
+									※ 프로젝트 진행 중 플랫폼에서의 연락이나 후원자들의 문의를 받을 연락처를 입력해 주세요.
 								</p>
-								<input type="button" value="+">
 							</div>
-								<div class="row">          
-									  <table class="table table-bordered">
-									    <thead>
-									      <tr>
-									        <th>Firstname</th>
-									        <th>Lastname</th>
-									        <th>Email</th>
-									      </tr>
-									    </thead>
-									    <tbody>
-									      <tr>
-									        <td>John</td>
-									        <td>Doe</td>
-									        <td>john@example.com</td>
-									      </tr>
-									      <tr>
-									        <td>Mary</td>
-									        <td>Moe</td>
-									        <td>mary@example.com</td>
-									      </tr>
-									      <tr>
-									        <td>July</td>
-									        <td>Dooley</td>
-									        <td>july@example.com</td>
-									      </tr>
-									    </tbody>
-									  </table>
-									</div>
-							</div>
-							<hr>
-							<div class="listContents">
-								<h4>예상 배송일</h4>
 								<div class="row">
-									<input type="date">
-									<label>일부터 순차적 발송</label>
-								</div>
-							</div>
-							<hr>
-							<div class="listContents">
-								<h4>구매 제한</h4>
-								<div class="row">
-									<label>1인당 </label>
-									<select style="width:50%;">
-										<option>구성품</option>
-										<option>구성품</option>
-										<option>구성품</option>
-									</select>
-									<label>을(를) </label>
-									<input type="number" placeholder="수량">
-									<label> 개로 제한합니다.</label>
+									<table>
+										<tr style="background:white;">
+											<td colspan="3">
+												<input type="email" placeholder="Email" class="form-control">
+											</td>
+											<td>
+												<button class="all-btn">이메일 인증하기</button>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="3">
+												<input type="tel" placeholder="Phone" class="form-control">
+											</td>
+											<td>
+												<button class="all-btn">휴대폰 인증하기</button>
+											</td>
+										</tr>
+									</table>
 								</div>
 							</div>
 						</div>
@@ -141,22 +102,66 @@
 
 						<div class="listBox">
 							<div class="listTitle">
-								<h2>환불 및 교환 정책</h2>
+								<h2>입금 계좌</h2>
 							</div>
 							<div class="listContents">
-								<textarea id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+								<div class="row">
+									<p class="subtext">
+										※ 후원금을 수령할 본인 계좌를 입력해 주세요.
+									</p>
+								</div>
+								<div class="row">
+									<table>
+										<tr>
+											<td>은행명</td>
+											<td colspan="2">
+												<select>
+													<option>은행명</option>
+													<option></option>
+													<option></option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td>예금주</td>
+											<td colspan="2">
+												<input type="text" class="form-control" placeholder="계좌의 예금주 명과 일치해야 합니다.">
+											</td>
+										</tr>
+										<tr>
+											<td>계좌번호</td>
+											<td>
+												<input type="text" class="form-constrol">
+											</td>
+											<td>
+												<button class="all-btn">계좌 인증</button>
+											</td>
+										</tr>
+										<tr>
+											<td>계좌 종류</td>
+											<td>
+												<input type="radio" value="개인" id="indiv" name="accountType">
+												<label for="indiv">개인</label>
+											</td>
+											<td>
+												<input type="radio" value="사업자" id="company" name="accountType">
+												<label for="company">사업자(개인 사업자)</label>
+											</td>
+										</tr>
+										<tr>
+											<td>예금주 생년월일</td>
+											<td>
+												<input type="date" placeholder="입금계좌 인증에 사용됩니다.">
+											</td>
+										</tr>
+									</table>
+								</div>
 							</div>
 						</div>
 					</form>
 					<div align="center">
 						<button style="width: 150px;" id="enrollFundingGoods2">Next > </button>
 					</div>
-
-
-
-
-
-
 				</section>
 			</div>
 		</div>

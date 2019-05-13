@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<%@ include file="../assets/css/allCss.html" %>
 	<%@ include file="../assets/css/main.html" %>
+	<%@ include file="../assets/css/allCss.html" %>
 	<title></title>
 </head>
 <!-- Sidebar -->

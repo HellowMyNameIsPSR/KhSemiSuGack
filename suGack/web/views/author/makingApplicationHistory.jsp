@@ -33,13 +33,20 @@
 							<h2>내가 참여하는 프로젝트</h2>
 						</div>
 						<div class="listContents">
+							<div class="row">
+								<p class="subtext">
+									※ 목록 클릭 시 해당 작품 페이지로 넘어갑니다.
+								</p>
+							</div>
 							<div class="row">          
 								  <table class="table table-bordered">
 								    <thead>
 								      <tr>
-								        <th>Firstname</th>
-								        <th>Lastname</th>
-								        <th>Email</th>
+								        <th>상품명</th>
+								        <th>모집인원</th>
+								        <th>총 모집인원</th>
+								        <th>신청일</th>
+								        <th>상태</th>
 								      </tr>
 								    </thead>
 								    <tbody>
@@ -47,16 +54,22 @@
 								        <td>John</td>
 								        <td>Doe</td>
 								        <td>john@example.com</td>
+								        <td>Doe</td>
+								        <td>john@example.com</td>
 								      </tr>
 								      <tr>
 								        <td>Mary</td>
 								        <td>Moe</td>
 								        <td>mary@example.com</td>
+								        <td>Doe</td>
+								        <td>john@example.com</td>
 								      </tr>
 								      <tr>
 								        <td>July</td>
 								        <td>Dooley</td>
 								        <td>july@example.com</td>
+								        <td>Doe</td>
+								        <td>john@example.com</td>
 								      </tr>
 								    </tbody>
 								  </table>
@@ -69,13 +82,20 @@
 							<h2>내가 진행하는 프로젝트</h2>
 						</div>
 						<div class="listContents">
+							<div class="row">
+								<p class="subtext">
+									※ 목록 클릭 시 제출한 신청서가 보여집니다.
+								</p>
+							</div>
 							<div class="row">          
-								  <table class="table table-bordered">
+								 <table class="table table-bordered">
 								    <thead>
 								      <tr>
-								        <th>Firstname</th>
-								        <th>Lastname</th>
-								        <th>Email</th>
+								        <th>상품명</th>
+								        <th>모집인원</th>
+								        <th>총 모집인원</th>
+								        <th>신청일</th>
+								        <th>상태</th>
 								      </tr>
 								    </thead>
 								    <tbody>
@@ -83,16 +103,22 @@
 								        <td>John</td>
 								        <td>Doe</td>
 								        <td>john@example.com</td>
+								        <td>Doe</td>
+								        <td>john@example.com</td>
 								      </tr>
 								      <tr>
 								        <td>Mary</td>
 								        <td>Moe</td>
 								        <td>mary@example.com</td>
+								        <td>Doe</td>
+								        <td>john@example.com</td>
 								      </tr>
 								      <tr>
 								        <td>July</td>
 								        <td>Dooley</td>
 								        <td>july@example.com</td>
+								        <td>Doe</td>
+								        <td>john@example.com</td>
 								      </tr>
 								    </tbody>
 								  </table>

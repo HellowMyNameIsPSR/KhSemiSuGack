@@ -12,34 +12,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="js/appIntroduce.js"></script>
+    <%@ include file="../assets/css/allCss.html" %>
     <%@ include file="stylesheet/appIntroduce.html" %>
-    <style>
-    	.all-btn {
-    		display: inline-block;
-		    margin-bottom: 0;
-		    font-weight: 400;
-		    text-align: center;
-		    vertical-align: middle;
-		    cursor: pointer;
-		    border:1px #3399dd solid;
-		    border-color : #3366ff;
-		    color : #333;
-		    background-color:white;  
-		    white-space: nowrap;
-		    padding: 6px 12px;
-		    font-size: 18px;
-		    line-height: 1.428571429;
-		    border-radius: 4px;
-		    -webkit-user-select: none;
-		    -moz-user-select: none;
-		    -ms-user-select: none;
-		    -o-user-select: none;
-		    user-select: none;
-    	}
-    	.all-btn:hover {
-    		background-color : #e6ecff;
-    	}
-    </style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 	<!-- 메뉴 -->
@@ -66,130 +40,107 @@
 	  </div>
 	</div>
 	
-	<div class="container-fluid bg-grey">
-	  <div class="row">
-	    <div class="col-sm-12">
-	      <div class="navbar wizard">
-           <div class="col-md-4"></div>
-              <div class="navbar-inner">
-
-                    <ul class="nav nav-pills wizard">
-                       <li class="active"><a href="#step1" data-toggle="tab" data-step="1">1</a></li>
-                       <li><a href="#step2" data-toggle="tab" data-step="2">2</a></li>
-                       <li><a href="#step3" data-toggle="tab" data-step="3">3</a></li>
-                    </ul>
-              </div>
-           </div>`
-	    </div>
-	  </div>
-	</div><!-- end Container (About Section) -->
-
 	<!-- Container (Services Section) -->
-	<div id="services" class="container-fluid text-center">
-	  <h2>SERVICES</h2>
-	  <h4>What we offer</h4>
-	  <br>
+	<div id="services" class="container-fluid text-center bg-grey">
 	  <div class="row slideanim">
-	    <div class="col-sm-4">
-	      <span class="glyphicon glyphicon-off logo-small"></span>
-	      <h4>POWER</h4>
-	      <p>Lorem ipsum dolor sit amet..</p>
+	    <div class="col-sm-6">
+	      <span class="glyphicon glyphicon-eur logo-small"></span>
+	      <h4>펀딩 작품 출시</h4>
+	      <p>
+	      	자본이 없어 상품화 할 수 없는 좋은 작품을 출시 할 수 있는 기회를 마련해 드립니다.<br>
+	      	펀딩 작품을 등록함으로써 규모에 제약받지 않고 작품활동에 집중할 수 있습니다.
+	      </p>
 	    </div>
-	    <div class="col-sm-4">
-	      <span class="glyphicon glyphicon-heart logo-small"></span>
-	      <h4>LOVE</h4>
-	      <p>Lorem ipsum dolor sit amet..</p>
-	    </div>
-	    <div class="col-sm-4">
-	      <span class="glyphicon glyphicon-lock logo-small"></span>
-	      <h4>JOB DONE</h4>
-	      <p>Lorem ipsum dolor sit amet..</p>
+	    <div class="col-sm-6">
+	      <span class="glyphicon glyphicon-signal logo-small"></span>
+	      <h4>편리한 운영 시스템</h4>
+	      <p>
+	      	작품관리 DB로부터 판매 작품부터 펀딩 작품까지 직접 관리할 수 있습니다. <br>
+	      	그 밖에 편리한 정산과 다양한 통계 자료를 손쉽게 확인 할 수 있습니다.
+		  </p>
 	    </div>
 	  </div>
 	  <br><br>
 	  <div class="row slideanim">
-	    <div class="col-sm-4">
-	      <span class="glyphicon glyphicon-leaf logo-small"></span>
-	      <h4>GREEN</h4>
-	      <p>Lorem ipsum dolor sit amet..</p>
+	    <div class="col-sm-6">
+	      <span class="glyphicon glyphicon-user logo-small"></span>
+	      <h4>작가들 간의 펀딩 프로젝트 협업</h4>
+	      <p>
+	      	펀딩 작품 출시 전에 협업할 작가를 모집할 수 있고 신처할 수 있습니다.<br>
+	      	다재다능한 작가들과 공동작업에 참여해 보세요.
+	      </p>
 	    </div>
-	    <div class="col-sm-4">
-	      <span class="glyphicon glyphicon-certificate logo-small"></span>
-	      <h4>CERTIFIED</h4>
-	      <p>Lorem ipsum dolor sit amet..</p>
-	    </div>
-	    <div class="col-sm-4">
-	      <span class="glyphicon glyphicon-wrench logo-small"></span>
-	      <h4 style="color:#303030;">HARD WORK</h4>
-	      <p>Lorem ipsum dolor sit amet..</p>
+	    <div class="col-sm-6">
+	      <span class="glyphicon glyphicon-heart logo-small"></span>
+	      <h4>작가 이야기</h4>
+	      <p>
+	      	자신의 스토리를 노출함으로써 홍보효과를 높일 수 있습니다. <br>
+	      	자신의 이야기로 자신의 경쟁력을 향상시켜 보세요.
+	      </p>
 	    </div>
 	  </div>
 	</div><!-- end Container (Services Section) -->
+	
+	<div class="container-fluid">
+	  <div class="text-center">
+	    <h3>입점신청 절차</h3>
+	  </div>
+	  <div class="row">
+	      <img class="img-responsive center-block" src="image/applyProcess.png" style="width:60%;">
+	  </div>
+	</div><!-- end Container (About Section) -->
+
+	
 
 	<!-- Container (Pricing Section) -->
 	<div id="pricing" class="container-fluid bg-grey">
 	  <div class="text-center">
-	    <h2>Pricing</h2>
-	    <h4>Choose a payment plan that works for you</h4>
+	    <h2>입점 신청 제출 서류</h2>
+	    <h4>당사는 신속하고 공정한 거래를 위해 온라인 접수를 통한 입점 신청만 접수합니다.</h4>
+	    <p>
+	    	- 심사 시 최대 7일이 소요됩니다. <br>
+	    		(7일 이후에도 승인여부가 되지 않는다면 15일 이후 다시 신청해 주세요.) <br>
+	    	- 퀄리티가 좋은 사진을 첨부해 주세요. <br>
+	    	- 탈락 사유를 별도로 발송하지 않습니다.
+	    </p>
 	  </div>
 	  <div class="row slideanim">
-	    <div class="col-sm-4 col-xs-12">
-	      <div class="panel panel-default text-center">
-	        <div class="panel-heading">
-	          <h1>Basic</h1>
+	    <div class="col-sm-6 col-xs-12">
+	      <div class="panel panel-default">
+	        <div class="panel-heading text-center">
+	          <h1>1차 신청</h1>
 	        </div>
 	        <div class="panel-body">
-	          <p><strong>20</strong> Lorem</p>
-	          <p><strong>15</strong> Ipsum</p>
-	          <p><strong>5</strong> Dolor</p>
-	          <p><strong>2</strong> Sit</p>
-	          <p><strong>Endless</strong> Amet</p>
+	          <p><strong>한 작품당 포함해야 할 내용</strong></p>
+	          <p>작품명</p>
+	          <p>작품 설명</p>
+	          <p>작품 가격</p>
+	          <p>작품 사진 최소 5장</p>
+	          <p>제작과정</p>
 	        </div>
 	        <div class="panel-footer">
-	          <h3>$19</h3>
-	          <h4>per month</h4>
-	          <button class="btn btn-lg">Sign Up</button>
+	          <h5>참고 사항</h5>
+	          <p>
+	          	- 상표권, 캐릭터 라이센스, 저작권 등에 문제의 소지가 있는 작품이 포함되어 있을 경우 입점에 제한됩니다. <br>
+	          	- 악세사리, 의류 등의 착용이 가능한 작품은 <strong style="color:red;">착용 사진이 필수</strong> 입니다. <br>
+	          	- 사진에 텍스트 삽입은 금지합니다.
+	          </p>
+	          <button class="btn btn-lg text-center">수작 - 1차 입점 신청 양식 다운</button>
 	        </div>
 	      </div>      
 	    </div>     
-	    <div class="col-sm-4 col-xs-12">
+	    <div class="col-sm-6 col-xs-12">
 	      <div class="panel panel-default text-center">
 	        <div class="panel-heading">
-	          <h1>Pro</h1>
+	          <h1>2차 신청</h1>
 	        </div>
 	        <div class="panel-body">
-	          <p><strong>50</strong> Lorem</p>
-	          <p><strong>25</strong> Ipsum</p>
-	          <p><strong>10</strong> Dolor</p>
-	          <p><strong>5</strong> Sit</p>
-	          <p><strong>Endless</strong> Amet</p>
-	        </div>
-	        <div class="panel-footer">
-	          <h3>$29</h3>
-	          <h4>per month</h4>
-	          <button class="btn btn-lg">Sign Up</button>
+	          <p><strong>사업자 등록증</strong></p>
+	          <p><strong>구매 안전 서비스 관리 이용 확인증</strong></p>
+	          <p><strong>통신판매업 신고증</strong></p>
 	        </div>
 	      </div>      
-	    </div>       
-	    <div class="col-sm-4 col-xs-12">
-	      <div class="panel panel-default text-center">
-	        <div class="panel-heading">
-	          <h1>Premium</h1>
-	        </div>
-	        <div class="panel-body">
-	          <p><strong>100</strong> Lorem</p>
-	          <p><strong>50</strong> Ipsum</p>
-	          <p><strong>25</strong> Dolor</p>
-	          <p><strong>10</strong> Sit</p>
-	          <p><strong>Endless</strong> Amet</p>
-	        </div>
-	        <div class="panel-footer">
-	          <h3>$49</h3>
-	          <h4>per month</h4>
-	          <button class="btn btn-lg">Sign Up</button>
-	        </div>
-	      </div>      
-	    </div>    
+	    </div>     
 	  </div>
 	</div><!-- end Container (Pricing Section) -->
 
@@ -198,10 +149,10 @@
 	  <h2 class="text-center">입점 신청하기</h2>
 	  <div class="row">
 	    <div class="col-sm-5">
-	       <p>Contact us and we'll get back to you within 24 hours.</p>
-	      <p><span class="glyphicon glyphicon-map-marker"></span> Chicago, US</p>
-	      <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
-	      <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>
+	       <p>문의 시 전화 상담은 받지 않습니다.</p>
+	      <p><span class="glyphicon glyphicon-map-marker"></span> 서울특별시 강남구 테헤란로14길 6 남도빌딩 2층, 3층, 4층</p>
+	      <p><span class="glyphicon glyphicon-user"></span> 담장자 김진환</p>
+	      <p><span class="glyphicon glyphicon-envelope"></span> admin@sg.com</p>
 	    </div>
 	    <div class="col-sm-7 slideanim">
 	      <div class="row">
@@ -220,14 +171,14 @@
 	          <button id="brandNameCheck" class="btn pull-right btn-default">중복확인</button>
 	        </div>
 	        <div class="col-sm-6 form-group">
-	        	<label class="form-control">
-	        		<input type="file" name="attachBrandFile" id="attachBrandFile" style="overflow:hidden;">
+	        	<label class="form-control">브랜드 이미지
+	        		<input type="file" name="attachBrandFile" id="attachBrandFile" style="overflow:hidden;opacity: 0;">
 	        	</label>
 	        </div>
 	      </div>
-	      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
-       	  <label class="form-control">
-       		  <input type="file" name="attachFile" id="attachFile" style="overflow:hidden;">
+	      <textarea class="form-control" id="comments" name="comments" placeholder="소개글을 작성해 주세요." rows="5"></textarea><br>
+       	  <label class="form-control">1차 입점 서류
+       		  <input type="file" name="attachFile" id="attachFile" style="overflow:hidden;opacity: 0;">
        	  </label>
        	  <select class="form-control">
        	  	<option>카테고리</option>
@@ -248,7 +199,6 @@
 	  <a href="#myPage" title="To Top">
 	    <span class="glyphicon glyphicon-chevron-up"></span>
 	  </a>
-	  <p>Bootstrap Theme Made By <a href="https://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p>
 	</footer>
 	
 </body>
