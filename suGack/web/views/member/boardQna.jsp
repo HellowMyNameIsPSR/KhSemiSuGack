@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.semi.board.model.vo.*,java.util.*"%>
+<%
+	ArrayList<ProQna> list = (ArrayList<ProQna>) request.getAttribute("list");
+	//ProQna qna = (ProQna)request.getAttribute("qna");
+%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문의글내역</title>
+<title>문의글내역!</title>
 <style>
 	.name{
 		width:100%;
@@ -33,30 +39,28 @@
 						<div class="table">
 							<table>
 								<tr style="text-align:center;">
-									<td>작성일</td>
-									<td>작성위치</td>
-									<td>제목</td>
-									<td>답변여부</td>
+									<td>NO</td>
+									<td>CATEGORY</td>
+									<td>DATE</td>
+								</tr>
+								  <% for(ProQna pro :list){ %>  
+								<tr>
+									<td><%= pro.getBno() %></td>
+									<td> <%= pro.getcategory() %></td>
+									<td><%=pro.getWriteDate() %></td>
+								</tr>
+								 <%} %>  
+								<tr>
+									<td></td>
+									<td></td>
+									
+									<td></td>
 								</tr>
 								
 								<tr>
 									<td></td>
 									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
+									
 									<td></td>
 								</tr>
 								
