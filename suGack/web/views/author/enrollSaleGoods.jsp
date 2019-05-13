@@ -5,104 +5,106 @@
 <head>
 <meta charset="UTF-8">
 <title>수작 - 판매 작품 등록</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<%@ include file="../assets/css/allCss.html" %>
 
 <style>
+	body{
+		background: radial-gradient(white, #F6FFFF) fixed;
+	}
+	img{
+		background-image: url( "../images/noImage.png" );
+		background-size:100%;
+		cursor: pointer;
+	}
 	.listBox {
 		border: 2px solid lightgray;
 		margin: 20px 0px 20px 0px;
 		box-shadow: 2px 2px lightgray;
-		min-width:900px;
+		background: radial-gradient(white, #F6FFFF) fixed;
+		min-width:850px;
 	}
-	
 	.listTitle {
 		border-bottom: 1px solid lightgray;
-		margin: 20px 0px 20px 0px;
+		margin: 0px 0px 20px 0px;
+		padding-top:20px;
 		padding-left: 20px;
-		min-width:900px;
+		min-width:850px;
+		border-radius: 5px 5px 5px 5px;
+
 	}
-	
 	.listContents {
 		margin: 20px 0px 20px 0px;
 		padding-left: 20px;
 		padding-right: 20px;
-		min-width:900px;
+		min-width:850px;
 	}
-	
 	.listContents div {
 		margin: 20px 0px 20px 0px;
 	}
-	
 	.unit {
 		display: inline;
 		width: 200px;
-		min-width:900px;
+		min-width:850px;
 	}
-	
 	.optionTitle {
 		border-top: 1px solid lightgray;
 		border-bottom: 1px solid lightgray;
 		margin: 20px 0px 20px 0px;
 		padding: 20px 0px 0px 20px;
-		min-width:900px;
+		min-width:850px;
+		background: linear-gradient(to right, #F6FFFF, white 50%);
 	}
-	
 	.subtext {
 		margin: 10px 0 0;
 		font-size: 12px;
 		ling-height: 18px;
 		color: skyblue;
-		min-width:900px;
 	}
-	
-	
+	.priceBox{
+		width:400px;
+	}
 	.priceBox tr {
 		background: white !important;
 		border-color: white !important;
 	}
-	
 	.priceBox tr td {
 		border: 1px solid lightgray;
 		text-align: center;
 	}
-	
 	.priceBox tr td input {
 		width: 100%;
 	}
-	
 	.searchBox {
 		display: none;
 	}
-	
-	
-	searchTable tr {
+	.searchTable tr {
 		background: white !important;
 		border: 1px solid lightgray;
 		display: block;
 	}
-	
 	.checkBox {
 		border: 1px solid skyblue;
-		display: none;
+		/* display: none; */
 		padding: 10px 10px 10px 10px;
 		min-width:800px;
+		
 	}
-	.checkBox div{
-		display:inline-block;
-		margin:0px 20px 0px 0px;
-		border-right: 1px solid skyblue;
-		width:21%;
-		min-width:120px;
+	.checkBox tr{
+		height:20px;
+		border:none;
 	}
-	
+	.checkBox tr>td{
+		padding:5px 0px 0px 10px;
+		width:25%;
+		border-right:1px solid skyblue;
+		background: radial-gradient(white, #F6FFFF) fixed;
+	}
 	.searchBox tr td input {
 		border: none;
 	}
-	
-	.saleBtn{
+	.all-btn{
 		width: 150px;
 		height: 40px;
 		text-align: center;
@@ -110,17 +112,9 @@
 		display: inline-block;
 		border-radius: 5px 5px 5px 5px;
 	}
-	
 	a {
 		border-bottom: none !important;
 	}
-	
-	.saleBtn:hover {
-		background: skyblue;
-		cursor: pointer;
-	}
-	
-	
 	.optionBox{
 		display:none;
 		border: 1px solid skyblue;
@@ -129,9 +123,10 @@
 	.optionTable{
 		border:none;
 	}
-	.optionTable tr>td{
-		background:white;
-		/* border:1px solid gray; */
+	.optionTable tr>td,.optionTable1 tr>td,
+	.optionTable2 tr>td,.optionTable3 tr>td,
+	.optionTable4 tr>td{
+		background-color:white;
 	}
 	
 	#iconBox{
@@ -161,13 +156,21 @@
 		cursor: pointer;
 		background-color:#9ECDF6;
 	}
-	
-	
+	.imgBox tr>td{
+		background: radial-gradient(white, #F6FFFF) fixed;
+		padding:10px 0px 10px 0px;
+	}
+	.imgDiv{
+		border:1px dashed gray;
+		text-align:center;
+		display:table-cell;
+		vertical-align:middle;
+		padding: 5px 5px 0px 5px;
+	}
 </style>
 </head>
-
 <body class="is-preload">
-	<!-- Wrapper -->
+<!-- Wrapper -->
 	<div id="wrapper">
 		<!-- Main -->
 		<div id="main">
@@ -179,145 +182,231 @@
 						style="font-size: 20px;">HOME</strong>
 					</a>
 				</header>
+				
+				
+				<!-- section -->
 				<section id="contents">
 					<header class="main">
-						<h2>판매 작품등록</h2>
+						<span style="font-size:40px;">판매 작품 등록</span>
 					</header>
 					<!-- Contents area -->
-
-					<form id="salesInsert" action="" method="post">
-
+					<!-- 확인후 지우기 -->
+					<form action="<%=request.getContextPath()%>/insertSale.wo" method="post">
 						<div class="listBox">
 							<div class="listTitle">
-								<h2 >카테고리</h2>
+								<h2>카테고리</h2>
 							</div>
 							<div class="listContents">
-								<div>
-									<button type="button" class="saleBtn" id="search" >카테고리명 검색</button>
-									<button type="button" class="saleBtn" id="checked">카테고리명 선택</button>
-								</div>
+								<!-- <div>
+									<button type="button" class="all-btn" id="search">카테고리명검색</button>
+									<button type="button" class="all-btn" id="checked">카테고리명선택</button>
+								</div> -->
 								<div class="searchBox">
 									<table class="searchTable">
 										<tr>
-											<td><input type="text" placeholder="카테고리명 입력"
+											<td><input type="text" placeholder="카테고리명 입력" name=""
 												style="width: 100%;"></td>
 											<td width="7%"><span class="glyphicon glyphicon-search"></span></td>
 										</tr>
 									</table>
 								</div>
 
-
-
-								<div class="checkBox">
-									<div style="margin-left:40px;">
-										<input type="checkbox" id="category" class=""> <label for="category">가죽</label><br>
-										<input type="checkbox" id="category1" class=""> <label for="category1">가죽</label><br>
-										<input type="checkbox" id="category2" class=""> <label for="category2">가죽</label><br>
-										<input type="checkbox" id="category3" class=""> <label for="category3">가죽</label><br>
-										<input type="checkbox" id="category4" class=""> <label for="category4">가죽</label><br>
-										<input type="checkbox" id="category5" class=""> <label for="category5">가죽</label><br>
-									</div>
-									<div>
-										<input type="checkbox" id="category6" class=""> <label for="category6">가죽</label><br>
-										<input type="checkbox" id="category7" class=""> <label for="category7">가죽</label><br>
-										<input type="checkbox" id="category8" class=""> <label for="category8">가죽</label><br>
-										<input type="checkbox" id="category9" class=""> <label for="category9">가죽</label><br>
-										<input type="checkbox" id="category10" class=""> <label for="category10">가죽</label><br>
-										<input type="checkbox" id="category11" class=""> <label for="category11">가죽</label><br>
-									</div>
-									<div>
-										<input type="checkbox" id="category12" class=""> <label for="category12">가죽</label><br>
-										<input type="checkbox" id="category13" class=""> <label for="category13">가죽</label><br>
-										<input type="checkbox" id="category14" class=""> <label for="category14">가죽</label><br>
-										<input type="checkbox" id="category15" class=""> <label for="category15">가죽</label><br>
-										<input type="checkbox" id="category16" class=""> <label for="category16">가죽</label><br>
-										<input type="checkbox" id="category17" class=""> <label for="category17">가죽</label><br>
-									</div>
-									<div style="border-right:none;">
-										<input type="checkbox" id="category18" class=""> <label for="category18">가죽</label><br>
-										<input type="checkbox" id="category19" class=""> <label for="category19">가죽</label><br>
-										<input type="checkbox" id="category20" class=""> <label for="category20">가죽</label><br>
-										<input type="checkbox" id="category21" class=""> <label for="category21">가죽</label><br>
-										<input type="checkbox" id="category22" class=""> <label for="category22">가죽</label><br>
-										<input type="checkbox" id="category23" class=""> <label for="category23">가죽</label><br>
-									</div>
-								
-								</div>
-
-
-
-								<script>
-									$(function(){
-										$("#search").click(function(){
+								<!-- <script>
+									$(function() {
+										$("#search").click(function() {
 											$(".searchBox").show();
 											$(".checkBox").hide()
 										});
-										$("#checked").click(function(){
+										$("#checked").click(function() {
 											$(".searchBox").hide();
 											$(".checkBox").show()
 										});
 									});
-								</script>
-								<p class="subtext">※ 상품과 맞지 않는 카테고리에 등록할 경우 강제 이동되거나 판매중지,
-									판매금지 될 수 있습니다.</p>
+								</script> -->
+
+								<table class="checkBox">
+									<tr>
+										<td>
+											<input type="checkbox" id="case" name="cid" value="1"> 
+											<label for="case">케이스</label>
+										</td>
+										<td>
+											<input type="checkbox" id="interior" name="cid" value="2"> 
+											<label for="interior">인테이어 소품</label>
+										</td>
+										<td>
+											<input type="checkbox" id="dress" name="cid" value="3"> 
+									<label for="dress">의류</label>
+										</td>
+										<td>
+											<input type="checkbox" id="child" name="cid" value="4"> 
+											<label for="child">육아, 아동</label>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" id="furniture" name="cid" value="5"> 
+										<label for="furniture">가구</label>
+										</td>
+										<td>
+											<input type="checkbox" id="fshoes" name="cid" value="6"> 
+										<label for="fshoes">여성 수제화</label>
+										</td>
+										<td>
+											<input type="checkbox" id="underwear" name="cid" value="7"> 
+											<label for="underwear">속옷, 양말류</label>
+										</td>
+										<td>
+											<input type="checkbox" id="kitchen" name="cid" value="8"> 
+										<label for="kitchen">주방, 생활</label> 
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" id="earring" name="cid" value="9"> 
+											<label for="earring">귀걸이</label>
+										</td>
+										<td>
+											<input type="checkbox" id="mshoes" name="cid" value="10"> 
+											<label for="mshoes">남성 수제화</label>
+										</td>
+										<td>
+											<input type="checkbox" id="fiberOthers" name="cid" value="11"> 
+											<label for="fiberOthers">기타 섬유, 퀄트</label>
+										</td>
+										<td>
+											<input type="checkbox" id="animal" name="cid" value="12"> 
+											<label for="animal">반려동물 용품</label>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" id="ring" name="cid" value="13"> 
+											<label for="ring">반지</label>
+										</td>
+										<td>
+											<input type="checkbox" id="pottery" name="cid" value="14"> 
+											<label for="pottery">도자기</label> 
+										</td>
+										<td>
+											<input type="checkbox" id="bag" name="cid" value="15"> 
+											<label for="bag">가방, 파우치</label> 
+										</td>
+										<td>
+											<input type="checkbox" id="stationery" name="cid" value="16">  
+											<label for="stationery">문구, 팬시</label> 
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" id="necklace" name="cid" value="17"> 
+											<label for="necklace">목걸이</label> 
+										</td>
+										<td>
+											<input type="checkbox" id="electronic" name="cid" value="18">  
+											<label for="electronic">전자기기 관련</label>
+										</td>
+										<td>
+											<input type="checkbox" id="fashionOthers" name="cid" value="19">  
+											<label for="fashionOthers">패션 잡화</label>
+										</td>
+										<td>
+											<input type="checkbox" id="watch" name="cid" value="20">  
+											<label for="watch">시계</label>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" id="bracelet" name="cid" value="21"> 
+										<label for="bracelet">팔찌</label> 
+										</td>
+										<td>
+											<input type="checkbox" id="wallet" name="cid" value="22">  
+											<label for="wallet">지갑</label> 
+										</td>
+										<td>
+											<input type="checkbox" id="accessory" name="cid" value="23"> 
+											<label for="accessory">그외 악세서리</label>> 
+										</td>
+										<td>
+											<input type="checkbox" id="toy" name="cid" value="24"> 
+										<label for="toy">인형, 장난감</label>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" id="crafts" name="cid" value="25">
+											<label for="crafts">공예</label> 
+										</td>
+										<td>
+											<input type="checkbox" id="theOthers" name="cid" value="26">
+											<label for="theOthers">기타</label> 
+										</td>
+										<td>
+										
+										</td>
+										<td>
+										
+										</td>
+									</tr>
+								</table>
+								<p class="subtext">※ 상품과 맞지 않는 카테고리에 등록할 경우 강제 이동되거나 판매중지,판매금지 될 수 있습니다.</p>
+								
 							</div>
 						</div>
 
-
+						<!-- 상품명  -->
 						<div class="listBox">
 							<div class="listTitle">
 								<h2>상품명</h2>
 							</div>
 							<div class="listContents">
-								<div class="">
-									<input type="text" placeholder="상품명 입력" style="width: 100%;">
-								</div>
-								<p class="subtext">※판매 상품과 직접 관련이 없는 다른 상품명 입력 시 관리자에 의해 판매
-									금지될 수 있습니다.</p>
+								<input name="workName" type="text" placeholder="상품명 입력" style="width: 100%;">
+								<p class="subtext">※판매 상품과 직접 관련이 없는 다른 상품명 입력 시 관리자에 의해 판매금지될 수 있습니다.</p>
 							</div>
 						</div>
-
+						
+						
+						<!-- 상품가격   -->
 						<div class="listBox">
 							<div class="listTitle">
 								<h2>상품가격</h2>
 							</div>
 							<div class="listContents">
-								<div>
-									<table class="priceBox" style="background: white;">
-										<tr>
-											<td style="width: 8%">판매가</td>
-											<td><input type="number" placeholder="숫자만 입력"></td>
-											<td align="center" style="font-size: 15px;">원</td>
-											<td style="width: 8%">할인율</td>
-											<td><input type="number" placeholder="숫자만 입력"></td>
-											<td style="font-size: 15px;">%</td>
-										</tr>
-									</table>
-								</div>
+								<table class="priceBox" style="background: white;">
+									<tr>
+										<td style="width:100px">판매가</td>
+										<td style="width:250px;">
+											<input name="price" type="number" placeholder="숫자만 입력" value="0" style = "text-align:right;">
+										</td>
+										<td style="width:50`px">원</td>
+									</tr>
+									<tr>
+										<td colspan="4" style="border:none"></td>
+									</tr>
+									<tr>
+										<td>배송비</td>
+										<td>
+											<input name="deliPrice" type="number" placeholder="숫자만 입력" value="0" style = "text-align:right;">
+										</td>
+										<td>원</td>
+									</tr>
+								</table>
 								<p class="subtext">※ 판매가격의 매출수수료 5%가 과금됩니다.</p>
 							</div>
 						</div>
 
-
-
-
-
-
-
-
-
+						<!-- 옵션   -->
 						<div class="listBox">
 							<div class="listTitle">
 								<h2>옵션 선택</h2>
 							</div>
 							<div class="listContents">
 								<div>
-									<button type="button" class="saleBtn openOption">설정함</button>
-									<button type="button" class="saleBtn closeOption">설정안함</button>
+									<button type="button" class="all-btn openOption">설정함</button>
+									<button type="button" class="all-btn closeOption">설정안함</button>
 								</div>
-								
-								
-								
+
 								<div class="optionBox">
 									<table class="optionTable">
 										<tr align="center">
@@ -325,16 +414,16 @@
 											<td>옵션값</td>
 											<td>추가비용</td>
 											<td align="center">
-												<span id="iconBox" class="glyphicon glyphicon-minus minus0"></span>
-											</td>
+												<span id="iconBox" class="glyphicon glyphicon-minus minus0">
+											</span></td>
 											<td align="center">
-												<span id="iconBox"class="glyphicon glyphicon-plus plus0"></span>
-											</td>
+												<span id="iconBox"class="glyphicon glyphicon-plus plus0">
+											</span></td>
 										</tr>
-										
+
 										<tbody class="optiontbody">
 											<tr align="center">
-												<td >
+												<td>
 													<input type="text" name="optionName" placeholder="옵션명 입력">
 												</td>
 												<td>
@@ -347,34 +436,31 @@
 											</tr>
 										</tbody>
 									</table>
-									
-									
-									<div class="plusTable">
-										
+
+								</div>
+								<div align="center">
+									<div class="optionBtn" id="deleteBtn">
+										<span class="glyphicon glyphicon-minus"></span>&nbsp;옵션 삭제
 									</div>
-									
-									
-									<div align="center">
-										<div class="optionBtn" id="deleteBtn">
-											<span class="glyphicon glyphicon-minus"></span>&nbsp;옵션 삭제
-										</div>
-										<div class="optionBtn" id="addBtn">
-											<span class="glyphicon glyphicon-plus"></span>&nbsp;옵션 추가
-										</div>
+									<div class="optionBtn" id="addBtn">
+										<span class="glyphicon glyphicon-plus"></span>&nbsp;옵션 추가
 									</div>
 								</div>
-								
-								
-								
+
 							</div>
 						</div>
 
 						<script>
-						//옵션 목록 추가,삭제
-						var num = 0;
-						var cnt = 0;
+							var num = 0;
+							var cnt = 0;
+							var cnt1 = 0;
+							var cnt2 = 0;
+							var cnt3 = 0;
+							var cnt4 = 0;
+							var opCnt = 0;
+							
 							$(function(){
-								//옵션 설정 추가
+								// 옵션 설정함/설정안함
 								$(".openOption").click(function(){
 									$(".optionBox").show();
 								});
@@ -384,22 +470,18 @@
 								});
 								
 								
-								
-								
-								
+								//옵션갑 추가 삭제1
 								$(".plus0").on("click", function() {
-									console.log(num);
 									cnt++;
 									$(".optiontbody:last").append(
 										'<tr align="center">' +
-											'<td></td>' +		
-											'<td>' + '<input type="text" name="optionVal" placeholder="옵션값 입력">' +'</td>' +
-											'<td>' + '<input type="number" name="plusSale" placeholder="추가비용 입력">' +'</td>' +
+											'<td> <input style="display:none;" type="text" name="optionName" placeholder="옵션명 입력"> </td>' +		
+											'<td>' + '<input type="text" name="optionVal'+ cnt + '" placeholder="옵션값 입력">' +'</td>' +
+											'<td>' + '<input type="number" name="plusSale'+ cnt + '" placeholder="추가비용 입력">' +'</td>' +
 											'<td colspan="2"></td>' +
 										'</tr>'
 									);
 								});
-								
 								$(".minus0").on("click", function(){
 									cnt--;
 									if(cnt < 0){
@@ -408,225 +490,284 @@
 										$(".optiontbody tr:last").remove();
 									}
 								});
-								
-								
-								
-								$(".plus1").on("click", function() {
-									console.log(num);
-									cnt++;
-									$(".optiontbody:last").append(
+								//옵션갑 추가 삭제2
+								$(document).on("click",".plus1", function() {
+									cnt1++;
+									$(".optiontbody1:last").append(
 										'<tr align="center">' +
-											'<td></td>' +		
-											'<td>' + '<input type="text" name="optionVal" placeholder="옵션값 입력">' +'</td>' +
-											'<td>' + '<input type="number" name="plusSale" placeholder="추가비용 입력">' +'</td>' +
+											'<td> <input style="display:none;" type="text" name="optionName1" placeholder="옵션명 입력"> </td>' +		
+											'<td>' + '<input type="text" name="optionVal1' + cnt1 + '" placeholder="옵션값 입력">' +'</td>' +
+											'<td>' + '<input type="number" name="plusSale1' + cnt1 + '" placeholder="추가비용 입력">' +'</td>' +
+											'<td colspan="2"></td>' +
+										'</tr>'
+									);
+								});
+								$(document).on("click", ".minus1", function(){
+									cnt1--;
+									if(cnt1 < 0){
+										cnt1 = 0;
+									}else if(cnt1 >= 0){
+										$(".optiontbody1 tr:last").remove();
+									}
+								});
+								//옵션갑 추가 삭제3
+								$(document).on("click",".plus2", function() {
+									cnt2++;
+									$(".optiontbody2:last").append(
+										'<tr align="center">' +
+											'<td> <input style="display:none;" type="text" name="optionName2" placeholder="옵션명 입력"> </td>' +		
+											'<td>' + '<input type="text" name="optionVal2' + cnt2 + '" placeholder="옵션값 입력">' +'</td>' +
+											'<td>' + '<input type="number" name="plusSale2' + cnt2 + '" placeholder="추가비용 입력">' +'</td>' +
+											'<td colspan="2"></td>' +
+										'</tr>'
+									);
+								});
+								$(document).on("click", ".minus2", function(){
+									cnt2--;
+									if(cnt2 < 0){
+										cnt2 = 0;
+									}else if(cnt2 >= 0){
+										$(".optiontbody2 tr:last").remove();
+									}
+								});
+								//옵션갑 추가 삭제4
+								$(document).on("click",".plus3", function() {
+									cnt3++;
+									$(".optiontbody3:last").append(
+										'<tr align="center">' +
+											'<td> <input style="display:none;" type="text" name="optionName3" placeholder="옵션명 입력"> </td>' +		
+											'<td>' + '<input type="text" name="optionVal3' + cnt3 + '" placeholder="옵션값 입력">' +'</td>' +
+											'<td>' + '<input type="number" name="plusSale3' + cnt3 + '" placeholder="추가비용 입력">' +'</td>' +
+											'<td colspan="2"></td>' +
+										'</tr>'
+									);
+								});
+								$(document).on("click", ".minus3", function(){
+									cnt3--;
+									if(cnt3 < 0){
+										cnt3 = 0;
+									}else if(cnt3 >= 0){
+										$(".optiontbody3 tr:last").remove();
+									}
+								});
+								//옵션갑 추가 삭제5
+								$(document).on("click",".plus4", function() {
+									cnt4++;
+									$(".optiontbody4:last").append(
+										'<tr align="center">' +
+											'<td> <input style="display:none;" type="text" name="optionName4" placeholder="옵션명 입력"> </td>' +		
+											'<td>' + '<input type="text" name="optionVal4' + cnt4 + '" placeholder="옵션값 입력">' +'</td>' +
+											'<td>' + '<input type="number" name="plusSale4' + cnt4 + '" placeholder="추가비용 입력">' +'</td>' +
 											'<td colspan="2"></td>' +
 										'</tr>'
 									);
 								});
 								
-								$(".minus1").on("click", function(){
-									cnt--;
-									if(cnt < 0){
-										cnt = 0;
-									}else if(cnt >= 0){
-										$(".optiontbody tr:last").remove();
+								$(document).on("click", ".minus4", function(){
+									cnt4--;
+									if(cnt4 < 0){
+										cnt4 = 0;
+									}else if(cnt4 >= 0){
+										$(".optiontbody4 tr:last").remove();
 									}
 								});
 								
-								
-								
-								
-								$(".plus2").on("click", function() {
-									console.log(num);
-									cnt++;
-									$(".optiontbody:last").append(
-										'<tr align="center">' +
-											'<td></td>' +		
-											'<td>' + '<input type="text" name="optionVal" placeholder="옵션값 입력">' +'</td>' +
-											'<td>' + '<input type="number" name="plusSale" placeholder="추가비용 입력">' +'</td>' +
-											'<td colspan="2"></td>' +
-										'</tr>'
-									);
-								});
-								
-								$(".minus2").on("click", function(){
-									cnt--;
-									if(cnt < 0){
-										cnt = 0;
-									}else if(cnt >= 0){
-										$(".optiontbody tr:last").remove();
-									}
-								});
-								
-								
-								
-								
-								
-								$(".plus3").on("click", function() {
-									console.log(num);
-									cnt++;
-									$(".optiontbody:last").append(
-										'<tr align="center">' +
-											'<td></td>' +		
-											'<td>' + '<input type="text" name="optionVal" placeholder="옵션값 입력">' +'</td>' +
-											'<td>' + '<input type="number" name="plusSale" placeholder="추가비용 입력">' +'</td>' +
-											'<td colspan="2"></td>' +
-										'</tr>'
-									);
-								});
-								
-								$(".minus3").on("click", function(){
-									cnt--;
-									if(cnt < 0){
-										cnt = 0;
-									}else if(cnt >= 0){
-										$(".optiontbody tr:last").remove();
-									}
-								});
-								
-								
-								
-								
-								$(".plus4").on("click", function() {
-									console.log(num);
-									cnt++;
-									$(".optiontbody:last").append(
-										'<tr align="center">' +
-											'<td></td>' +		
-											'<td>' + '<input type="text" name="optionVal" placeholder="옵션값 입력">' +'</td>' +
-											'<td>' + '<input type="number" name="plusSale" placeholder="추가비용 입력">' +'</td>' +
-											'<td colspan="2"></td>' +
-										'</tr>'
-									);
-								});
-								
-								$(".minus4").on("click", function(){
-									cnt--;
-									if(cnt < 0){
-										cnt = 0;
-									}else if(cnt >= 0){
-										$(".optiontbody tr:last").remove();
-									}
-								});
-								
-								
-								
-								
-								
-								var opCnt = 0;
-								
+								//옵션박스 추가 삭제
 								$("#addBtn").click(function() {
-									opCnt++;
 									num++;
-									$(".plusTable").last().append(
-										'<table class="optionTable'+ num +'">' +
-											'<tr align="center">' +
-												'<td>옵션명</td>' +
-												'<td>옵션값</td>' +
-												'<td>추가비용</td>' +
-												'<td align="center">' +
-													'<span id="iconBox" class="glyphicon glyphicon-minus minus' + num + '"></span>' +
-												'</td>' +
-												'<td align="center">' +
-													'<span id="iconBox" class="glyphicon glyphicon-plus plus' + num + '"></span>' +
-												'</td>' +
-											'</tr>' +
-											'<tbody class="optiontbody' + num + '">' +
+									if(opCnt <= 4){
+										opCnt++;
+										opCtn = 4;
+										$(".optionBox").last().append(
+											'<table class="optionTable'+ num +'">' +
 												'<tr align="center">' +
-													'<td>' +
-														'<input type="text" name="optionName" placeholder="옵션명 입력">' +
-													'</td>' +		
-													'<td>' + '<input type="text" name="optionVal" placeholder="옵션값 입력">' +'</td>' +
-													'<td>' + '<input type="number" name="plusSale" placeholder="추가비용 입력">' +'</td>' +
-													'<td colspan="2"></td>' +
+													'<td>옵션명</td>' +
+													'<td>옵션값</td>' +
+													'<td>추가비용</td>' +
+													'<td align="center">' +
+														'<span id="iconBox" class="glyphicon glyphicon-minus minus' + num + '"></span>' +
+													'</td>' +
+													'<td align="center">' +
+														'<span id="iconBox" class="glyphicon glyphicon-plus plus' + num + '"></span>' +
+													'</td>' +
 												'</tr>' +
-											'</tbody>' +
-										'</table>'
-									);
-									
+												'<tbody class="optiontbody' + num + '">' +
+													'<tr align="center">' +
+														'<td>' +
+															'<input type="text" name="optionName'+ num +'" placeholder="옵션명 입력">' +
+														'</td>' +		
+														'<td>' + '<input type="text" name="optionVal'+ num +'0" placeholder="옵션값 입력">' +'</td>' +
+														'<td>' + '<input type="number" name="plusSale'+ num +'0" placeholder="추가비용 입력">' +'</td>' +
+														'<td colspan="2"></td>' +
+													'</tr>' +
+												'</tbody>' +
+											'</table>'
+										);
+									}
 								});
+								
 								$("#deleteBtn").on("click", function(){
 									opCnt--;
 									num--;
-									console.log(opCnt);
 									if(opCnt < 0){
 										opCnt = 0;
 									}else if(opCnt >= 0){
-										$(".plusTable").children().last().remove();
+										$(".optionBox").children().last().remove();
 									}
 								});
+								
 							});
 						</script>
 
-
-
-
-
-
-
-
-
-
-
-						<div class="listBox">
+						<!-- 상품이미지 -->
+						<div class="listBox" >
 							<div class="listTitle">
 								<h2>상품이미지</h2>
 							</div>
-							<div class="listContents"
-								style="border-bottom: 1px solid lightgray;">
-								<h4>대표이미지</h4>
-								<div
-									style="border: 1px solid black; width: 150px; height: 150px; margin-left: 100px;'"></div>
-								<p class="subtext">※ 권장 크기 : 640px * 640px</p>
-							</div>
-							<div class="listContents">
-								<h4>추가이미지</h4>
-								<div
-									style="border: 1px solid black; width: 150px; height: 150px; margin-left: 100px;'"></div>
-								<p class="subtext">
-									※ 권장 크기 : 640px * 640px<br> &nbsp; &nbsp; 추가이미지는 최대 7개까지
-									설정할 수 있습니다.<br> &nbsp; &nbsp; jpg, jpeg, gif, png, bmp 형식의
-									정지 이미지만 등록됩니다.
-								</p>
-							</div>
+							<table class="imgBox">
+								<tr>
+									<td colspan="4" style="padding-left:30px;">대표이미지</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td colspan="3">
+										<div class="imgDiv">
+											<img id="titleImg" width="300" height="240">
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="4" style="padding-left:30px;">
+										<p class="subtext">※ 권장 크기 : 640px * 640px</p>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="4" style="padding-left:30px;">추가이미지</td>
+								</tr>
+								<tr align="center">
+									<td>
+										<div class="imgDiv">
+											<img id="subImg1" style="width:180px;height:150px;">
+										</div>
+									</td>
+									<td>
+										<div class="imgDiv">
+											<img id="subImg2" style="width:180px;height:150px;">
+										</div>
+									</td>
+									<td>
+										<div class="imgDiv">
+											<img id="subImg3" style="width:180px;height:150px;">
+										</div>
+									</td>
+									<td>
+										<div class="imgDiv">
+											<img id="subImg4" style="width:180px;height:150px;">
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="4" style="padding-left:30px;">
+										<p class="subtext">
+										※ 권장 크기 : 640px * 640px<br> &nbsp; &nbsp; 추가이미지는 최대 4개까지
+										설정할 수 있습니다.<br> &nbsp; &nbsp; jpg, jpeg, gif, png, bmp 형식의
+										정지 이미지만 등록됩니다.
+										</p>
+									</td>
+								</tr>
+							</table>
 						</div>
+						<div id="fileArea">
+							<input type="file" id="workImg0" name="workImg0" onchange="loadImg(this,1)">
+							<input type="file" id="workImg1" name="workImg1" onchange="loadImg(this,2)">
+							<input type="file" id="workImg2" name="workImg2" onchange="loadImg(this,3)">
+							<input type="file" id="workImg3" name="workImg3" onchange="loadImg(this,4)">
+							<input type="file" id="workImg4" name="workImg4" onchange="loadImg(this,5)">
+						</div>
+						<script>
+							$(function(){
+								$("#fileArea").hide();
+								
+								$("#titleImg").click(function(){
+									$("#workImg0").click();
+								});
+								$("#subImg1").click(function(){
+									$("#workImg1").click();
+								});
+								$("#subImg2").click(function(){
+									$("#workImg2").click();
+								});
+								$("#subImg3").click(function(){
+									$("#workImg3").click();
+								});
+								$("#subImg4").click(function(){
+									$("#workImg4").click();
+								});
+							});
+						
+							
+							function loadImg(value, num){
+								if(value.files && value.files[0]){
+									var reader = new FileReader();
+									reader.onload = function(e){
+										switch(num){
+										case 1 :
+											$("#titleImg").attr("src", e.target.result);
+											break;
+										case 2 : 
+											$("#subImg1").attr("src", e.target.result);
+											break;
+										case 3 : 
+											$("#subImg2").attr("src", e.target.result);
+											break;
+										case 4 : 
+											$("#subImg3").attr("src", e.target.result);
+											break;
+										case 5 : 
+											$("#subImg4").attr("src", e.target.result);
+											break;
+										}
+									}
+									
+									reader.readAsDataURL(value.files[0]);
+								}
+							}
+							
+						
+						</script>
+						
+						
+						
+						
+						
+						
+						
 
-
+						<!-- 상품상세설명 -->
 						<div class="listBox">
 							<div class="listTitle">
 								<h2>상품상세설명</h2>
 							</div>
-							<div class="listContents" style="height: 300px;"></div>
-						</div>
-
-						<div class="listBox">
-							<div class="listTitle">
-								<h2>배송</h2>
-							</div>
 							<div class="listContents" style="height: 100px;">
-								<button>무료(판매자 부담)</button>
-								<button>유료(구매자 부담)</button>
+								<textarea name="workContent" cols="60" rows="15" style="width:700px;height:100px;resize:none"></textarea>
 							</div>
 						</div>
 
-
+						<!-- 버튼 -->
 						<div align="center">
-							<button style="width: 150px;">취소</button>
-							<button style="width: 150px;">등록하기</button>
+							<button type="reset" class="all-btn" style="width:150px;">취소</button>
+							<button type="submit" class="all-btn" style="width:150px;">등록하기</button>
 						</div>
+
+
+
 
 					</form>
-
-
-
-
-
-
 				</section>
 			</div>
 		</div>
-		<%@ include file="authorMenuBar.jsp"%>
+		<%@ include file="authorMenuBar.jsp" %>
 	</div>
-
+			
 </body>
 </html>
