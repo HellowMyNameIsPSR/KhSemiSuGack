@@ -151,6 +151,7 @@
             
            $(function(){
             	$("#submit").click(function(){
+            		var addressId = $("#addressId").val();
             		var addressName = $("#addressName").val();
             		var postCode = $("#postCode").val();
             		var address = $("#address").val();
@@ -160,7 +161,7 @@
             		var phone2 = $("#phone2").val();
             		$.ajax({
             			url:"<%=request.getContextPath()%>/updateAddress.me",
-            			data:{addressName:addressName, postCode:postCode, address:address, detailAddress:detailAddress,
+            			data:{addressId:addressId, addressName:addressName, postCode:postCode, address:address, detailAddress:detailAddress,
             				extraAddress:extraAddress, phone1:phone1, phone2:phone2},
             			type:"post",
             			success:function(data){

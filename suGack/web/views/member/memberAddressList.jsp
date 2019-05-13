@@ -3,7 +3,7 @@
 <%
 	ArrayList<Address> list = (ArrayList<Address>)request.getAttribute("list");
 	Member loginUser = (Member)request.getSession().getAttribute("loginUser");
-	String []address = list.get(0).getAddress().split("#");
+
 %>
 <!DOCTYPE html>
 <html>
@@ -48,6 +48,7 @@
 								<% if(list.size() > 0) {
 									int num = 1;
 								for(Address add : list) {
+									String []address = add.getAddress().split("#");
 								%>
 								<tr>
 									<td style="display:none"><%= add.getAddressId() %></td>

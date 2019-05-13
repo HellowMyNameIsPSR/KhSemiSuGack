@@ -123,6 +123,21 @@ public class MemberService {
 		return add;
 	}
 
+	public int updateAddress(Address add) {
+		Connection con = getConnection();
+		
+		int result = new MemberDao().updateAddress(con, add);
+		
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		close(con);
+		
+		return result;
+	}
+
 }
 
 

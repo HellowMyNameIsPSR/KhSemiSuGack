@@ -100,7 +100,58 @@
 	<hr>
 	<div class="main-3">
 		<h3>오늘의 통계</h3>
-	
+		<script src="//www.google.com/jsapi"></script>
+			<script>
+			var selectMember = [
+			  ['회원', '인원수'],
+			  ['1월', 8.94],
+			  ['2월', 10.49],
+			  ['3월', 19.30],
+			  ['4월', 21.45],
+			];
+			
+			$(function(){
+				$.ajax({
+					url:"<%=request.getContextPath()%>/selectMemberForMonth.ad",
+					success:function(data){
+						queryObject = eval('(' + JSON.stringify(data,null, 2) + ')'); 
+						queryObject[0]
+						console.log(data['1월']);
+						console.log(queryObject[0]);
+						console.log(data[2]);
+						selectMember = [
+							  ['회원', '인원수'],
+							  ['1월', data[0]],
+							  ['2월', 10.49],
+							  ['3월', 19.30],
+							  ['4월', 21.45],
+							  ['5월', 8.94],
+							  ['6월', 10.49],
+							  ['7월', 19.30],
+							  ['8월', 21.45],
+							  ['9월', 8.94],
+							  ['10월', 10.49],
+							  ['11월', 19.30],
+							  ['12월', 21.45]
+							];
+					},
+					error:function(data){
+						
+					}
+				})
+			})
+			
+			var options = {
+			  title: '월별 누적 회원수',
+			  width: 800, height: 400
+			};
+			google.load('visualization', '1.0', {'packages':['corechart']});
+			google.setOnLoadCallback(function() {
+			  var chart = new google.visualization.ColumnChart(document.querySelector('#chart_div'));
+			  chart.draw(google.visualization.arrayToDataTable(selectMember), options);
+			});
+			</script>
+<div id="chart_div"></div>
 	</div>
 </div>
 
