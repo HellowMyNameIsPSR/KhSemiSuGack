@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.semi.member.model.vo.*"%>
+<%
+	Member loginUser = (Member) session.getAttribute("loginUser");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +10,7 @@
 	<title>입점신청</title>
 	<!-- 부트스트랩 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="js/appIntroduce.js"></script>
@@ -17,7 +19,7 @@
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 	<!-- 메뉴 -->
-	<%@ include file="../main/mainMenubar.jsp" %>
+	<%-- <%@ include file="<%= request.getContextPath() %>"/views/main/mainMenubar.jsp" %> --%>
 	
 	<!-- 부트스트랩 -->
 	<!-- 홈페이지 소개 -->
@@ -125,7 +127,8 @@
 	          	- 악세사리, 의류 등의 착용이 가능한 작품은 <strong style="color:red;">착용 사진이 필수</strong> 입니다. <br>
 	          	- 사진에 텍스트 삽입은 금지합니다.
 	          </p>
-	          <button class="btn btn-lg text-center">수작 - 1차 입점 신청 양식 다운</button>
+<!-- 입점신청양식 다운 버튼 -->
+	          <button class="all-btn btn-lg text-center" id="applyFormDownload">수작 - 1차 입점 신청 양식 다운</button>
 	        </div>
 	      </div>      
 	    </div>     
@@ -154,6 +157,7 @@
 	      <p><span class="glyphicon glyphicon-user"></span> 담장자 김진환</p>
 	      <p><span class="glyphicon glyphicon-envelope"></span> admin@sg.com</p>
 	    </div>
+	    <form action="" method="get">
 	    <div class="col-sm-7 slideanim">
 	      <div class="row">
 	        <div class="col-sm-6 form-group">
@@ -192,6 +196,7 @@
 	        </div>
 	      </div>
 	    </div>
+	    </form>
 	  </div>
 	</div><!-- end Container (Contact Section) -->
 	<!-- footer -->
@@ -199,7 +204,6 @@
 	  <a href="#myPage" title="To Top">
 	    <span class="glyphicon glyphicon-chevron-up"></span>
 	  </a>
-	</footer>
-	
+	</footer>	
 </body>
 </html>
