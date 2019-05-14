@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- <%
+	Member loginUser = (Member)request.getSession().getAttribute("loginUser");
+%> --%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지!</title>
+<title>마이페이지!!</title>
 <style>
 	.myPage{
 		display:block;
@@ -20,6 +23,7 @@
 </style>
 </head>
 <body>
+<%@ include file="../common/userMenuBar.jsp" %>
 
 <!-- Wrapper1e -->
 	<div id="wrapper">
@@ -77,8 +81,8 @@
 				</section>
 			</div>
 		</div>
-		<%@ include file="../common/userMenuBar.jsp" %>
+		
 	</div>
-			
+ 	
 </body>
 </html>

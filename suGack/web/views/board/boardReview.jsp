@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"% import="com.kh.semi.board.model.vo.*, java.util.*"%>
+<% ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list"); %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>응원 및 리뷰!</title>
+<title>응원 및 리뷰</title>
 <style>
 	.outer{
 		border:1px solid lightgray;
@@ -71,8 +72,9 @@
 						</div>
 						<div class="row">
 							<div class="textarea">
-								<textarea></textarea>
-								
+							<%-- <%int num = 0; for(Review review :list){ %> --%>
+								<textarea><%-- <%=review.getContent()%> --%></textarea>
+							<%-- <%} %> --%>	
 							</div>
 						</div>
 						<div class="btn">
@@ -110,7 +112,7 @@
 				</section>
 			</div>
 		</div>
-		<%@ include file="../common/userMenuBar.jsp" %>
+		<%@ include file="../common/userMenubarServlet.jsp" %>
 	</div>
 			
 </body>

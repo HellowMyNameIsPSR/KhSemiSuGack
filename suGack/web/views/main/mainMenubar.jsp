@@ -133,7 +133,9 @@
 				</div>
 			</nav>
 			
+			<!-- 리나가 수정함 -->
 			<!-- 네비 중단 -->
+			<% if(loginUser == null) {%>
 			<nav class="navbar navbar-middle hidden-xs">
 				<div class="nav-middle"></div>
 				<div class="container">
@@ -141,13 +143,28 @@
 						<!-- <img src="views/images/logo.png" alt="가죽"> -->
 					</div>
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="../member/myPage.jsp">My정보</a></li>
+							<li><a onclick="myPage();">My정보</a></li>
 							<li><a href="../member/cart.jsp">장바구니</a></li>
 							<li><a href="../customerCenter/customerCenterNotice.jsp">고객센터</a></li>
 						</ul>
 				</div>
 			</nav>
+			<%}else{%>
 			
+			<nav class="navbar navbar-middle hidden-xs">
+				<div class="nav-middle"></div>
+				<div class="container">
+					<div class="navbar-brand " href="#">
+						<!-- <img src="views/images/logo.png" alt="가죽"> -->
+					</div>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href=../member/myPage.jsp>My정보</a></li>
+							<li><a href="../member/cart.jsp">장바구니</a></li>
+							<li><a href="../customerCenter/customerCenterNotice.jsp">고객센터</a></li>
+						</ul>
+				</div>
+			</nav>
+			<%} %>
 			<!-- 모바일 네비 하단 -->
 			<nav class="navbar bottomNav-appear visible-xs">
 				<div class="container bottom">
@@ -189,7 +206,7 @@
 							<li><a href="../product/products.jsp">판매</a></li>
 							<li><a href="../fundingProduct/fundingProducts.jsp">펀딩</a></li>
 							<li><a href="../tour/authorpageMain.jsp">작가이야기</a></li>
-							<li><a href="../contact/about.jsp">About</a></li>
+							<li><a href="#contact">About</a></li>
 						</ul>
 					</div>
 				</div>
@@ -201,5 +218,11 @@
 
 		
 	</header>
+	<script>
+		function myPage(){
+			alert("로그인 후, 사용가능합니다!");
+			location.href='<%=request.getContextPath()%>/views/member/memberLoginForm.jsp';
+		}
+	</script>
 </body>
 </html>

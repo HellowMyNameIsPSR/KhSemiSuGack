@@ -3,29 +3,28 @@ package com.kh.semi.board.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import com.google.gson.Gson;
 import com.kh.semi.board.model.service.ProQnaService;
 import com.kh.semi.board.model.vo.ProQna;
-import com.kh.semi.member.model.vo.Member;
+import com.kh.semi.board.model.vo.ProQnaComment;
 
 /**
- * Servlet implementation class SelectProQnaServlet
+ * Servlet implementation class InsertProQnaCommentServlet
  */
-@WebServlet("/selectProQna.bo")
-public class SelectProQnaServlet extends HttpServlet {
+@WebServlet("/insertProQnaComment.bo")
+public class InsertProQnaCommentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SelectProQnaServlet() {
+    public InsertProQnaCommentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,31 +33,34 @@ public class SelectProQnaServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Member user = (Member)request.getSession().getAttribute("loginUser");
 		
-		int memberId = user.getMemberId();
-		ArrayList<ProQna> list = new ProQnaService().selectList(memberId);
-		//System.out.println(list);
+		String writer = request.getParameter("writer");
+		int bno = Integer.parseInt(request.getParameter("bno"));
+		String content = request.getParameter("content");
 		
-		String page = "";
-		if(list !=null) {
-			page ="views/board/boardQna.jsp";
-			request.setAttribute("list", list);
-			request.getRequestDispatcher(page).forward(request, response);
-			
-		}else {
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "문의내역 조회 실패!");
-		} 
-//		RequestDispatcher view = request.getRequestDispatcher(page);
-//		view.forward(request, response);
+		/*ProQna qna = new ProQna();
+		qna.setWriter(writer);
+		qna.setBno(bno);
+		qna.setContent(content);*/
+		ProQnaComment comment = new ProQnaComment();
+		comment.setWriter(writer);
+		comment.setBno(bno);
+		comment.setContent(content);
+		
+		System.out.println(comment);
+		
+		//ArrayList<ProQna> commentList = new ProQnaService().insertComment(qna);
+		ArrayList<ProQnaComment> commentList = new ProQnaService().insertComment(comment);
+		response.setContentType("application/json");
+		
+		new Gson().toJson(commentList, response.getWriter());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO A!uto-generated method stub
+		// TODO Auto-generated method stㄴub
 		doGet(request, response);
 	}
 

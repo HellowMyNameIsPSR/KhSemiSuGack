@@ -157,7 +157,7 @@
 
 <script>
 	$(".mainImg").click(function(){
-		//해당 상세 페이지로 가기
+		//해당 상세 페이지로 가기!
 		location.href="productDetail.jsp";
 	});
 	

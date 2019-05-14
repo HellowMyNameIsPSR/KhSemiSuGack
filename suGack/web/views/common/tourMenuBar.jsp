@@ -5,8 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<style><%@ include file="../assets/css/main.html" %></style>
+	<link rel="stylesheet" href="../assets/css/main.css" />
 	<title></title>
 </head>
 <!-- Sidebar -->
@@ -28,7 +27,7 @@
 					<ul>
 						<li><a href="comingSoonproduct.jsp">출시전 작품</a>
 						<li><a href="fundingProducts.jsp">펀딩상품</a>
-						<li><a href="proDuct.jsp">판매 상품</a>
+						<li><a href="Product.jsp">판매 상품</a>
 					</ul>
 				</li>
 				<li>
@@ -48,7 +47,7 @@
 					<span ><a href="artistStorey.jsp"> 작가스토리</a></span>
 					
 				</li>
-				<li ><a href="artistachieveMent.jsp">작가업적</a>
+				<li ><a href="artistachievement.jsp">작가업적</a>
 			</ul>
 		</nav>
 		<!-- Footer -->

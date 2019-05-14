@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import com.kh.semi.board.model.dao.ProQnaDao;
 
 import com.kh.semi.board.model.vo.ProQna;
+import com.kh.semi.board.model.vo.ProQnaComment;
 public class ProQnaService {
 
 	//Q&A문의글 작성용 메소드
@@ -46,7 +47,7 @@ public class ProQnaService {
 	}
 
 
-	//게시물의 갯수 조회용 메소드
+	//게시물의 갯수 조회용 메소드!
 	public int getListCount() {
 		Connection con = getConnection();
 		int listCount = new ProQnaDao().getListCount(con);
@@ -71,6 +72,25 @@ public class ProQnaService {
 		close(con);
 		
 		return qna;
+	}
+	
+	//문의글 답변 작성용 메소드
+	public ArrayList<ProQnaComment> insertComment(ProQnaComment comment/*ProQna qna*/) {
+		Connection con = getConnection();
+		
+		ArrayList<ProQnaComment> commentList = null;
+		
+		int result = new ProQnaDao().insertComment(con,comment);
+		if(result>0) {
+			commit(con);
+			
+			commentList  = new ProQnaDao().selectCommentList(con, comment.getBno());
+		}else {
+			rollback(con);
+		}
+		close(con);
+		
+		return commentList;
 	}
 	
 
