@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import com.google.gson.Gson;
 import com.kh.semi.admin.model.service.adminService;
 
@@ -32,10 +35,40 @@ public class SelectMemberForMonth extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Integer> list = new adminService().selectMemberForMonth();
-		
 		System.out.println(list);
+		JSONObject data = new JSONObject();
+		JSONObject ajaxObjCols1 = new JSONObject();
+		JSONObject ajaxObjCols2= new JSONObject();
+		JSONArray ajaxArrayCols = new JSONArray();
+		JSONArray ajaxArrayRows = new JSONArray();
 		
-		new Gson().toJson(list, response.getWriter());
+		ajaxObjCols1.put("type", "string");
+		ajaxObjCols2.put("type", "number");
+		ajaxArrayCols.add(ajaxObjCols1);
+		ajaxArrayCols.add(ajaxObjCols2);
+		
+		for(int i = 0; i < list.size(); i++) {
+			JSONObject legend = new JSONObject();
+			legend.put("v", "19년" +  (i + 1) + "월");
+			legend.put("f", null);
+			
+			JSONObject value = new JSONObject();
+			value.put("v", list.get(i));
+			value.put("f", null);
+			
+			JSONArray cValueArray = new JSONArray();
+			cValueArray.add(legend);
+			cValueArray.add(value);
+			
+			JSONObject cValueObj = new JSONObject();
+			cValueObj.put("c", cValueArray);
+			
+			ajaxArrayRows.add(cValueObj);
+		}
+		data.put("cols", ajaxArrayCols);
+		data.put("rows", ajaxArrayRows);
+		
+		response.getWriter().print(data.toJSONString());
 		
 		
 	}

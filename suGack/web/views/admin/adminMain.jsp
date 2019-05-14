@@ -8,6 +8,12 @@
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ <script type="text/javascript"
+    src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript"
+    src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="//www.google.com/jsapi"></script>
 <style>
 
 	.container{
@@ -100,58 +106,34 @@
 	<hr>
 	<div class="main-3">
 		<h3>오늘의 통계</h3>
-		<script src="//www.google.com/jsapi"></script>
-			<script>
-			var selectMember = [
-			  ['회원', '인원수'],
-			  ['1월', 8.94],
-			  ['2월', 10.49],
-			  ['3월', 19.30],
-			  ['4월', 21.45],
-			];
-			
-			$(function(){
+		<div id="chart_div" style="width:800px; height:300px;"></div>
+		
+		<script>
+			google.charts.load('current', {'packages':['corechart']});
+			google.charts.setOnLoadCallback(chart);
+
+			function chart(){
+				var option = {
+						title:'월별 회원가입자',
+						vAxis:{title:"명"},
+						hAxis:{title:"년월"},
+						legend: { position: "none" }
+						};
+				var chartData;
 				$.ajax({
 					url:"<%=request.getContextPath()%>/selectMemberForMonth.ad",
+					async : false,
+					type:"get",
 					success:function(data){
-						queryObject = eval('(' + JSON.stringify(data,null, 2) + ')'); 
-						queryObject[0]
-						console.log(data['1월']);
-						console.log(queryObject[0]);
-						console.log(data[2]);
-						selectMember = [
-							  ['회원', '인원수'],
-							  ['1월', data[0]],
-							  ['2월', 10.49],
-							  ['3월', 19.30],
-							  ['4월', 21.45],
-							  ['5월', 8.94],
-							  ['6월', 10.49],
-							  ['7월', 19.30],
-							  ['8월', 21.45],
-							  ['9월', 8.94],
-							  ['10월', 10.49],
-							  ['11월', 19.30],
-							  ['12월', 21.45]
-							];
-					},
-					error:function(data){
-						
+						console.log(data);
+						chartData = new google.visualization.DataTable(data);	
 					}
-				})
-			})
-			
-			var options = {
-			  title: '월별 누적 회원수',
-			  width: 800, height: 400
-			};
-			google.load('visualization', '1.0', {'packages':['corechart']});
-			google.setOnLoadCallback(function() {
-			  var chart = new google.visualization.ColumnChart(document.querySelector('#chart_div'));
-			  chart.draw(google.visualization.arrayToDataTable(selectMember), options);
-			});
-			</script>
-<div id="chart_div"></div>
+				});
+				var chart = new google.visualization.ColumnChart(document.querySelector('#chart_div'));
+				chart.draw(chartData, option);
+			}
+
+		</script>
 	</div>
 </div>
 
