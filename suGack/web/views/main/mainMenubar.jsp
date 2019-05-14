@@ -189,7 +189,7 @@
 							<li><a href="../product/products.jsp">판매</a></li>
 							<li><a href="../fundingProduct/fundingProducts.jsp">펀딩</a></li>
 							<li><a href="../tour/authorpageMain.jsp">작가이야기</a></li>
-							<li><a href="#contact">About</a></li>
+							<li><a href="../contact/about.jsp">About</a></li>
 						</ul>
 					</div>
 				</div>
