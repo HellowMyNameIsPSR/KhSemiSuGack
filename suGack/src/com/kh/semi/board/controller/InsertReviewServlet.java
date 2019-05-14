@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.semi.board.model.service.ReviewService;
 import com.kh.semi.board.model.vo.Review;
 
 /**
@@ -22,7 +23,7 @@ public class InsertReviewServlet extends HttpServlet {
      */
     public InsertReviewServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        // TODO Autow-generated constructor stub
     }
 
 	/**
@@ -32,8 +33,23 @@ public class InsertReviewServlet extends HttpServlet {
 		String content = request.getParameter("content");
 		String star = request.getParameter("star");
 		
-		Review r = new Review();
-		r.setContent(content);
+		Review rv = new Review();
+		rv.setContent(content);
+		rv.setStarPoint(star);
+		
+		System.out.println("InsertReviewServlet에서 rv " + rv);
+		
+		int result = new ReviewService().insertReview(rv);
+		
+		
+		String page="";
+		if(result>0) {
+			System.out.println("리뷰 작성 성공: "+result);
+			response.sendRedirect("views/product/productDetail.jsp");
+		}else {
+			System.out.println("리뷰 작성 실패: "+result);
+			request.setAttribute("msg", "리뷰 작성 실패!");
+		}
 		  
 	}
 

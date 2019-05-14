@@ -5,23 +5,24 @@
 		ProQna qna =(ProQna) request.getAttribute("qna");
 %>
 
-<%
+ <%
 		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
-%>
+%> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>문의 내역 상세보기!</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <style>
 	.outer{
 		width:800px;
 		height:500px;
-		background:black;
+		background:lightblue;
 		color:white;
 		margin-left:auto;
 		margin-right:auto;
-		margin-top:50px;
+		margin-top:30px;
 	}
 	
 	td{
@@ -38,7 +39,7 @@
 	.replyArea{
 		width:800px;
 		color:white;
-		background:black;
+		background:lightblue;
 		margin:0 auto;
 	}
 	
@@ -46,13 +47,17 @@
 </style>
 </head>
 <body>
+
 	<div class="outer">
 		<br>
-		<h2 align="center">문의내역 상세보기</h2>
+		<div align="float:left">
+			<button onclick="location.href='<%=request.getContextPath()%>/selectProQna.bo'">메뉴로 돌아가기</button>
+		</div>
+		<h2 align="center">문의내역 상세보기!</h2>
 		<div class="tableArea">
 			<table align="center" width="800px">
 				<tr>
-					<td>문의종류</td>
+					<td colspan="2">문의종류</td>
 					<td><span><%=qna.getCategory() %></span></td>
 					<%-- <td>제목</td>
 					<td colspan="3"><span><%=qna.getbTitle() %></span></td> --%>
@@ -71,18 +76,16 @@
 				</tr>
 				
 				<tr>
-					<td colspan="6">
+					<td colspan="6" style="height:200px">
 						<p id="content"><%= qna.getContent() %></p>
 					</td>
 				</tr>
 			</table>
 		</div>
 		
-		<div align="center">
-			<button onclick="location.href='<%=request.getContextPath()%>/selectProQna.bo'">메뉴로 돌아가기</button>
-		</div>
+		
 	</div>
-	
+	<%-- <%if(loginUser.getMemberId()==0){ %> --%>
 	<div class="replyArea">
 		<div class="replyWriterArea">
 			<table align="center">
@@ -99,18 +102,43 @@
 		<div class="replySelectArea">
 			<table id="replySelectTable" border="1" align="center"></table>
 		</div>
+		
 	</div>
-	
+	<%-- <%} %> --%>
 	<script>
 		$(function(){
 			$("#addReply").click(function(){
-				var writer = <%=loginUser.getMemberName()%>;
+				var writer =<%=loginUser.getMemberId()%>;
 				var bno = <%=qna.getBno()%>;
 				var content = $("#replyContent").val();
 				
 				$.ajax({
-					url:"/semi/insertComment.bo",
-				})
+					url:"/semi/insertProQnaComment.bo",
+					data:{writer:writer, bno:bno, content:content},
+					type:"post",
+					success:function(data){
+						console.log(data);
+						
+						var $replySelectTable = $("#replySelectTable");
+						$replySelectTable.html('');
+						
+						for(var key in data){
+							var $tr = $("<tr>");
+							var $writerTd = $("<td>").text(data[key].writer).css("width", "100px");
+							var $contentTd = $("<td>").text(data[key].content).css("width", "400px");
+							var $dateTd = $("<td>").text(data[key].write_date).css("width", "200px");
+							
+							$tr.append($writerTd);
+							$tr.append($contentTd);
+							$tr.append($dateTd);
+							$replySelectTable.append($tr);
+						}
+					},
+					error:function(){
+						console.log("실패");
+					}
+					
+				});
 			})
 		})
 	</script>

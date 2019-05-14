@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>나의 문의글 내역</title>
+<title>나의 문의글 내역!</title>
 <style>
 	.name{
 		width:100%;
@@ -42,10 +42,10 @@
 						<div class="table">
 							<table id="listArea">
 								<tr style="text-align:center;">
-									<td>NO</td>
+									<td>번호</td>
 									<td></td>
-									<td>CATEGORY</td>
-									<td>DATE</td>
+									<td>문의종류</td>
+									<td>작성날짜</td>
 								</tr>
 								  <% 
 								  	int num = 0;

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관심작가</title>
+<title>관심작가!</title>
 <style>
 	.name{
 		width:100%;
