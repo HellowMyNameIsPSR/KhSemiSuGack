@@ -86,6 +86,32 @@ public class adminDao {
 		return list;
 	}
 
+	public ArrayList<Integer> selectMemberForMonth(Connection con) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		ArrayList<Integer> list = null;
+		
+		String query = prop.getProperty("selectMemberForMonth");
+		
+		try {
+			stmt = con.createStatement();
+			
+			rset = stmt.executeQuery(query);
+			
+			list = new ArrayList<Integer>();
+			while(rset.next()) {
+				list.add(rset.getInt("COUNT"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return list;
+	}
+
 }
 
 
