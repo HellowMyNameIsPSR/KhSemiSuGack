@@ -158,14 +158,17 @@ ArrayList<SearchMember> list = (ArrayList<SearchMember>) request.getAttribute("l
 				
 				$.each(data, function(index, value){
 					var $tr = $("<tr>");
-					var $noTd = $("<td>").text(value.userNo);
 					var $nameTd = $("<td>").text(decodeURIComponent(value.nameText));
 					var $emailTd = $("<td>").text(decodeURIComponent(value.emailText));
 					var $joindayTd = $("<td>").text(value.joinDay);
 					
-					$tr.append($noTd);
+					for(key in data){
+						var member = data[key];
+						console(member);
+					}
+					
 					$tr.append($nameTd);
-					$tr.append($nationTd);
+					$tr.append($emailTd);
 					$tableBody.append($tr); 
 					
 				})

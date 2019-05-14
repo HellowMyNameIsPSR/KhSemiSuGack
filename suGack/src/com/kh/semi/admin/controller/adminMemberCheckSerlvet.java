@@ -18,6 +18,8 @@ import org.json.simple.JSONObject;
 
 import com.kh.semi.admin.model.service.adminService;
 import com.kh.semi.admin.model.vo.SearchMember;
+
+
 import com.google.gson.Gson;
 
 
@@ -43,14 +45,44 @@ public class adminMemberCheckSerlvet extends HttpServlet {
 		String birthDateLast = request.getParameter("birthDateLast");
 		String gender = request.getParameter("gender");
 		
+		System.out.println(joinStart);
+		System.out.println("생일 시작" + birthDateStart);
+		System.out.println("성별" + gender);
 		
-		java.sql.Date joinStartday =  java.sql.Date.valueOf(joinStart);
-		java.sql.Date joinLastday =  java.sql.Date.valueOf(joinLast);
-		java.sql.Date birthDayStart = java.sql.Date.valueOf(birthDateStart);
-		java.sql.Date birthDayLast = java.sql.Date.valueOf(birthDateLast);
+		java.sql.Date joinStartday = null;
+		java.sql.Date joinLastday = null;
+		java.sql.Date birthDayStart = null;
+		java.sql.Date birthDayLast = null;
+		String jsDay = "1951-01-01";
+		String jlDay = "2020-01-01";
+		
+		if(joinStart.equals("")) {
+			joinStartday = java.sql.Date.valueOf(jsDay);
+		}else {
+			joinStartday =  java.sql.Date.valueOf(joinStart);
+		}
+		
+		if(joinLast.equals("")) {
+			joinLastday =  java.sql.Date.valueOf(jlDay);
+		}else {
+			joinLastday =  java.sql.Date.valueOf(joinLast);
+		}
+		if(birthDateStart.equals("")) {
+			birthDayStart = java.sql.Date.valueOf(jsDay);
+		}else {
+			birthDayStart = java.sql.Date.valueOf(birthDateStart);
+		}
+		if(birthDateLast.equals("")) {
+			birthDayLast = java.sql.Date.valueOf(jlDay);
+		}else {
+			birthDayLast = java.sql.Date.valueOf(birthDateLast);
+		}
+		
+		
+		
 		
 		SearchMember m = new SearchMember();
-
+		
 		
 		if(searchType.equals("email")) {
 			System.out.println("이메일이다!");
@@ -74,9 +106,9 @@ public class adminMemberCheckSerlvet extends HttpServlet {
 		m.setBirthDateLast(birthDayLast);
 		m.setGender(gender);
 		
+		System.out.println(m);
 		
-		new QueryMake(m);
-		
+		QueryMake qm = new QueryMake(m);
 		
 		ArrayList<SearchMember> list = new adminService().searchMember(m);
 		

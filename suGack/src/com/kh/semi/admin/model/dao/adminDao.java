@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.semi.admin.controller.QueryMake;
 import com.kh.semi.admin.model.dao.adminDao;
 import com.kh.semi.admin.model.vo.SearchMember;
 import com.kh.semi.member.model.vo.Member;
@@ -38,9 +39,11 @@ public class adminDao {
 		ArrayList<SearchMember> list = null;
 		
 		String query = prop.getProperty("selectMember");
+		System.out.println(query);
 		
 		try {
 			pstmt = con.prepareStatement(query);
+			
 			
 			pstmt.setString(1, m.getNameText());
 			pstmt.setString(2, m.getMemberType());
@@ -51,13 +54,14 @@ public class adminDao {
 			pstmt.setString(7, m.getGender());
 			
 			rset = pstmt.executeQuery();
+
+			list = new ArrayList<SearchMember>();
 			
-			list = new ArrayList<>();
 			
-			System.out.println("첫번째 list" + list);
 			
 			while(rset.next()) {
-				SearchMember sm = null;
+				System.out.println("와일문 실행");
+				SearchMember sm = new SearchMember();
 				sm.setEmailText(rset.getString("EMAIL"));
 				sm.setNameText(rset.getString("MEMBER_NAME"));
 				sm.setMemberType(rset.getString("MEMBER_TYPE"));
@@ -66,13 +70,11 @@ public class adminDao {
 				sm.setGender(rset.getString("GENDER"));
 				
 				
-				System.out.println(sm);
-				
 				list.add(sm);
 				
 			}
 			
-				System.out.println("최종 list" + list);
+				
 			
 		} catch (SQLException e) {
 
@@ -82,7 +84,7 @@ public class adminDao {
 			close(rset);
 			
 		}
-		
+		System.out.println("최종 list" + list);
 		
 		return list;
 	}
