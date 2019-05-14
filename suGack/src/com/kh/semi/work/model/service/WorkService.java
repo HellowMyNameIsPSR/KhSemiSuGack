@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.kh.semi.work.model.dao.WorkDao;
 import com.kh.semi.work.model.vo.PageInfo;
+import com.kh.semi.work.model.vo.PicFile;
 import com.kh.semi.work.model.vo.Work;
 import static com.kh.semi.common.JDBCTemplate.*;
 
@@ -15,8 +16,6 @@ public class WorkService {
 		Connection con = getConnection();
 		
 		int result = new WorkDao().insertSale(con, work);
-		
-		System.out.println(result);
 		
 		if(result > 0) {
 			commit(con);
@@ -47,6 +46,22 @@ public class WorkService {
 		close(con);
 		
 		return listCount;
+	}
+	//사진 등록 메소드
+	public int insertPicFile(ArrayList<PicFile> picFile) {
+		Connection con = getConnection();
+		
+		int result = new WorkDao().insertPicFile(con, picFile);
+		
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		System.out.println("이미지 서비스 : " +result);
+		return result;
 	}
 	
 }
