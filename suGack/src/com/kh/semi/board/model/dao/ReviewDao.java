@@ -83,7 +83,7 @@ public class ReviewDao {
 				list.add(review);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// TODO dAuto-generated cdatch block
 			e.printStackTrace();
 		}finally {
 			close(rset);

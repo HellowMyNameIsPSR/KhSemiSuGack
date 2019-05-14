@@ -25,7 +25,7 @@ public class ReviewService {
 		return result;
 	}
 
-	//리뷰 조회용메소드
+	//리뷰 조회용메소드!
 	public ArrayList<Review> selectList(int memberId) {
 		Connection con = getConnection();
 		

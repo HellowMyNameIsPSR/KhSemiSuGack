@@ -23,7 +23,7 @@ public class SelectOneProQnaServlet extends HttpServlet {
      */
     public SelectOneProQnaServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        // TODO Auto-genewratewd constructor stub
     }
 
 	/**

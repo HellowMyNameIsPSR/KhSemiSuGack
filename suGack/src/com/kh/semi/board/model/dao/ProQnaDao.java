@@ -93,7 +93,7 @@ public class ProQnaDao {
 				
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// TODO Auto-generated catch bloc!k
 			e.printStackTrace();
 		}finally {
 			close(rset);

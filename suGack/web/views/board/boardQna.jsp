@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>나의 문의글 내역</title>
+<title>나의 문의글 내역!</title>
 <style>
 	.name{
 		width:100%;

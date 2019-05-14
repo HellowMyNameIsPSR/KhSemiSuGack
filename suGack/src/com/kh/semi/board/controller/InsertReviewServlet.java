@@ -23,7 +23,7 @@ public class InsertReviewServlet extends HttpServlet {
      */
     public InsertReviewServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        // TODO Autow-generated constructor stub
     }
 
 	/**

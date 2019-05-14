@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관심펀딩상품</title>
+<title>관심펀딩상품!</title>
 <style>
 	.name{
 		width:100%;

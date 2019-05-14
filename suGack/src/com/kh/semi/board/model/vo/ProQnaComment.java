@@ -3,7 +3,7 @@ package com.kh.semi.board.model.vo;
 import java.sql.Date;
 
 public class ProQnaComment implements java.io.Serializable{
-	
+	//f
 	private int cid;
 	private Date writeDate;
 	private String content;

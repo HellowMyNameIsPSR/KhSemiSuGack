@@ -39,7 +39,7 @@
 					</ul>
 				</li>
 				<li>
-					<span class="opener">게시글관리</span>
+					<span class="opener">게시글관리!</span>
 					<ul>
 						 <li><a href="boardReview.jsp">응원글 및 리뷰</a> 
 						<%-- <li><a href="<%=request.getContextPath() %>/selectReview.co?num=<%=loginUser.getMemberId() %>">응원글 및 리뷰</a> --%>

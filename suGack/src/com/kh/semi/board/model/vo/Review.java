@@ -3,7 +3,7 @@ package com.kh.semi.board.model.vo;
 import java.sql.Date;
 
 public class Review implements java.io.Serializable{
-	
+	//d
 	private int cid;
 	private Date writeDate;
 	private String content;

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관심판매상품</title>
+<title>관심판매상품!</title>
 <style>
 	.name{
 		width:100%;

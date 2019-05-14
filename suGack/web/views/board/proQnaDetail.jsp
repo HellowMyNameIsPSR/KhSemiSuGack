@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문의 내역 상세보기</title>
+<title>문의 내역 상세보기!</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <style>
 	.outer{
@@ -53,7 +53,7 @@
 		<div align="float:left">
 			<button onclick="location.href='<%=request.getContextPath()%>/selectProQna.bo'">메뉴로 돌아가기</button>
 		</div>
-		<h2 align="center">문의내역 상세보기</h2>
+		<h2 align="center">문의내역 상세보기!</h2>
 		<div class="tableArea">
 			<table align="center" width="800px">
 				<tr>

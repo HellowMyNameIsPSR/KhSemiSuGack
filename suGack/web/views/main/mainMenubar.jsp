@@ -133,6 +133,7 @@
 				</div>
 			</nav>
 			
+			<!-- 리나가 수정함 -->
 			<!-- 네비 중단 -->
 			<% if(loginUser == null) {%>
 			<nav class="navbar navbar-middle hidden-xs">

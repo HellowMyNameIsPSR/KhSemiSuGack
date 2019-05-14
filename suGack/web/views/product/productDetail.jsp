@@ -219,7 +219,7 @@ input[type:image]{
     			<form id="qna" action="<%=request.getContextPath() %>/insertProQna.bo" method="post">
    					 <div class="qnaArea">
 							<div class="qnaTitle">
-								<h2>문의하기</h2>
+								<h2>문의하기!</h2>
 							</div>
 							<div class="qnaContents">
 									<table class="searchBox" style="width:100%;" >
