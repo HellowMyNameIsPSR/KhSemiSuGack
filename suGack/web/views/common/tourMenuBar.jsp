@@ -5,7 +5,11 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="../assets/css/main.css" />
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<style>
+		<%@ include file="../assets/css/main.html" %>
+		<%@ include file="../assets/css/allCss.html"%>
+	</style>
 	<title></title>
 </head>
 <!-- Sidebar -->
