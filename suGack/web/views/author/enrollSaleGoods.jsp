@@ -192,8 +192,8 @@
 					</header>
 					<!-- Contents area -->
 					<!-- 확인후 지우기 -->
-					
-					<form action="<%=request.getContextPath()%>/insertSale.wo" method="post">
+				 	
+					<form id="insertFrom1" action="<%=request.getContextPath()%>/insertSale.wo" method="post">
 						<div class="listBox">
 							<div class="listTitle">
 								<h2>카테고리</h2>
@@ -623,11 +623,51 @@
 
 
 
+						
+						
+						
+						
+
+						<!-- 상품상세설명 -->
+						<div class="listBox" style="height:100%; padding-botton:50px;">
+							<div class="listTitle">
+								<h2>상품상세설명</h2>
+							</div>
+							<div class="listContents">
+								<textarea name="workContent" id="workContent" rows="10" cols="100">
+									내용
+								</textarea>
+							</div>
+						</div>
+						<script type="text/javascript">
+							var oEditors = [];
+							nhn.husky.EZCreator.createInIFrame({
+								oAppRef : oEditors,
+								elPlaceHolder : "workContent",
+								sSkinURI : "../assets/SE2/SmartEditor2Skin.html",
+								fCreator : "createSEditor2"
+							});
+							
+							$("#submitBtn").click(function() {
+								oEditors.getById["workContent"].exec("UPDATE_CONTENTS_FIELD", []);
+							});
 
 
 
 
-						<!-- 상품이미지 -->
+						</script>
+
+
+
+
+					</form>
+					
+					
+					
+					
+					<form id="insertFrom2" action="<%=request.getContextPath()%>/insertImg.wo" method="post"
+					encType="multipart/form-data">
+					<!-- 상품이미지 -->
 						<div class="listBox" >
 							<div class="listTitle">
 								<h2>상품이미지</h2>
@@ -692,7 +732,9 @@
 							<input type="file" id="workImg3" name="workImg3" onchange="loadImg(this,4)">
 							<input type="file" id="workImg4" name="workImg4" onchange="loadImg(this,5)">
 						</div>
+						</form>
 						<script>
+						
 							$(function(){
 								$("#fileArea").hide();
 								
@@ -740,71 +782,25 @@
 									reader.readAsDataURL(value.files[0]);
 								}
 							}
-							
-						
 						</script>
 						
 						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-
-						<!-- 상품상세설명 -->
-						<div class="listBox" style="height:100%; padding-botton:50px;">
-							<div class="listTitle">
-								<h2>상품상세설명</h2>
-							</div>
-							<div class="listContents">
-								<textarea name="workContent" id="workContent" rows="10" cols="100">
-									내용
-								</textarea>
-							</div>
-						</div>
-						<script type="text/javascript">
-							var oEditors = [];
-							nhn.husky.EZCreator.createInIFrame({
-								oAppRef : oEditors,
-								elPlaceHolder : "workContent",
-								sSkinURI : "../assets/SE2/SmartEditor2Skin.html",
-								fCreator : "createSEditor2"
-							});
-							
-							$("#submitBtn").click(function() {
-								oEditors.getById["workContent"].exec("UPDATE_CONTENTS_FIELD", []);
-							});
-
-
-
-
-						</script>
-
-
-
 						<!-- 버튼 -->
 						<div align="center">
 							<button type="reset" class="all-btn" style="width:150px;">취소</button>
-							<button id="submitBtn"type="submit" class="all-btn" style="width:150px;">등록하기</button>
+							<button id="submitButton" type="button" class="all-btn" style="width:150px;">등록하기</button>
 						</div>
-
-
-
-
-					</form>
+						
+						<script>
+						$(document).on("click","#submitButton", function() {
+								$("#insertFrom1").submit();
+								$("#insertFrom2").submit();
+							});
+						
+						</script>
+						
+						
+						
 				</section>
 			</div>
 		</div>

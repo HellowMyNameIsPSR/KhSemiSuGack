@@ -1,13 +1,13 @@
 package com.kh.semi.work.model.vo;
 
 public class PicFile {
-	private int fileCode;
-	private String originName;
-	private String changeName;
-	private String filePath;
-	private String fileType;
-	private int applyCode;
-	private int bno;
+	private int fileCode;		//파일코드
+	private String originName;	//기존파일이름
+	private String changeName;  //변환파일명
+	private String filePath;	//저장경로
+	private String fileType;	//파일유형
+	private int applyCode;		//신청코드
+	private int bno;			//게시글번호
 	
 	public PicFile() {}
 
