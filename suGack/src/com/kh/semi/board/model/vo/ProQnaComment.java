@@ -13,6 +13,7 @@ public class ProQnaComment implements java.io.Serializable{
 	private int star;
 	private String writer;
 	
+	
 	public ProQnaComment() {}
 	
 	public ProQnaComment(int cid, Date writeDate, String content, int bno, int writerId, int writeLevel, int star,String writer) {

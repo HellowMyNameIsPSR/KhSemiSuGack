@@ -1,7 +1,6 @@
 package com.kh.semi.board.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,10 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
 import com.kh.semi.board.model.service.ProQnaService;
-import com.kh.semi.board.model.vo.ProQna;
 import com.kh.semi.board.model.vo.ProQnaComment;
+import com.kh.semi.member.model.vo.Member;
 
 /**
  * Servlet implementation class InsertProQnaCommentServlet
@@ -33,34 +31,31 @@ public class InsertProQnaCommentServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String writer = request.getParameter("writer");
-		int bno = Integer.parseInt(request.getParameter("bno"));
 		String content = request.getParameter("content");
+		int bno = Integer.parseInt(request.getParameter("bno"));
 		
-		/*ProQna qna = new ProQna();
-		qna.setWriter(writer);
-		qna.setBno(bno);
-		qna.setContent(content);*/
+		Member m = (Member)request.getSession().getAttribute("loginUser");
+		
 		ProQnaComment comment = new ProQnaComment();
-		comment.setWriter(writer);
 		comment.setBno(bno);
 		comment.setContent(content);
+		comment.setWriterId(m.getMemberId());
 		
 		System.out.println(comment);
+		int result = new ProQnaService().insertComment(comment);
 		
-		//ArrayList<ProQna> commentList = new ProQnaService().insertComment(qna);
-		ArrayList<ProQnaComment> commentList = new ProQnaService().insertComment(comment);
-		response.setContentType("application/json");
-		
-		new Gson().toJson(commentList, response.getWriter());
+		if(result>0) {
+			response.getWriter().print(comment);
+		}else {
+			response.getWriter().print("fail");
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stㄴub
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

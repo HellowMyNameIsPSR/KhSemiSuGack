@@ -182,7 +182,7 @@ public class ProQnaDao {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, comment.getContent());
 			pstmt.setInt(2, comment.getBno());
-			pstmt.setString(3, comment.getWriter());
+			pstmt.setInt(3, comment.getWriterId());
 			
 			result = pstmt.executeUpdate();
 			
@@ -236,6 +236,12 @@ public class ProQnaDao {
 		}
 		
 		return list;
+	}
+
+
+	public ArrayList<ProQnaComment> insertComment(Connection con, int writerId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
