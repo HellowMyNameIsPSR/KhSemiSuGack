@@ -21,15 +21,6 @@ public class adminService {
 		return list;
 	}
 
-	public ArrayList<Integer> selectMemberForMonth() {
-		Connection con = getConnection();
-		
-		ArrayList<Integer> list = new adminDao().selectMemberForMonth(con);
-		
-		close(con);
-		
-		return list;
-	}
 
 	
 

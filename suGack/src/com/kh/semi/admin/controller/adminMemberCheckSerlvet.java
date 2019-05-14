@@ -2,6 +2,7 @@ package com.kh.semi.admin.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.sql.Date;
 import java.util.ArrayList;
 
@@ -12,9 +13,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import com.kh.semi.admin.model.service.adminService;
 import com.kh.semi.admin.model.vo.SearchMember;
-import com.kh.semi.member.model.vo.Member;
+import com.google.gson.Gson;
+
 
 
 @WebServlet("/memberCheck.ad")
@@ -45,6 +50,7 @@ public class adminMemberCheckSerlvet extends HttpServlet {
 		java.sql.Date birthDayLast = java.sql.Date.valueOf(birthDateLast);
 		
 		SearchMember m = new SearchMember();
+
 		
 		if(searchType.equals("email")) {
 			System.out.println("이메일이다!");
@@ -61,6 +67,7 @@ public class adminMemberCheckSerlvet extends HttpServlet {
 			m.setMemberType("W");
 		}
 		
+		m.setSearchType(searchType);
 		m.setJoinStart(joinStartday);
 		m.setJoinLast(joinLastday);
 		m.setBirthDateStart(birthDayStart);
@@ -68,26 +75,30 @@ public class adminMemberCheckSerlvet extends HttpServlet {
 		m.setGender(gender);
 		
 		
+		new QueryMake(m);
+		
+		
 		ArrayList<SearchMember> list = new adminService().searchMember(m);
-		System.out.println(m);
 		
+		JSONArray result = new JSONArray();
+		JSONObject searchMember = null;
 		
-		String page = "";
-		System.out.println(list);
-		
-		if(list != null) {
-			page = "views/admin/viewMemList.jsp";
-			request.setAttribute("list", list);
+		for(SearchMember sm : list) {
+			searchMember = new JSONObject();
+			searchMember.put("memberName", URLEncoder.encode(sm.getNameText(), "UTF-8"));
+			searchMember.put("memberEmail", sm.getEmailText());
+			searchMember.put("memberJoinDay", sm.getJoinDay());
+			searchMember.put("memberBirthDay", sm.getBirthDay());
+			searchMember.put("memberGender", sm.getGender());
+			searchMember.put("memberType", sm.getMemberType());
 			
-		}else {
-			page = "views/admin/errorPage.jsp";
-			request.setAttribute("msg", "공지사항 조회 실패!");
-			
+			result.add(searchMember);
 		}
-
-		RequestDispatcher view = request.getRequestDispatcher(page);
+	
 		
-		view.forward(request, response);
+
+		response.setContentType("application/json");
+		new Gson().toJson(result, response.getWriter());
 		
 		
 		

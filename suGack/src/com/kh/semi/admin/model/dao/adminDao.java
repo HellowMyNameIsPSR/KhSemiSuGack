@@ -37,7 +37,7 @@ public class adminDao {
 		ResultSet rset = null;
 		ArrayList<SearchMember> list = null;
 		
-		String query = prop.getProperty("searchMember");
+		String query = prop.getProperty("selectMember");
 		
 		try {
 			pstmt = con.prepareStatement(query);
@@ -58,6 +58,7 @@ public class adminDao {
 			
 			while(rset.next()) {
 				SearchMember sm = null;
+				sm.setEmailText(rset.getString("EMAIL"));
 				sm.setNameText(rset.getString("MEMBER_NAME"));
 				sm.setMemberType(rset.getString("MEMBER_TYPE"));
 				sm.setBirthDay(rset.getDate("BIRTH_DATE"));
