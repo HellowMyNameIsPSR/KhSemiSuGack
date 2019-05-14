@@ -36,7 +36,7 @@ public class SelectOneProQnaServlet extends HttpServlet {
 		
 		String page = "";
 		if(qna !=null) {
-			page = "views/member/proQnaDetail.jsp";
+			page = "views/board/proQnaDetail.jsp";
 			System.out.println("서블릿에서");
 			System.out.println(qna);
 			request.setAttribute("qna", qna);

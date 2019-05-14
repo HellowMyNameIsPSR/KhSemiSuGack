@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.semi.board.model.vo.ProQna;
+import com.kh.semi.board.model.vo.ProQnaComment;
 
 public class ProQnaDao {
 	private Properties prop = new Properties();
@@ -132,7 +133,7 @@ public class ProQnaDao {
 	}
 
 
-	
+	//문의내역 자세히보기
 	public ProQna selectOne(Connection con, int num) {
 		
 		ProQna qna = null;
@@ -167,6 +168,74 @@ public class ProQnaDao {
 		}
 		System.out.println(qna);
 		return qna;
+	}
+
+
+	//문의글에 답변작성용 메소드
+	public int insertComment(Connection con,ProQnaComment comment/*ProQna qna*/) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("insertComment");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, comment.getContent());
+			pstmt.setInt(2, comment.getBno());
+			pstmt.setString(3, comment.getWriter());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	
+	//답변리스트 조회용 메소드
+	public ArrayList<ProQnaComment> selectCommentList(Connection con, int bno) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<ProQnaComment> list = null;
+		
+		String query = prop.getProperty("selectCommentList");
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setInt(1, bno);
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<ProQnaComment>();
+			
+			while(rset.next()) {
+				
+				/*ProQna qna = new ProQna();
+				
+				qna.setWriteDate(rset.getDate("WRITE_DATE"));
+				qna.setContent(rset.getString("CONTENT"));
+				qna.setBno(rset.getInt("BNO"));*/
+				
+				ProQnaComment comment = new ProQnaComment();
+				comment.setWriteDate(rset.getDate("WRITE_DATE"));
+				comment.setContent(rset.getString("CONTENT"));
+				comment.setBno(rset.getInt("BNO"));
+				
+				list.add(comment);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return list;
 	}
 
 

@@ -157,7 +157,7 @@ input[type:image]{
 			<!-- <input type="image" src="../images/heart.png" style="width:80px; height:50px; border:2px solid pink; background:pink; border-radius:7px;"> -->
 			<input type="image" src="../images/shopping-basket.png" style="width:70px; margin-left:5px;height:50px; border:2px solid lightblue; background:lightblue; border-radius:7px;">
 			<!-- <input type="submit" value="구매하기" style="float:right; font-size:15px;width:170px; height:50px; color:white;border:2px solid gray; background:gray; border-radius:7px;"> -->
-			<button style="float:right; font-size:15px;width:170px; height:50px; color:white;border:2px solid gray; background:gray; border-radius:7px;"
+			<button class="all-btn"style="float:right; font-size:15px;width:170px; height:50px;/*  color:white;border:2px solid gray; background:gray; */ border-radius:7px;"
 					id="purchase">구매하기</button>
 				
 			
@@ -189,11 +189,11 @@ input[type:image]{
       <form id="review" action="<%=request.getContextPath() %>/insertReview.bo" method="post">
       	<textarea style="width:100%; height:80px;" name="content"></textarea>
       	<select name="star" style="float:left; width:200px; height:40px;">
-      		<option value="5">★★★★★ 아주좋아요</option>
-      		<option value="4">★★★★☆ 마음에 들어요</option>
-      		<option value="3">★★★☆☆ 보통이에요</option>
-      		<option value="2">★★☆☆☆ 그냥그래요</option>
-      		<option value="1">★★☆☆☆ 별로에요</option>
+      		<option value="★★★★★">★★★★★ 아주좋아요</option>
+      		<option value="★★★★☆">★★★★☆ 마음에 들어요</option>
+      		<option value="★★★☆☆ ">★★★☆☆ 보통이에요</option>
+      		<option value="★★☆☆☆">★★☆☆☆ 그냥그래요</option>
+      		<option value="★★☆☆☆">★★☆☆☆ 별로에요</option>
       	</select>
       	<input type="submit" value="리뷰등록하기" style=" float:right; width:150px; height:40px; background:gray; color:white; border:1px solid gray;">
        <!--  <button style=" float:right; width:150px; height:40px; background:gray; color:white; border:1px solid gray;">리뷰등록하기</button> -->

@@ -2,7 +2,7 @@ package com.kh.semi.board.model.vo;
 
 import java.sql.Date;
 
-public class Review implements java.io.Serializable{
+public class ProQnaComment implements java.io.Serializable{
 	
 	private int cid;
 	private Date writeDate;
@@ -10,13 +10,12 @@ public class Review implements java.io.Serializable{
 	private int bno;
 	private int writerId;
 	private int writeLevel;
-	private String starPoint;
+	private int star;
 	private String writer;
 	
-	public Review() {}
+	public ProQnaComment() {}
 	
-	public Review(int cid, Date writeDate, String content, int bno, int writerId, int writeLevel,  String starPoint,
-			String writer) {
+	public ProQnaComment(int cid, Date writeDate, String content, int bno, int writerId, int writeLevel, int star,String writer) {
 		super();
 		this.cid = cid;
 		this.writeDate = writeDate;
@@ -24,64 +23,82 @@ public class Review implements java.io.Serializable{
 		this.bno = bno;
 		this.writerId = writerId;
 		this.writeLevel = writeLevel;
-		this.starPoint = starPoint;
+		this.star = star;
 		this.writer = writer;
 	}
-	public int getCid() {
-		return cid;
-	}
-	public void setCid(int cid) {
-		this.cid = cid;
-	}
-	public Date getWriteDate() {
-		return writeDate;
-	}
-	public void setWriteDate(Date writeDate) {
-		this.writeDate = writeDate;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public int getBno() {
-		return bno;
-	}
-	public void setBno(int bno) {
-		this.bno = bno;
-	}
-	public int getWriterId() {
-		return writerId;
-	}
-	public void setWriterId(int writerId) {
-		this.writerId = writerId;
-	}
-	public int getWriteLevel() {
-		return writeLevel;
-	}
-	public void setWriteLevel(int writeLevel) {
-		this.writeLevel = writeLevel;
-	}
-	public  String getStarPoint() {
-		return starPoint;
-	}
-	public void setStarPoint(String starPoint) {
-		this.starPoint = starPoint;
-	}
+
 	public String getWriter() {
 		return writer;
 	}
+
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
+
+	public int getCid() {
+		return cid;
+	}
+
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
+
+	public Date getWriteDate() {
+		return writeDate;
+	}
+
+	public void setWriteDate(Date writeDate) {
+		this.writeDate = writeDate;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public int getBno() {
+		return bno;
+	}
+
+	public void setBno(int bno) {
+		this.bno = bno;
+	}
+
+	public int getWriterId() {
+		return writerId;
+	}
+
+	public void setWriterId(int writerId) {
+		this.writerId = writerId;
+	}
+
+	public int getWriteLevel() {
+		return writeLevel;
+	}
+
+	public void setWriteLevel(int writeLevel) {
+		this.writeLevel = writeLevel;
+	}
+
+	public int getStar() {
+		return star;
+	}
+
+	public void setStar(int star) {
+		this.star = star;
+	}
+
 	@Override
 	public String toString() {
-		return "Review [cid=" + cid + ", writeDate=" + writeDate + ", content=" + content + ", bno=" + bno
-				+ ", writerId=" + writerId + ", writeLevel=" + writeLevel + ", starPoint=" + starPoint + ", writer="
-				+ writer + "]";
+		return "ProQnaComment [cid=" + cid + ", writeDate=" + writeDate + ", content=" + content + ", bno=" + bno
+				+ ", writerId=" + writerId + ", writeLevel=" + writeLevel + ", star=" + star + ", writer=" + writer
+				+ "]";
 	}
-	
+
+
 	
 	
 

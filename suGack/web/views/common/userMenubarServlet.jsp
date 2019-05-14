@@ -28,29 +28,29 @@
 				<h2>Menu</h2>
 			</header>
 			<ul>
-				<li><a href="views/member/myPage.jsp">주문내역</a></li>
+				<li><a href="views/board/myPage.jsp">주문내역</a></li>
 				<li>
 					<span class="opener">좋아요리스트</span>
 					<ul>
-						<li><a href="views/member/likeAuthor.jsp">관심작가</a>
-						<li><a href="views/member/likeFundingPro.jsp">관심 펀딩 상품</a>
-						<li><a href="views/member/likePro.jsp">관심 판매상품</a>
+						<li><a href="views/board/likeAuthor.jsp">관심작가</a>
+						<li><a href="views/board/likeFundingPro.jsp">관심 펀딩 상품</a>
+						<li><a href="views/board/likePro.jsp">관심 판매상품</a>
 					</ul>
 				</li>
 				<li>
 					<span class="opener">게시글관리</span>
 					<ul>
-						<li><a href="views/member/boardReview.jsp">응원글 및 리뷰</a>
+						<li><a href="views/board/boardReview.jsp">응원글 및 리뷰</a>
 						<li><a href="<%=request.getContextPath()%>/selectProQna.bo">문의</a>
 					</ul>
 				</li>
-				<li><a href="views/member/boardPoint.jsp">적립금 사용 내역</a></li>
+				<li><a href="views/board/boardPoint.jsp">적립금 사용 내역</a></li>
 				<li>
 					<span class="opener">개인정보</span>
 					<ul>
-						<li><a href="views/member/modifyMe.jsp">개인정보 수정</a>
+						<li><a href="views/board/modifyMe.jsp">개인정보 수정</a>
 						<li><a href="<%=request.getContextPath()%>/addressList.me?num=<%=loginUser.getMemberId()%>">내 주소 관리</a>
-						<li><a href="views/member/withDrawal.jsp">회원 탈퇴</a>
+						<li><a href="views/board/withDrawal.jsp">회원 탈퇴</a>
 					</ul>
 				</li>
 				<li><a href="#">고객센터</a>

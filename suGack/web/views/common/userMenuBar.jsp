@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<style>
 		<%@ include file="../assets/css/main.html" %>
+		<%@ include file="../assets/css/allCss.html"%>
 	</style>
 	<title></title>
 </head>
@@ -40,7 +41,8 @@
 				<li>
 					<span class="opener">게시글관리</span>
 					<ul>
-						<li><a href="boardReview.jsp">응원글 및 리뷰</a>
+						 <li><a href="boardReview.jsp">응원글 및 리뷰</a> 
+						<%-- <li><a href="<%=request.getContextPath() %>/selectReview.co?num=<%=loginUser.getMemberId() %>">응원글 및 리뷰</a> --%>
 						<li><a href="<%=request.getContextPath()%>/selectProQna.bo?num=<%=loginUser.getMemberId()%>">문의</a>
 					</ul>
 				</li>
