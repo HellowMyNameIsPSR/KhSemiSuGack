@@ -30,8 +30,7 @@ public class adminService {
 		
 		return list;
 	}
-
-	
+		
 
 	
 	

@@ -46,10 +46,8 @@ ArrayList<SearchMember> list = (ArrayList<SearchMember>) request.getAttribute("l
 								<tr>
 									<td style="width:180px;">개인정보</td>
 									<td style="width:150px;">
-										<select name="searchType" id="searchType" style="width: 330px;">
-											<option value="email">이메일</option>
-											<option value="name">이름</option>d
-										</select>
+										<input type="radio" name="searchType" value="name" id="searchradio1"/><label for="searchradio1">이름</label>
+										<input type="radio" name="searchType" value="email" id="searchradio2" /><label for="searchradio2">이메일</label>
 									</td>
 									
 									<td  colspan="2" style="width:600px;">
@@ -95,7 +93,7 @@ ArrayList<SearchMember> list = (ArrayList<SearchMember>) request.getAttribute("l
 							<button id="search" style="float:right;">조회</button>				
 						</div>
 						
-								<table class="table table-bordered" style="border:2px solid gray; text-align:center">
+		<table class="table table-bordered" id="memberInfo" style="border:2px solid gray; text-align:center">
 			<tr style="background:lightgray;">
 				<td>번호</td>
 				<td>회원유형</td>
@@ -104,9 +102,18 @@ ArrayList<SearchMember> list = (ArrayList<SearchMember>) request.getAttribute("l
 				<td>회원가입일</td>
 				<td>생년월일</td>
 				<td>성별</td>
-				
 			</tr>
-			
+			<%-- <%for(SearchMember sm : list){ %>
+			<tr>
+				<td>1</td>
+				<td><%= sm.getMemberType() %></td>
+				<td><%= sm.getEmailText() %></td>
+				<td><%= sm.getNameText() %></td>
+				<td><%= sm.getJoinDay() %></td>
+				<td><%= sm.getBirthDay() %></td>
+				<td><%= sm.getGender() %></td>
+			</tr>
+			<% } %>	 --%>
 			
 		</table>
 		<div class="row" style="padding-left:200px">
@@ -128,28 +135,38 @@ ArrayList<SearchMember> list = (ArrayList<SearchMember>) request.getAttribute("l
 	</div>
 	<script>
 	$("#search").click(function(){
-		var searchType = $("#searchType").val();
+		var searchType = $("input[name='searchType']").val();
+		var searchText = $("input[name='searchText']").val();
+		var memberType = $("input[name='memberType']").val();
 		var joinStart = $("input[name='joinStart']").val();
+		var joinLast = $("input[name='joinLast']").val();
+		var birthDateLast = $("input[name='birthDateLast']").val();
+		var birthDateStart = $("input[name='birthDateStart']").val();
+		var gender = $("input[name='gender']").val();
+		var searchMember = {searchType:searchType, searchText:searchText, memberType:memberType, joinStart:joinStart, joinLast:joinLast, birthDateStart:birthDateStart,
+				birthDateLast:birthDateLast, gender:gender}
+		
 		$.ajax({
-			url:"memberCheck.ad",
-			data:
+			url:"<%= request.getContextPath() %>/memberCheck.ad",
+			data:searchMember,
 			type:"get",
 			success:function(data){
 				console.log(data);
-				$tableBody = $("#userInfoTable tbody");
+				$tableBody = $("#memberInfo tbody");
 				
 				$tableBody.html('');
 				
 				$.each(data, function(index, value){
 					var $tr = $("<tr>");
 					var $noTd = $("<td>").text(value.userNo);
-					var $nameTd = $("<td>").text(decodeURIComponent(value.userName));
-					var $nationTd = $("<td>").text(decodeURIComponent(value.userNation));
+					var $nameTd = $("<td>").text(decodeURIComponent(value.nameText));
+					var $emailTd = $("<td>").text(decodeURIComponent(value.emailText));
+					var $joindayTd = $("<td>").text(value.joinDay);
 					
 					$tr.append($noTd);
 					$tr.append($nameTd);
 					$tr.append($nationTd);
-					$tableBody.append($tr);
+					$tableBody.append($tr); 
 					
 				})
 			}
