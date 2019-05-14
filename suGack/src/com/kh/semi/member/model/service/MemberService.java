@@ -62,6 +62,14 @@ public class MemberService {
 		return result;
 	}
 
+	public int passwordCheck(String email, String password) {
+		Connection con = getConnection();
+		
+		int result = new MemberDao().passwordCheck(con, email, password);
+		
+		return result;
+	}
+	
 	public int insertAddress(Address add) {
 		Connection con = getConnection();
 		int result = 0;
@@ -137,6 +145,7 @@ public class MemberService {
 		
 		return result;
 	}
+
 
 }
 

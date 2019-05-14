@@ -96,13 +96,25 @@
 					url:"<%=request.getContextPath()%>/selectAddress.me?addressId=" + addressId1,
 					data:{addressId:addressId1},
 					success:function(data){
+						var url = "";
+						var address = data.address.split("#");
+						var zipCode = address[0];
+						var mainAddress = address[1].split(" ");
+						var detailAddress = address[2];
+						var extraAddress = address[3];
+						console.log(zipCode);
+						console.log(mainAddress);
+						var add = "";
+						for(var i = 0; i < mainAddress.length; i++) {
+							add += (mainAddress[i] + "L");
+						}
+						console.log(add);
+						
+						
 						if(data != null) {
 							console.log(data.address);
-							var winObj = window.open("views/member/modifyAddress.jsp?addressName=" + data.addressName + "&addressId=" + data.addressId + "&phone1=" + data.phone1 + "&phone2=" + data.phone2 + "&memberId=" + data.memberId, 
+							var winObj = window.open("views/member/modifyAddress.jsp?address=" + add + "&zipCode=" + zipCode + "&detailAddress=" + detailAddress + "&extraAddress=" + extraAddress +"&addressName=" + data.addressName + "&addressId=" + data.addressId + "&phone1=" + data.phone1 + "&phone2=" + data.phone2 + "&memberId=" + data.memberId, 
 									"주소입력", "width=500, height=600, left=200, top=100");
-							console.log(winObj);
-							window.postMessage (data.address, winObj);
-
 							/* winObj.document.getElementById("addressName").value = data.addressName;	 */						
 						}else{
 							alert("실패했습니다.");
@@ -131,14 +143,23 @@
 					url:"<%=request.getContextPath()%>/selectAddress.me?addressId=" + addressId2,
 					data:{addressId:addressId2},
 					success:function(data){
+						var url = "";
+						var address = data.address.split("#");
+						var zipCode = address[0];
+						var mainAddress = address[1].split(" ");
+						var detailAddress = address[2];
+						var extraAddress = address[3];
+						console.log(zipCode);
+						console.log(mainAddress);
+						var add = "";
+						for(var i = 0; i < mainAddress.length; i++) {
+							add += (mainAddress[i] + "L");
+						}
+						console.log(add);
 						if(data != null) {
 							console.log(data.address);
-							var winObj = window.open("views/member/modifyAddress.jsp?addressName=" + data.addressName + "&addressId=" + data.addressId + "&phone1=" + data.phone1 + "&phone2=" + data.phone2 + "&memberId=" + data.memberId, 
-									"주소입력", "width=500, height=600, left=200, top=100");
-							console.log(winObj);
-							window.postMessage (data.address, winObj);
-
-							/* winObj.document.getElementById("addressName").value = data.addressName;	 */						
+							var winObj = window.open("views/member/modifyAddress.jsp?address=" + add + "&zipCode=" + zipCode + "&detailAddress=" + detailAddress + "&extraAddress=" + extraAddress +"&addressName=" + data.addressName + "&addressId=" + data.addressId + "&phone1=" + data.phone1 + "&phone2=" + data.phone2 + "&memberId=" + data.memberId, 
+									"주소입력", "width=500, height=600, left=200, top=100");				
 						}else{
 							alert("실패했습니다.");
 						}
@@ -164,14 +185,23 @@
 					url:"<%=request.getContextPath()%>/selectAddress.me?addressId=" + addressId3,
 					data:{addressId:addressId3},
 					success:function(data){
+						var url = "";
+						var address = data.address.split("#");
+						var zipCode = address[0];
+						var mainAddress = address[1].split(" ");
+						var detailAddress = address[2];
+						var extraAddress = address[3];
+						console.log(zipCode);
+						console.log(mainAddress);
+						var add = "";
+						for(var i = 0; i < mainAddress.length; i++) {
+							add += (mainAddress[i] + "L");
+						}
+						console.log(add);
 						if(data != null) {
 							console.log(data.address);
-							var winObj = window.open("views/member/modifyAddress.jsp?addressName=" + data.addressName + "&addressId=" + data.addressId + "&phone1=" + data.phone1 + "&phone2=" + data.phone2 + "&memberId=" + data.memberId, 
-									"주소입력", "width=500, height=600, left=200, top=100");
-							console.log(winObj);
-							window.postMessage (data.address, winObj);
-
-							/* winObj.document.getElementById("addressName").value = data.addressName;	 */						
+							var winObj = window.open("views/member/modifyAddress.jsp?address=" + add + "&zipCode=" + zipCode + "&detailAddress=" + detailAddress + "&extraAddress=" + extraAddress +"&addressName=" + data.addressName + "&addressId=" + data.addressId + "&phone1=" + data.phone1 + "&phone2=" + data.phone2 + "&memberId=" + data.memberId, 
+									"주소입력", "width=500, height=600, left=200, top=100");						
 						}else{
 							alert("실패했습니다.");
 						}

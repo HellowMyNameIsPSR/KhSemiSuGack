@@ -33,9 +33,24 @@ public class LoginMemberServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		System.out.println(password);
-		Member loginUser = new MemberService().loginMember(email, password);
+		Member loginUser = null;
+		
+		int result = new MemberService().idCheck(email);
+		int result2 = new MemberService().passwordCheck(email, password);
 		
 		String page = "";
+		String msg = "";
+		if(result <= 0) {
+			System.out.println("아이디 없음");
+			msg = "1";
+		}else if(result2 <= 0) {
+			System.out.println("비밀번호 틀림");
+			msg = "-1";		
+		}else {
+			loginUser = new MemberService().loginMember(email, password);	
+		}
+		
+
 		if(loginUser != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", loginUser);
@@ -47,6 +62,8 @@ public class LoginMemberServlet extends HttpServlet {
 			response.sendRedirect(page);
 		}else {
 			System.out.println("실패 원인을 찾아라");
+			request.setAttribute("msg", msg);
+			request.getRequestDispatcher("views/member/memberLoginForm.jsp").forward(request, response);
 		}
 		
 	}
