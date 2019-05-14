@@ -195,11 +195,16 @@ input[type:image]{
       		<option value="★★☆☆☆">★★☆☆☆ 그냥그래요</option>
       		<option value="★★☆☆☆">★★☆☆☆ 별로에요</option>
       	</select>
-      	<input type="submit" value="리뷰등록하기" style=" float:right; width:150px; height:40px; background:gray; color:white; border:1px solid gray;">
+      	<input type="submit" id="registar" value="리뷰등록하기" style=" float:right; width:150px; height:40px; background:gray; color:white; border:1px solid gray;">
        <!--  <button style=" float:right; width:150px; height:40px; background:gray; color:white; border:1px solid gray;">리뷰등록하기</button> -->
       </form>
       </div>
       
+      <script>
+      	$(function(){
+      		
+      	})
+      </script>
       <!-- <div class="row">
       	<div class="outer" style="border:1px solid black;">
       	<div class="nick">

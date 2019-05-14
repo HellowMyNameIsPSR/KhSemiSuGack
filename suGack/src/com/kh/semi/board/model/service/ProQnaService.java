@@ -1,18 +1,14 @@
 package com.kh.semi.board.model.service;
 
 import static com.kh.semi.common.JDBCTemplate.close;
-import static com.kh.semi.common.JDBCTemplate.getConnection;
-
 import static com.kh.semi.common.JDBCTemplate.commit;
-
+import static com.kh.semi.common.JDBCTemplate.getConnection;
 import static com.kh.semi.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
-
 import com.kh.semi.board.model.dao.ProQnaDao;
-
 import com.kh.semi.board.model.vo.ProQna;
 import com.kh.semi.board.model.vo.ProQnaComment;
 public class ProQnaService {
@@ -90,6 +86,25 @@ public class ProQnaService {
 		close(con);
 		
 		return result;
+	}
+
+	
+
+	//문의글 답변 조회용 메소드
+	public ArrayList<ProQnaComment> selectCommentList(ProQnaComment comment) {
+		
+		Connection con = getConnection();
+		
+		
+		ArrayList<ProQnaComment> list = new ProQnaDao().selectCommentList(con,comment);
+		System.out.println("Service에서: "+list);
+		if(list!=null) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		return list;
 	}
 	
 

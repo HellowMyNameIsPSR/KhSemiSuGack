@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*"%>
+    <%
+    	ArrayList<HashMap<String, Object>> list = (ArrayList<HashMap<String, Object>>) request.getAttribute("list"); 
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,24 +91,35 @@
  	</div>
   <div class="row">
   	<!-- <div class="col-sm-1"></div> -->
+  	<% for(int i=0; i<list.size(); i++){
+   				HashMap<String,Object> hmap = list.get(i);
+   				%>
     <div class="col-sm-3 product" style="background-color:lavender; height:50%;">
    		<div class="content" style="background-color:green; height:300px; width:100%">
+   			
+   			
    			<div class="mainImg" style="height:200px;">
-   				<img src="../images/tvxq.jpg" style="width:100%; height:200px; align:center" >
+   				<input type="hidden" value=<%=hmap.get("bno") %>>
+   				<img src="/semi/uploadSalesImage/<%=hmap.get("changeName") %>" name="pic" style="width:100%; height:200px; align:center" >
    			</div>
+   			
    			<div class="proName" style="height:40px;">
-   				<p style="text-align:center; font-size:15px; margin-top:5px;">품명</p>
+   				<p name="name"style="text-align:center; font-size:15px; margin-top:5px;"><%=hmap.get("workName") %></p>
    			</div>
    			<div class="heart" style="padding:7px; height:50px; width:40px; float:left;" >
    				<img src="../images/fullheart.png" name="heart" style="width:30px; height:30px;" onclick="heartyn();">
    			</div>
    			<div class="heartprice" style="height:60px; margin-right:10px; margin-top:5px;">
-   			<p style="float:right; font-size:20px;">5000원</p>
+   			<p name="price" style="float:right; font-size:20px;"><%=hmap.get("price") %></p>
    			</div>
+   			
    			
    		</div>
     	
     </div>
+    <%} %>
+    
+    
     <div class="col-sm-3 product" style="background-color:lavenderblush; height:50%;">
     	<div class="content" style="background-color:green; height:300px; width:100%"></div>
     </div>
@@ -158,7 +172,7 @@
 <script>
 	$(".mainImg").click(function(){
 		//해당 상세 페이지로 가기!
-		location.href="productDetail.jsp";
+		location.href="views/product/productDetail.jsp";
 	});
 	
 	

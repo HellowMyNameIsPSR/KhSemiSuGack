@@ -109,13 +109,21 @@
 				var writer =<%=loginUser.getMemberId()%>;
 				var bno = <%=qna.getBno()%>;
 				var content = $("#replyContent").val();
+				console.log(bno);
 				
 				$.ajax({
 					url:"<%=request.getContextPath()%>/insertProQnaComment.bo?num=<%=qna.getBno()%>",
 					data:{writer:writer, bno:bno, content:content},
 					type:"post",
 					success:function(data){
-						console.log(data)
+						
+						
+						var s = "";
+						for(var i=1; i<500; i++){
+							s += data[i];
+						}
+						console.log(s);
+						//console.log("ajax까지 성공: "+data)
 						if(data == "good"){
         					//location.reload();
 							//self.close();
@@ -126,21 +134,23 @@
 						var $replySelectTable = $("#replySelectTable");
 						$replySelectTable.html('');
 						
-						
+						//console.log(data[key].writer);
 						for(var key in data){
-							
+							console.log(data[key].writer);
 							var $tr = $("<tr>");
 							var $writerTd = $("<td>").text(data[key].writer).css("width", "100px").css("height", "30px");
 							var $contentTd = $("<td>").text(data[key].content).css("width", "400px");
-							var $dateTd = $("<td>").text(data[key].write_date).css("width", "200px");
+							var $dateTd = $("<td>").text(data[key].writeDate).css("width", "200px");
 							
-							//console.log($writerTd);
+							
 							
 							$tr.append($writerTd);
 							$tr.append($contentTd);
 							$tr.append($dateTd);
 							$replySelectTable.append($tr);
-							//alert($tr);
+
+							
+							
 						}
 					},
 					error:function(){
