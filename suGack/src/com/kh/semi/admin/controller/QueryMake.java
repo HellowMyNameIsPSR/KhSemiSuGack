@@ -2,6 +2,7 @@ package com.kh.semi.admin.controller;
 
 import java.io.FileInputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -9,55 +10,54 @@ import com.kh.semi.admin.controller.QueryMake;
 import com.kh.semi.admin.model.vo.SearchMember;
 
 public class QueryMake {
-	private Properties prop = new Properties();
-
-	public QueryMake() {
-		
-		String fileName =  QueryMake.class
-				.getResource("/sql/admin/admin-query.properties")
-				.getPath();
-		
-		try {
-			prop.load(new FileReader(fileName));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-
 
 	public QueryMake(SearchMember m) {
 		
 		System.out.println(m);
+		Properties prop = new Properties();
 		
 		
 		String query = "SELECT * FROM MEMBER";
-	
+		
+	/*	if(m.getNameText().equals("")) {
+			query += " MEMBER_NAME LIKE ?";
+		}else if(m.getEmailText().equals("")) {
+			query += " EMAIL LIKE ?";
+		}
+	*/
 		if(m.getSearchType().equals("email")) {
-			query += " WHERE EMAIL LIKE ?";
+			query += " WHERE EMAIL = ?";
 		}else {
-			query += " WHERE MEMBER_NAME LIKE ?";
+			query += " WHERE MEMBER_NAME = ?";
 		}
 		
 		if(m.getMemberType() != null) {
 			query += " AND MEMBER_TYPE = ?";
 		}
 		if(m.getJoinStart() != null) {
-			query += " AND ENROLL_DATE >= TO_DATE(?) AND ENROLL_DATE < TO_DATE(?)";
+			query += " AND ENROLL_DATE >= ? AND ENROLL_DATE < ?";
 		}
 		if(m.getBirthDateStart() != null) {
-			query += " AND BIRTH_DATE >= TO_DATE(?) AND BIRTH_DATE < TO_DATE(?)";
+			query += " AND BIRTH_DATE >= ? AND BIRTH_DATE < ?";
 		}
 		if(m.getGender() != null) {
 			query += " AND GENDER = ?";
 		}
 		
 		query += " AND STATUS ='Y'";
+				
+		prop.put("selectMember", query);
 		
-		prop.put("searchMember=", query);
+		try {
+			prop.store(new FileWriter("/C:/Users/kimjinhwan/git/KhSemiSuGack/suGack/web/WEB-INF/classes/sql/admin/admin-query.properties"), "");
+			
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}		
 		
-		System.out.println(query);
+		
+		
 		
 	}
 
