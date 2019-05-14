@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.semi.member.model.vo.*"%>
-<%
-	Member loginUser = (Member) session.getAttribute("loginUser");
-%>
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,13 +11,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src="js/appIntroduce.js"></script>
+    
     <%@ include file="../assets/css/allCss.html" %>
     <%@ include file="stylesheet/appIntroduce.html" %>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 	<!-- 메뉴 -->
-	<%-- <%@ include file="<%= request.getContextPath() %>"/views/main/mainMenubar.jsp" %> --%>
+	<%@ include file="../main/mainMenubar.jsp" %>
 	
 	<!-- 부트스트랩 -->
 	<!-- 홈페이지 소개 -->
@@ -172,7 +170,9 @@
 	          <input class="form-control" id="brandName" name="brandName" placeholder="Brand Name" type="text" required>
 	        </div>
 	        <div class="col-sm-1 form-group">
-	          <button id="brandNameCheck" class="btn pull-right btn-default">중복확인</button>
+	          <button id="brandNameCheck" class="btn pull-right btn-default">
+	          	중복확인
+	          </button>
 	        </div>
 	        <div class="col-sm-6 form-group">
 	        	<label class="form-control">브랜드 이미지
@@ -205,5 +205,29 @@
 	    <span class="glyphicon glyphicon-chevron-up"></span>
 	  </a>
 	</footer>	
+	
+	<!-- script -->
+	<script src="js/appIntroduce.js"></script>
+	<script>
+	$(function(){
+		 
+		$("#brandNameCheck").click(function(){ //브랜드명 중복확인 눌렀을 때
+			var brandName = $("#brandName").val();
+			console.log(brandName);
+			$.ajax({
+				url : "<%=request.getContextPath() %>/selectBName.at",
+				type : "get",
+				data : {brandName : brandName},
+				success : function(data) {
+					console.log(data);
+				},
+				error : function(data) {
+					console.log("실패!");
+				}
+			}); //end ajax
+		}); //end btn
+		
+	}); //end func
+	</script>
 </body>
 </html>
