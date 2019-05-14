@@ -48,162 +48,166 @@
 
 				<section id="contents">
 				
-						<div class="row">
-							
-							
-							 
-							<div class="col-sm-4 author"
-								style="background-color: lavender; height: 50%;">
-								<div class="outer">
-									<div class="img" style="width: 230px;">
-										<img src="../../images/artist.jpg"
-											style="width: 200px; height: 200px;">
-									</div>
-									<div class="authorName">
-										<label style="margin-left: 80px;">상품1</label>
-									</div>
-									<div class="heart">
-										<img src="../../images/heart.png"
-											style="width: 50px; height: 50px; float: right;">
-									</div>
-								</div>
-
-							</div>
-							<div class="col-sm-4 author"
-								style="background-color: lavenderblush; height: 50%;">
-								<div class="outer">
-									<div class="img" style="width: 230px;">
-										<img src="../../images/artist.jpg"
-											style="width: 200px; height: 200px;">
-									</div>
-									<div class="authorName">
-										<label style="margin-left: 80px;">상품2</label>
-									</div>
-									<div class="heart">
-										<img src="../../images/heart.png"
-											style="width: 50px; height: 50px; float: right;">
-									</div>
-								</div>
-
-
-							</div>
-
-
-
-						<br>
-						<br>
-
-					
-							<div class="col-sm-4 author"
-								style="background-color: lavender; height: 50%;">
-								<div class="outer">
-									<div class="img" style="width: 230px;">
-										<img src="../../images/artist.jpg"
-											style="width: 200px; height: 200px;">
-									</div>
-									<div class="authorName">
-										<label style="margin-left: 80px;">상품3</label>
-									</div>
-									<div class="heart">
-										<img src="../../images/heart.png"
-											style="width: 50px; height: 50px; float: right;">
-									</div>
-								</div>
-
-							</div>
-							<div class="col-sm-4 author"
-								style="background-color: lavenderblush; height: 50%;">
-								<div class="outer">
-									<div class="img" style="width: 230px;">
-										<img src="../../images/artist.jpg"
-											style="width: 200px; height: 200px;">
-									</div>
-									<div class="authorName">
-										<label style="margin-left: 80px;">상품4</label>
-									</div>
-									<div class="heart">
-										<img src="../../images/heart.png"
-											style="width: 50px; height: 50px; float: right;">
-									</div>
-								</div>
-
-
-							</div>
-
-						
-					</div>
 					<div class="row">
 							<div class="col-sm-4 author"
-								style="background-color: lavenderblush; height: 50%;">
+								style="background-color: lavender; height: 50%;">
 								<div class="outer">
 									<div class="img" style="width: 230px;">
-										<img src="../../images/artist.jpg"
+										<img src="<%= request.getContextPath()%>/views/images/artist.jpg"
 											style="width: 200px; height: 200px;">
 									</div>
 									<div class="authorName">
 										<label style="margin-left: 80px;">상품1</label>
 									</div>
 									<div class="heart">
-										<img src="../../images/heart.png"
+										<img src="<%= request.getContextPath()%>/views/images/heart.png"
 											style="width: 50px; height: 50px; float: right;">
 									</div>
-								</div> 
-					</div> 
-					
-					
-					<div class="col-sm-4 author"
+								</div>
+
+							</div>
+							<div class="col-sm-4"></div>
+							<div class="col-sm-4 author"
 								style="background-color: lavenderblush; height: 50%;">
 								<div class="outer">
 									<div class="img" style="width: 230px;">
-										<img src="../../images/artist.jpg"
+										<img src="<%= request.getContextPath()%>/views/images/artist.jpg"
 											style="width: 200px; height: 200px;">
 									</div>
 									<div class="authorName">
 										<label style="margin-left: 80px;">상품2</label>
 									</div>
 									<div class="heart">
-										<img src="../../images/heart.png"
+										<img src="<%= request.getContextPath()%>/views/images/heart.png"
 											style="width: 50px; height: 50px; float: right;">
 									</div>
-								</div> 
-					</div>
-					<div class="col-sm-4 author"
-								style="background-color: lavenderblush; height: 50%;">
+								</div>
+
+
+							</div>
+
+
+
+
+
+
+							<div class="col-sm-4 author"
+								style="background-color: lavender; height: 50%;">
 								<div class="outer">
 									<div class="img" style="width: 230px;">
-										<img src="../../images/artist.jpg"
+										<img src="<%= request.getContextPath()%>/views/images/artist.jpg"
 											style="width: 200px; height: 200px;">
 									</div>
 									<div class="authorName">
 										<label style="margin-left: 80px;">상품3</label>
 									</div>
 									<div class="heart">
-										<img src="../../images/heart.png"
+										<img src="<%= request.getContextPath()%>/views/images/heart.png"
 											style="width: 50px; height: 50px; float: right;">
 									</div>
-								</div> 
-					</div>
-					<div class="col-sm-4 author"
+								</div>
+
+							</div>
+
+							<div class="col-sm-4 author"
 								style="background-color: lavenderblush; height: 50%;">
 								<div class="outer">
 									<div class="img" style="width: 230px;">
-										<img src="../../images/artist.jpg"
+										<img src="<%= request.getContextPath()%>/views/images/artist.jpg"
 											style="width: 200px; height: 200px;">
 									</div>
 									<div class="authorName">
 										<label style="margin-left: 80px;">상품4</label>
 									</div>
 									<div class="heart">
-										<img src="../../images/heart.png"
+										<img src="<%= request.getContextPath()%>/views/images/heart.png"
 											style="width: 50px; height: 50px; float: right;">
 									</div>
-								</div> 
-					</div>
-					
-					
-					
-					
-					</div>
+								</div>
+
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-4 author"
+								style="background-color: lavender; height: 50%;">
+								<div class="outer">
+									<div class="img" style="width: 230px;">
+										<img src="<%= request.getContextPath()%>/views/images/artist.jpg"
+											style="width: 200px; height: 200px;">
+									</div>
+									<div class="authorName">
+										<label style="margin-left: 80px;">상품1</label>
+									</div>
+									<div class="heart">
+										<img src="<%= request.getContextPath()%>/views/images/heart.png"
+											style="width: 50px; height: 50px; float: right;">
+									</div>
+								</div>
+
+							</div>
+							<div class="col-sm-4"></div>
+							<div class="col-sm-4 author"
+								style="background-color: lavenderblush; height: 50%;">
+								<div class="outer">
+									<div class="img" style="width: 230px;">
+										<img src="<%= request.getContextPath()%>/views/images/artist.jpg"
+											style="width: 200px; height: 200px;">
+									</div>
+									<div class="authorName">
+										<label style="margin-left: 80px;">상품2</label>
+									</div>
+									<div class="heart">
+										<img src="<%= request.getContextPath()%>/views/images/heart.png"
+											style="width: 50px; height: 50px; float: right;">
+									</div>
+								</div>
+
+
+							</div>
+
+
+
+
+
+
+							<div class="col-sm-4 author"
+								style="background-color: lavender; height: 50%;">
+								<div class="outer">
+									<div class="img" style="width: 230px;">
+										<img src="<%= request.getContextPath()%>/views/images/artist.jpg"
+											style="width: 200px; height: 200px;">
+									</div>
+									<div class="authorName">
+										<label style="margin-left: 80px;">상품3</label>
+									</div>
+									<div class="heart">
+										<img src="<%= request.getContextPath()%>/views/images/heart.png"
+											style="width: 50px; height: 50px; float: right;">
+									</div>
+								</div>
+
+							</div>
+
+							<div class="col-sm-4 author"
+								style="background-color: lavenderblush; height: 50%;">
+								<div class="outer">
+									<div class="img" style="width: 230px;">
+										<img src="<%= request.getContextPath()%>/views/images/artist.jpg"
+											style="width: 200px; height: 200px;">
+									</div>
+									<div class="authorName">
+										<label style="margin-left: 80px;">상품4</label>
+									</div>
+									<div class="heart">
+										<img src="<%= request.getContextPath()%>/views/images/heart.png"
+											style="width: 50px; height: 50px; float: right;">
+									</div>
+								</div>
+
+
+							</div>
+						</div>
 					
 					
 					<div class="row">
@@ -225,7 +229,7 @@
 				</section>
 			</div>
 		</div>
-		<%@ include file="../common/userMenuBar.jsp"%>
+		<%@ include file="../common/tourMenuBar.jsp"%>
 	</div>
 
 </body>
