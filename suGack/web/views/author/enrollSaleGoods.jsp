@@ -5,11 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>수작 - 판매 작품 등록</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<%@ include file="../assets/css/allCss.html" %>
-<%@ include file="../assets/SE2/css/smart_editor2.html" %>
 <script type="text/javascript" src="../assets/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+<!-- include summernote css/js-->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+<%@ include file="../assets/css/allCss.html" %>
 <style>
 	body{
 		background: radial-gradient(white, #F6FFFF) fixed;
@@ -193,7 +196,11 @@
 					<!-- Contents area -->
 					<!-- 확인후 지우기 -->
 				 	
-					<form id="insertFrom1" action="<%=request.getContextPath()%>/insertSale.wo" method="post">
+				 	
+				 	
+				 	
+				 	
+					<form action="<%=request.getContextPath()%>/insertSale.wo" method="post" encType="multipart/form-data">
 						<div class="listBox">
 							<div class="listTitle">
 								<h2>카테고리</h2>
@@ -229,119 +236,119 @@
 								<table class="checkBox">
 									<tr>
 										<td>
-											<input type="checkbox" id="case" name="cid" value="1"> 
+											<input type="radio" id="case" name="cid" value="1"> 
 											<label for="case">케이스</label>
 										</td>
 										<td>
-											<input type="checkbox" id="interior" name="cid" value="2"> 
+											<input type="radio" id="interior" name="cid" value="2"> 
 											<label for="interior">인테이어 소품</label>
 										</td>
 										<td>
-											<input type="checkbox" id="dress" name="cid" value="3"> 
+											<input type="radio" id="dress" name="cid" value="3"> 
 									<label for="dress">의류</label>
 										</td>
 										<td>
-											<input type="checkbox" id="child" name="cid" value="4"> 
+											<input type="radio" id="child" name="cid" value="4"> 
 											<label for="child">육아, 아동</label>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<input type="checkbox" id="furniture" name="cid" value="5"> 
+											<input type="radio" id="furniture" name="cid" value="5"> 
 										<label for="furniture">가구</label>
 										</td>
 										<td>
-											<input type="checkbox" id="fshoes" name="cid" value="6"> 
+											<input type="radio" id="fshoes" name="cid" value="6"> 
 										<label for="fshoes">여성 수제화</label>
 										</td>
 										<td>
-											<input type="checkbox" id="underwear" name="cid" value="7"> 
+											<input type="radio" id="underwear" name="cid" value="7"> 
 											<label for="underwear">속옷, 양말류</label>
 										</td>
 										<td>
-											<input type="checkbox" id="kitchen" name="cid" value="8"> 
+											<input type="radio" id="kitchen" name="cid" value="8"> 
 										<label for="kitchen">주방, 생활</label> 
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<input type="checkbox" id="earring" name="cid" value="9"> 
+											<input type="radio" id="earring" name="cid" value="9"> 
 											<label for="earring">귀걸이</label>
 										</td>
 										<td>
-											<input type="checkbox" id="mshoes" name="cid" value="10"> 
+											<input type="radio" id="mshoes" name="cid" value="10"> 
 											<label for="mshoes">남성 수제화</label>
 										</td>
 										<td>
-											<input type="checkbox" id="fiberOthers" name="cid" value="11"> 
+											<input type="radio" id="fiberOthers" name="cid" value="11"> 
 											<label for="fiberOthers">기타 섬유, 퀄트</label>
 										</td>
 										<td>
-											<input type="checkbox" id="animal" name="cid" value="12"> 
+											<input type="radio" id="animal" name="cid" value="12"> 
 											<label for="animal">반려동물 용품</label>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<input type="checkbox" id="ring" name="cid" value="13"> 
+											<input type="radio" id="ring" name="cid" value="13"> 
 											<label for="ring">반지</label>
 										</td>
 										<td>
-											<input type="checkbox" id="pottery" name="cid" value="14"> 
+											<input type="radio" id="pottery" name="cid" value="14"> 
 											<label for="pottery">도자기</label> 
 										</td>
 										<td>
-											<input type="checkbox" id="bag" name="cid" value="15"> 
+											<input type="radio" id="bag" name="cid" value="15"> 
 											<label for="bag">가방, 파우치</label> 
 										</td>
 										<td>
-											<input type="checkbox" id="stationery" name="cid" value="16">  
+											<input type="radio" id="stationery" name="cid" value="16">  
 											<label for="stationery">문구, 팬시</label> 
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<input type="checkbox" id="necklace" name="cid" value="17"> 
+											<input type="radio" id="necklace" name="cid" value="17"> 
 											<label for="necklace">목걸이</label> 
 										</td>
 										<td>
-											<input type="checkbox" id="electronic" name="cid" value="18">  
+											<input type="radio" id="electronic" name="cid" value="18">  
 											<label for="electronic">전자기기 관련</label>
 										</td>
 										<td>
-											<input type="checkbox" id="fashionOthers" name="cid" value="19">  
+											<input type="radio" id="fashionOthers" name="cid" value="19">  
 											<label for="fashionOthers">패션 잡화</label>
 										</td>
 										<td>
-											<input type="checkbox" id="watch" name="cid" value="20">  
+											<input type="radio" id="watch" name="cid" value="20">  
 											<label for="watch">시계</label>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<input type="checkbox" id="bracelet" name="cid" value="21"> 
+											<input type="radio" id="bracelet" name="cid" value="21"> 
 										<label for="bracelet">팔찌</label> 
 										</td>
 										<td>
-											<input type="checkbox" id="wallet" name="cid" value="22">  
+											<input type="radio" id="wallet" name="cid" value="22">  
 											<label for="wallet">지갑</label> 
 										</td>
 										<td>
-											<input type="checkbox" id="accessory" name="cid" value="23"> 
+											<input type="radio" id="accessory" name="cid" value="23"> 
 											<label for="accessory">그외 악세서리</label>> 
 										</td>
 										<td>
-											<input type="checkbox" id="toy" name="cid" value="24"> 
+											<input type="radio" id="toy" name="cid" value="24"> 
 										<label for="toy">인형, 장난감</label>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<input type="checkbox" id="crafts" name="cid" value="25">
+											<input type="radio" id="crafts" name="cid" value="25">
 											<label for="crafts">공예</label> 
 										</td>
 										<td>
-											<input type="checkbox" id="theOthers" name="cid" value="26">
+											<input type="radio" id="theOthers" name="cid" value="26">
 											<label for="theOthers">기타</label> 
 										</td>
 										<td>
@@ -623,51 +630,6 @@
 
 
 
-						
-						
-						
-						
-
-						<!-- 상품상세설명 -->
-						<div class="listBox" style="height:100%; padding-botton:50px;">
-							<div class="listTitle">
-								<h2>상품상세설명</h2>
-							</div>
-							<div class="listContents">
-								<textarea name="workContent" id="workContent" rows="10" cols="100">
-									내용
-								</textarea>
-							</div>
-						</div>
-						<script type="text/javascript">
-							var oEditors = [];
-							nhn.husky.EZCreator.createInIFrame({
-								oAppRef : oEditors,
-								elPlaceHolder : "workContent",
-								sSkinURI : "../assets/SE2/SmartEditor2Skin.html",
-								fCreator : "createSEditor2"
-							});
-							
-							$("#submitBtn").click(function() {
-								oEditors.getById["workContent"].exec("UPDATE_CONTENTS_FIELD", []);
-							});
-
-
-
-
-						</script>
-
-
-
-
-					</form>
-					
-					
-					
-					
-					<form id="insertFrom2" action="<%=request.getContextPath()%>/insertImg.wo" method="post"
-					encType="multipart/form-data">
-					<!-- 상품이미지 -->
 						<div class="listBox" >
 							<div class="listTitle">
 								<h2>상품이미지</h2>
@@ -732,7 +694,6 @@
 							<input type="file" id="workImg3" name="workImg3" onchange="loadImg(this,4)">
 							<input type="file" id="workImg4" name="workImg4" onchange="loadImg(this,5)">
 						</div>
-						</form>
 						<script>
 						
 							$(function(){
@@ -785,27 +746,97 @@
 						</script>
 						
 						
-						<!-- 버튼 -->
-						<div align="center">
-							<button type="reset" class="all-btn" style="width:150px;">취소</button>
-							<button id="submitButton" type="button" class="all-btn" style="width:150px;">등록하기</button>
+						
+
+						<!-- 상품상세설명 -->
+						<div class="listBox" style="height:100%; padding-botton:50px;">
+							<div class="listTitle">
+								<h2>상품상세설명</h2>
+							</div>
+							<div style="padding:30px 30px 30px 30px;">
+						 		<textarea name="workContent" id="summernote">
+						 		내용
+						 		</textarea>
+							</div>
 						</div>
 						
+						
+
 						<script>
-						$(document).on("click","#submitButton", function() {
-								$("#insertFrom1").submit();
-								$("#insertFrom2").submit();
-							});
+						 	$(document).ready(function() {
+						 	     $('#summernote').summernote({
+						 	             height: 400,              
+						 	             minHeight: null,      
+						 	             maxHeight: null,            
+						 	             focus: true                 
+						 	     });
+						 	});
+		
+						 	$(document).ready(function() {
+						 		  $('#summernote').summernote();
+				 				});
+						 	
+						 /* 	function sendFile(file, editor) {
+					            // 파일 전송을 위한 폼생성
+						 		data = new FormData();
+						 	    data.append("uploadFile", file);
+						 	    $.ajax({ // ajax를 통해 파일 업로드 처리
+						 	        data : data,
+						 	        type : "POST",
+						 	        url : "./summernote_imageUpload.jsp",
+						 	        cache : false,
+						 	        contentType : false,
+						 	        processData : false,
+						 	        success : function(data) { // 처리가 성공할 경우
+					                    // 에디터에 이미지 출력
+						 	        	//$(editor).summernote('editor.insertImage', data.url);
+						 	        }
+						 	    });
+						 	} */
+
+
+				 		</script>
+				 	
 						
-						</script>
 						
+						
+						<div align="center">
+							<button type="reset" class="all-btn" style="width:150px;">취소</button>
+							<button type="submit" class="all-btn" style="width:150px;">등록하기</button>
+						</div>
+						
+
+
+
+
+					</form>
+					
+					
+					
+					
 						
 						
 				</section>
 			</div>
 		</div>
-		<%@ include file="authorMenuBar.jsp" %>
+		<%@ include file="authorMenuBarsub.jsp" %>
 	</div>
-			<div style="height:300px;"></div>
+			<!-- <div style="height:300px;"></div> -->
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 </body>
 </html>

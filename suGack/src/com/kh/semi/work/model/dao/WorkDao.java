@@ -148,7 +148,6 @@ public class WorkDao {
 		} finally {
 			close(pstmt);
 		}
-		System.out.println("이미지 dao : " +result);
 		return result;
 	}
 	

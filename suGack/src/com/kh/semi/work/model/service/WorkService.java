@@ -48,19 +48,25 @@ public class WorkService {
 		return listCount;
 	}
 	//사진 등록 메소드
-	public int insertPicFile(ArrayList<PicFile> picFile) {
+	public int insertSales(Work work, ArrayList<PicFile> picFile) {
 		Connection con = getConnection();
+		int result = 0;
 		
-		int result = new WorkDao().insertPicFile(con, picFile);
+		int result1 = new WorkDao().insertSale(con, work);
 		
-		if(result > 0) {
+		if(result1 > 0) {
+			int result2 = new WorkDao().insertPicFile(con, picFile);
+		}
+		
+		if(result1 > 0) {
 			commit(con);
+			result = 1;
 		}else {
 			rollback(con);
+			result = 0;
 		}
 		
 		close(con);
-		System.out.println("이미지 서비스 : " +result);
 		return result;
 	}
 	
