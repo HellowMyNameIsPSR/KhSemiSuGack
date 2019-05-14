@@ -146,9 +146,35 @@ public class MemberDao {
 			close(rset);
 			close(pstmt);
 		}
+
+		return result;
+	}
+	
+	public int passwordCheck(Connection con, String email, String password) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
 		
+		String query = prop.getProperty("passwordCheck");
 		
-		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, email);
+			pstmt.setString(2, password);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
 		
 		return result;
 	}
@@ -302,6 +328,8 @@ public class MemberDao {
 		
 		return result;
 	}
+
+	
 
 }
 

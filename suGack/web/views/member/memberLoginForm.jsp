@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String msg = (String)request.getAttribute("msg");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,13 +49,13 @@
 					<div class="form-group">
 						<label class="control-label col-sm-3">이메일</label>
 						<div class="col-sm-6">
-							<input type="text" name="email" class="form-control">
+							<input type="text" name="email" id="email" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-3">비밀번호</label>
 						<div class="col-sm-6">
-							<input type="password" name="password" class="form-control">
+							<input type="password" name="password" id="password" class="form-control">
 						</div>
 					</div>
 					<br>
@@ -68,6 +71,20 @@
 			
 		
 	</div>
+
+<script>
+	$(function(){
+		var msg = "<%=msg%>";
+		console.log(msg);
+		if(msg == "1") {
+			alert("존재하지 않는 아이디 입니다.");
+			$("#email").focus();
+		}else if(msg == "-1"){
+			alert("비밀번호가 틀립니다.");
+			$("#password").focus();
+		}
+	});
+</script>	
 </body>
 </html>
 

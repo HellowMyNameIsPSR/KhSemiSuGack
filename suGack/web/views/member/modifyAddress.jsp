@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%
 	String addressName = request.getParameter("addressName");
+	String address = request.getParameter("address");
+	String zipCode = request.getParameter("zipCode");
+	String detailAddress = request.getParameter("detailAddress");
+	String extraAddress = request.getParameter("extraAddress");
 	String addressId = request.getParameter("addressId");
 	String phone1 = request.getParameter("phone1");
 	String phone2 = request.getParameter("phone2");
@@ -11,8 +15,15 @@
 	if(phone2.equals("undefined")) {
 		phone2 = "";
 	}
+	
+	String []add = address.split("L");
+	String mainAddress = "";
+	for(int i = 0; i < add.length; i++) {
+		mainAddress += add[i] + " ";
+	}
+	
 	String memberId = request.getParameter("memberId");
-	System.out.println(addressName + addressId + phone1 + phone2 + memberId);
+	System.out.println(address);
 %>
 <!DOCTYPE html>
 <html>
@@ -40,26 +51,26 @@
 				<div class="form-group" >
 					<label class="control-label col-xs-3">우편번호</label>
 					<div class="col-xs-4">
-						<input type="text" id="postCode" class="d_form mini form-control" name="postCode" placeholder="우편번호">
+						<input type="text" id="postCode" class="d_form mini form-control" name="postCode" placeholder="우편번호" value="<%=zipCode%>">
 					</div>
 					<input type="button" onclick="searchAddress()" value="주소검색" class="d_btn col-xs-2 btn btn-primary">
 				</div> 
 				<div class="form-group">
 					<span class="col-xs-3"></span>
 					<div class="col-xs-6">
-						<input type="text" id="address" class="d_form large form-control" name="address" placeholder="주소">
+						<input type="text" id="address" class="d_form large form-control" name="address" placeholder="주소" value="<%=mainAddress%>">
 					</div>
 				</div>
 				<div class="form-group">
 					<span class="col-xs-3"></span>
 					<div class="col-xs-6">
-						<input type="text" id="detailAddress" class="d_form form-control" name="detailAddress" placeholder="상세주소">
+						<input type="text" id="detailAddress" class="d_form form-control" name="detailAddress" placeholder="상세주소" value="<%=detailAddress%>">
 					</div>
 				</div>
 				<div class="form-group">
 					<span class="col-xs-3"></span>
 					<div class="col-xs-6">
-						 <input type="text" id="extraAddress" class="d_form form-control" name="extraAddress" placeholder="참고항목">
+						 <input type="text" id="extraAddress" class="d_form form-control" name="extraAddress" placeholder="참고항목" value="<%=extraAddress%>">
 					</div>
 				</div>
 				<div class="form-group" >

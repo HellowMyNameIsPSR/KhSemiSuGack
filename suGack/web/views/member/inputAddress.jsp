@@ -157,8 +157,6 @@
 								self.close();            					
             				}else if(data == "manyAddress"){
             					alert("주소는 3개까지만 저장 가능합니다.");
-            					opener.document.location.reload();
-								self.close();
             				}else {
             					alert("다시입력해 주세요");
             				}
