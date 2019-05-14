@@ -3,11 +3,9 @@
     
 <%
 		ProQna qna =(ProQna) request.getAttribute("qna");
+		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
 %>
 
- <%
-		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
-%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +15,7 @@
 <style>
 	.outer{
 		width:800px;
-		height:500px;
+		
 		background:lightblue;
 		color:white;
 		margin-left:auto;
@@ -92,7 +90,7 @@
 				<tr>
 					<td>댓글작성</td>
 					<td>
-						<textarea rows="3" cols="80" id="replyContent"></textarea>
+						<textarea rows="3" cols="80" id="replyContent" name="reply"></textarea>
 					</td>
 					<td><button id="addReply">댓글 등록</button></td>
 				</tr>
@@ -113,25 +111,36 @@
 				var content = $("#replyContent").val();
 				
 				$.ajax({
-					url:"/semi/insertProQnaComment.bo",
+					url:"<%=request.getContextPath()%>/insertProQnaComment.bo?num=<%=qna.getBno()%>",
 					data:{writer:writer, bno:bno, content:content},
 					type:"post",
 					success:function(data){
-						console.log(data);
-						
+						console.log(data)
+						if(data == "good"){
+        					//location.reload();
+							//self.close();
+							
+						}else if(data =="fail") {
+        					alert("다시..");
+        				}
 						var $replySelectTable = $("#replySelectTable");
 						$replySelectTable.html('');
 						
+						
 						for(var key in data){
+							
 							var $tr = $("<tr>");
-							var $writerTd = $("<td>").text(data[key].writer).css("width", "100px");
+							var $writerTd = $("<td>").text(data[key].writer).css("width", "100px").css("height", "30px");
 							var $contentTd = $("<td>").text(data[key].content).css("width", "400px");
 							var $dateTd = $("<td>").text(data[key].write_date).css("width", "200px");
+							
+							//console.log($writerTd);
 							
 							$tr.append($writerTd);
 							$tr.append($contentTd);
 							$tr.append($dateTd);
 							$replySelectTable.append($tr);
+							//alert($tr);
 						}
 					},
 					error:function(){
