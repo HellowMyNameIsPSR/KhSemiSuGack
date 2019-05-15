@@ -6,13 +6,13 @@
 <meta charset="UTF-8">
 <title>수작 - 판매 작품 등록</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script type="text/javascript" src="../assets/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 <!-- include summernote css/js-->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 <%@ include file="../assets/css/allCss.html" %>
+
 <style>
 	body{
 		background: radial-gradient(white, #F6FFFF) fixed;
@@ -696,25 +696,25 @@
 						</div>
 						<script>
 						
-							$(function(){
-								$("#fileArea").hide();
-								
-								$("#titleImg").click(function(){
-									$("#workImg0").click();
-								});
-								$("#subImg1").click(function(){
-									$("#workImg1").click();
-								});
-								$("#subImg2").click(function(){
-									$("#workImg2").click();
-								});
-								$("#subImg3").click(function(){
-									$("#workImg3").click();
-								});
-								$("#subImg4").click(function(){
-									$("#workImg4").click();
-								});
+						$(function(){
+							$("#fileArea").hide();
+							
+							$("#titleImg").click(function(){
+								$("#workImg0").click();
 							});
+							$("#subImg1").click(function(){
+								$("#workImg1").click();
+							});
+							$("#subImg2").click(function(){
+								$("#workImg2").click();
+							});
+							$("#subImg3").click(function(){
+								$("#workImg3").click();
+							});
+							$("#subImg4").click(function(){
+								$("#workImg4").click();
+							});
+						});
 						
 							
 							function loadImg(value, num){
@@ -747,7 +747,6 @@
 						
 						
 						
-
 						<!-- 상품상세설명 -->
 						<div class="listBox" style="height:100%; padding-botton:50px;">
 							<div class="listTitle">
@@ -760,44 +759,62 @@
 							</div>
 						</div>
 						
-						
-
 						<script>
-						 	$(document).ready(function() {
-						 	     $('#summernote').summernote({
-						 	             height: 400,              
-						 	             minHeight: null,      
-						 	             maxHeight: null,            
-						 	             focus: true                 
-						 	     });
-						 	});
-		
-						 	$(document).ready(function() {
-						 		  $('#summernote').summernote();
-				 				});
-						 	
-						 /* 	function sendFile(file, editor) {
-					            // 파일 전송을 위한 폼생성
-						 		data = new FormData();
-						 	    data.append("uploadFile", file);
-						 	    $.ajax({ // ajax를 통해 파일 업로드 처리
-						 	        data : data,
-						 	        type : "POST",
-						 	        url : "./summernote_imageUpload.jsp",
-						 	        cache : false,
-						 	        contentType : false,
-						 	        processData : false,
-						 	        success : function(data) { // 처리가 성공할 경우
-					                    // 에디터에 이미지 출력
-						 	        	//$(editor).summernote('editor.insertImage', data.url);
-						 	        }
-						 	    });
-						 	} */
+					/*	$('#summernote').summernote({
+					        height : 400,
+					        onImageUpload : function(files, editor, welEditable) {
+					            sendFile(files[0], editor, welEditable);
+					        },
+					        lang : 'ko-KR'
+					        
+				        	callbacks: {
+								onImageUpload: function(files) {
+									//your upload process
+
+								}
+
+							}
+					    });*/
+						
+						$(document).ready(function() {
+						      $('#summernote').summernote({
+						        height: 400,
+						        minHeight: null,
+						        maxHeight: null,
+						        focus: true,
+						         callbacks: {
+						        	 /*  onImageUpload: function(files, editor, welEditable) {
+						            for (var i = files.length - 1; i >= 0; i--) {
+						              sendFile(files[i], this);
+						            }
+						          }*/
+
+						        }
+						      });
+						    });
+						    
+						   /* function sendFile(file, el) {
+						      var form_data = new FormData();
+						      form_data.append('file', file);
+						      $.ajax({
+						        data: form_data,
+						        type: "POST",
+						        url: 'InsertContentsImageServlet.wo',
+						        cache: false,
+						        contentType: false,
+						        enctype: 'multipart/form-data',
+						        processData: false,
+						        success: function(url) {
+						          $(el).summernote('editor.insertImage', url);
+						          $('#imageBoard > ul').append('<li><img src="'+url+'" width="480" height="auto"/></li>');
+						        }
+						      });
+						    }
+*/
 
 
 				 		</script>
-				 	
-						
+
 						
 						
 						<div align="center">
@@ -812,6 +829,10 @@
 					</form>
 					
 					
+						
+						
+
+						
 					
 					
 						
