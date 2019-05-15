@@ -108,8 +108,95 @@ public class adminDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
 		}
 		
+		
+		return list;
+	}
+
+	public ArrayList<Integer> selectSalesForMonth(Connection con) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		ArrayList<Integer> list = null;
+		
+		String query = prop.getProperty("selectSalesForMonth");
+		
+		try {
+			stmt = con.createStatement();
+			
+			rset = stmt.executeQuery(query);
+			
+			list = new ArrayList<Integer>();
+			while(rset.next()) {
+				list.add(rset.getInt("SALES"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return list;
+	}
+
+	public ArrayList<Integer> selectSalesForWeek(Connection con) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		ArrayList<Integer> list = null;
+		
+		String query = prop.getProperty("selectSalesForWeek");
+		
+		try {
+			stmt = con.createStatement();
+			
+			rset = stmt.executeQuery(query);
+			
+			list = new ArrayList<Integer>();
+			while(rset.next()) {
+				list.add(rset.getInt("SALES"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return list;
+	}
+
+	public ArrayList<Integer> selectSalesForDay(Connection con) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		ArrayList<Integer> list = null;
+		
+		String query = prop.getProperty("selectSalesForDay");
+		
+		try {
+			stmt = con.createStatement();
+			
+			rset = stmt.executeQuery(query);
+			
+			list = new ArrayList<Integer>();
+			while(rset.next()) {
+				list.add(rset.getInt("SALES"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
 		
 		return list;
 	}
