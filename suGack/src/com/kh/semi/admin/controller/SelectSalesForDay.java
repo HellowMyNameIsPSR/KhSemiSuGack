@@ -1,6 +1,7 @@
 package com.kh.semi.admin.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -33,7 +34,18 @@ public class SelectSalesForDay extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Integer> list = new adminService().selectSalesForDay();
+		String startDate = request.getParameter("startDate");
+		String endDate = request.getParameter("endDate");
+		
+		System.out.println(startDate);
+		System.out.println(endDate);
+		
+		Date sDate = Date.valueOf(startDate);
+		Date eDate = Date.valueOf(endDate);
+		
+		ArrayList<Integer> list = new adminService().selectSalesForDay(sDate, eDate);
+		ArrayList<String> list2 = new adminService().getDay(sDate, eDate);
+		
 		System.out.println(list);
 		JSONObject data = new JSONObject();
 		JSONObject ajaxObjCols1 = new JSONObject();
@@ -42,14 +54,18 @@ public class SelectSalesForDay extends HttpServlet {
 		JSONArray ajaxArrayRows = new JSONArray();
 //		JSONArray ajaxArray = new JSONArray();
 		
+		ajaxObjCols1.put("id", "month");
+		ajaxObjCols1.put("label", "Month");
 		ajaxObjCols1.put("type", "string");
+		ajaxObjCols2.put("id", "won");
+		ajaxObjCols2.put("label", "won");
 		ajaxObjCols2.put("type", "number");
 		ajaxArrayCols.add(ajaxObjCols1);
 		ajaxArrayCols.add(ajaxObjCols2);
 		
 		for(int i = 0; i < list.size(); i++) {
 			JSONObject legend = new JSONObject();
-			legend.put("v", "5/" + "0" + (i + 1));
+			legend.put("v", list2.get(i));
 			legend.put("f", null);
 			
 			JSONObject value = new JSONObject();

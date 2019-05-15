@@ -127,7 +127,6 @@
 				var chartData;
 				$.ajax({
 					url:"<%=request.getContextPath()%>/selectMemberForMonth.ad",
-					data:{startDate:startDate, endDate:endDate},
 					async : false,
 					type:"get",
 					success:function(data){
@@ -151,6 +150,7 @@
 				$.ajax({
 					url:"<%=request.getContextPath()%>/selectSalesForMonth.ad",
 					async : false,
+					data:{startDate:"2019-01-01", endDate:"2019-12-31"},
 					type:"get",
 					success:function(data){
 						console.log(data);

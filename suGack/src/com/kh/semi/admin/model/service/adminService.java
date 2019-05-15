@@ -1,6 +1,7 @@
 package com.kh.semi.admin.model.service;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import com.kh.semi.admin.model.dao.adminDao;
@@ -31,34 +32,64 @@ public class adminService {
 		return list;
 	}
 
-	public ArrayList<Integer> selectSalesForMonth() {
+	public ArrayList<Integer> selectSalesForMonth(Date sDate, Date eDate) {
 		Connection con = getConnection();
 		
-		ArrayList<Integer> list = new adminDao().selectSalesForMonth(con);
+		ArrayList<Integer> list = new adminDao(1).selectSalesForMonth(con, sDate, eDate);
 		
 		close(con);
 		
 		return list;
 	}
 
-	public ArrayList<Integer> selectSalesForWeek() {
+	public ArrayList<Integer> selectSalesForWeek(Date sDate, Date eDate) {
 		Connection con = getConnection();
 		
-		ArrayList<Integer> list = new adminDao().selectSalesForWeek(con);
+		ArrayList<Integer> list = new adminDao(1).selectSalesForWeek(con, sDate, eDate);
 		
 		close(con);
 		
 		return list;
 	}
 
-	public ArrayList<Integer> selectSalesForDay() {
+	public ArrayList<Integer> selectSalesForDay(Date sDate, Date eDate) {
 		Connection con = getConnection();
 		
-		ArrayList<Integer> list = new adminDao().selectSalesForDay(con);
+		ArrayList<Integer> list = new adminDao(1).selectSalesForDay(con, sDate, eDate);
 		
 		close(con);
 		
 		return list;
+	}
+
+	public ArrayList<String> getMonth(Date sDate, Date eDate) {
+		Connection con = getConnection();
+		
+		ArrayList<String> list2 = new adminDao(1).getMonth(con, sDate, eDate);;
+		
+		close(con);
+		
+		return list2;
+	}
+
+	public ArrayList<String> getDay(Date sDate, Date eDate) {
+		Connection con = getConnection();
+		
+		ArrayList<String> list2 = new adminDao(1).getDay(con, sDate, eDate);;
+		
+		close(con);
+		
+		return list2;
+	}
+
+	public ArrayList<String> getWeek(Date sDate, Date eDate) {
+		Connection con = getConnection();
+		
+		ArrayList<String> list2 = new adminDao(1).getWeek(con, sDate, eDate);;
+		
+		close(con);
+		
+		return list2;
 	}
 		
 
