@@ -9,15 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.author.model.service.AuthorService;
-import com.kh.semi.member.model.vo.Member;
-
+import static com.kh.semi.common.LoginCheck.*;
 /**
  * Servlet implementation class SelectBrandNameServlet
  */
 @WebServlet("/selectBName.at")
 public class SelectBrandNameServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -34,7 +33,13 @@ public class SelectBrandNameServlet extends HttpServlet {
 		String brandName = request.getParameter("brandName");
 		
 		//비즈니스 로직 작성
-		int result = new AuthorService().selectBrandName(brandName);
+		boolean isLogin = isLogin(request, response);
+		int result = 0;
+		if(isLogin) {
+			result = new AuthorService().selectBrandName(brandName);
+		} else {
+			result = LOGIN_NO;
+		}
 		response.getWriter().print(result);
 	} // method
 

@@ -1,25 +1,28 @@
 package com.kh.semi.author.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.member.model.vo.Member;
+import com.kh.semi.author.model.service.AuthorService;
+import com.kh.semi.author.model.vo.ProType;
 
 /**
- * Servlet implementation class CheckLoginStatus
+ * Servlet implementation class SelectAuthorTypeListServlet
  */
-@WebServlet("/loginCheck.at")
-public class CheckLoginStatus extends HttpServlet {
+@WebServlet("/selectproptype.at")
+public class SelectAuthorTypeListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CheckLoginStatus() {
+    public SelectAuthorTypeListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,15 +31,16 @@ public class CheckLoginStatus extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Member loginUser = (Member) request.getSession().getAttribute("loginUser");
-		boolean loginStatus;
-		if(loginUser != null) {
-			loginStatus = true;
+		ArrayList<ProType> list = new AuthorService().selectProTypeList();
+		String page = "";
+		if(list != null) {
+			page = "views/application/appIntroduce.jsp";
+			request.setAttribute("pTypeList", list);
 		} else {
-			loginStatus = false;
+			page = "views/common/errorPage.jsp";
+			request.setAttribute("msg", "작가유형 가져오기 오류");
 		}
-		System.out.println("loginStatus" + loginStatus);
-		response.getWriter().print(loginStatus);
+		request.getRequestDispatcher(page).forward(request, response);
 	} //end method
 
 	/**
