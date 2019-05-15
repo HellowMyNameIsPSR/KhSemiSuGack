@@ -2,7 +2,6 @@
     pageEncoding="UTF-8" import="java.util.*, com.kh.semi.work.model.vo.*"%>
 <%
 	ArrayList<Work> list = (ArrayList<Work>)request.getAttribute("list");
-	System.out.println("ㄹ12312412421 : " + list);
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	int currentPage = pi.getCurrentPage();
 	int maxPage = pi.getMaxPage();
