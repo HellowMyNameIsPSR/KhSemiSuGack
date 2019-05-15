@@ -35,17 +35,20 @@
 					
 				<!-- Header -->
 
-				<header id="header" style="border: 1px solid black;">
-				<%-- <%@ include file="../main/mainMenubar.jsp" %> --%>  
+				<%-- <header id="header" style="border: 1px solid black;">
+				<%@ include file="../main/mainMenubar.jsp" %>  
 					
 				 </header>
-
-				<form action="<%=request.getContextPath()%>/insert.to"  method="post" encType="multipart/form-data">
-				<section id="contents">
+ --%>
+				<%-- <form action="<%=request.getContextPath()%>/insert.to"  method="post" encType="multipart/form-data"> --%>
+				<form action="<%=request.getContextPath()%>/insert.tbo">
+				<section id="contents" class="tableArea">
+				   
+				
 					<div class="container" style="border: 1px solid black;">
-						<h4>작가프로필</h4>
+						<!-- <h4>작가프로필</h4> -->
 
-						<div class="profilArea row">
+						<!-- <div class="profilArea row">
 							<div id="titleImgArea"
 								style="border: 1px solid black; width: 200px; height: 200px; float: left;">
 								<img id="titleImg" width="200" height="200">
@@ -65,10 +68,10 @@
 
 							</div>
 						</div>
+ -->
 
 
-
-						<div class="photoArea row" style="border: 1px solid black;">
+						<!-- <div class="photoArea row" style="border: 1px solid black;">
 
 							<div class="col-sm-12">
 								<h4>작가 사진 수정</h4>
@@ -108,30 +111,21 @@
 
 
 						</div>
-						<br>
+						<br> -->
 
 
-					<div class="text row" id="cent" style="border: 1px solid red;">
-						
+					<!-- <div class="text row" id="cent" style="border: 1px solid red;"> -->
+						<h3>작가 이야기 게시판</h3>
 						<textarea  name="author_Title" style="width:1000px" placeholder="제목명"></textarea>
 							
-						<div class="textArea" style="border: 1px solid  black; width: 1200px; height: 700px;">
+						<div class="textArea" style="border: 1px solid  black; width: 1100px; height: 700px;">
 						
-							<div class="font" style="border : 1px solid yellow; width:500 px; height:100px"><h4>글꼴메뉴</h4></div>	
 								
-							<textarea name="author_content"  style= "width:1200px"  placeholder="내용을 입력하세요"></textarea>
+							<textarea name="author_content"  style= "width:1100px"  placeholder="내용을 입력하세요"></textarea>
 						
 						</div>	
 						
-						<div id="fileArea">
-					
-						    <input type="file" id="thumbnailImg1" name="thumbnailImg1" onchange="loadImg(this,1)">
-						    
-						
-						
-						</div> 
-					
-                              
+						          
                         <div align="center">
 							<button type="reset" style="width: 80px; height: 60px;"> 수정취소</button>
 	                        <button type="submit" style="width: 80px; height: 60px;"> 저장하기</button>
@@ -140,12 +134,13 @@
 						
 
                              
-                        
-					</div>
+                <!--         
+					</div> -->
 
                             
-				</div>
+				</div> 
 				</section>
+				<!-- </form> --> 
 				</form>
 			</div>
 		</div>
@@ -153,36 +148,7 @@
 	</div>
 	
 	
-	<script type="text/javascript">
-		
-	$("#fileArea").hide();
 	
-	$("#titleImgArea").click(function(){
-			$("#thumbnailImg1").click();
-				});
-		
-		
-		
-		function loadImg(value, num){
-				if(value.files && value.files[0]){
-					var reader = new FileReader();
-					reader.onload = function(e){
-						switch(num){
-						case 1: 
-							$("#titleImg").attr("src", e.target.result);
-							break;
-					
-						
-						}
-					}
-					
-					reader.readAsDataURL(value.files[0]);
-				}
-			}
-	
-	
-	
-	</script>
 	
 	
 
