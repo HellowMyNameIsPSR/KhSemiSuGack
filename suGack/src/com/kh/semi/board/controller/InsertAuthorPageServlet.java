@@ -12,8 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
+import com.kh.semi.board.model.service.AuthorPageSerview;
+
+import com.kh.semi.board.model.vo.AuthorPageAttachmrnt;
 import com.kh.semi.common.MyFileRenamePolicy;
 import com.oreilly.servlet.MultipartRequest;
+
 
 /**
  * Servlet implementation class InsertAuthorPageServlet
@@ -34,21 +38,21 @@ public class InsertAuthorPageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("서블릿들어옴");
 	
 		if(ServletFileUpload.isMultipartContent(request)) {
 			
 			
 			
-			int maxSize =1024 * 1024 * 10; 
+			int maxSize = 1024 * 1024 * 10; 
 			
 			
 			
-			String root = request.getSession().getServletContext().getRealPath("/");
+			 String root = request.getSession().getServletContext().getRealPath("/");
             
 			 System.out.println("root:" +root); 
 			 
-			 String filePath = root + "thumbnail_uploadFiles/"; 
+			 String filePath = root + "uploadSalesImage/"; 
 			 
 			 
 			 MultipartRequest multiRequest = new MultipartRequest(request,filePath,maxSize,"UTF-8",new MyFileRenamePolicy());
@@ -90,6 +94,32 @@ public class InsertAuthorPageServlet extends HttpServlet {
 			 System.out.println(author_about);
 			 System.out.println(author_Title);
 			 System.out.println(author_content);
+			 
+			 
+			 ArrayList<AuthorPageAttachmrnt>fileList = new ArrayList<AuthorPageAttachmrnt>();
+			 
+			 
+			 for(int i=originFiles.size()-1; i>=0; i--) {
+				
+				 
+				 AuthorPageAttachmrnt aat = new AuthorPageAttachmrnt();
+				 aat.setFilePath(filePath);
+				 aat.setOriginName(originFiles.get(i));
+				 aat.setChangeName(saveFiles.get(i));
+				 
+				 
+				 fileList.add(aat);				 
+ 
+			 }
+			 
+			int result = new AuthorPageSerview().insertAuthorPage(fileList);
+			 
+			 
+			 
+			 
+			 
+			 
+			 
 			 
 			 
 			 
