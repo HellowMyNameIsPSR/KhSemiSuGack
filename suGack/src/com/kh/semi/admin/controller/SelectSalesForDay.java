@@ -12,20 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import com.google.gson.Gson;
 import com.kh.semi.admin.model.service.adminService;
 
 /**
- * Servlet implementation class SelectMemberForMonth
+ * Servlet implementation class SelectSalesForDay
  */
-@WebServlet("/selectMemberForMonth.ad")
-public class SelectMemberForMonth extends HttpServlet {
+@WebServlet("/selectSalesForDay.ad")
+public class SelectSalesForDay extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SelectMemberForMonth() {
+    public SelectSalesForDay() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,7 +33,7 @@ public class SelectMemberForMonth extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Integer> list = new adminService().selectMemberForMonth();
+		ArrayList<Integer> list = new adminService().selectSalesForDay();
 		System.out.println(list);
 		JSONObject data = new JSONObject();
 		JSONObject ajaxObjCols1 = new JSONObject();
@@ -50,7 +49,7 @@ public class SelectMemberForMonth extends HttpServlet {
 		
 		for(int i = 0; i < list.size(); i++) {
 			JSONObject legend = new JSONObject();
-			legend.put("v", "19/" + "0" + (i + 1));
+			legend.put("v", "5/" + "0" + (i + 1));
 			legend.put("f", null);
 			
 			JSONObject value = new JSONObject();
@@ -69,9 +68,8 @@ public class SelectMemberForMonth extends HttpServlet {
 		data.put("cols", ajaxArrayCols);
 		data.put("rows", ajaxArrayRows);
 		
+		response.setContentType("application/json");
 		response.getWriter().print(data.toJSONString());
-		
-		
 	}
 
 	/**

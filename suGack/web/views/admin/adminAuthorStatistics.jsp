@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원관련 통계</title>
+<title>작가 관련 통계</title>
 </head>
 <body>
 <!-- Wrapper -->
@@ -19,9 +19,7 @@
 					</a>
 				</header>
 				<section id="contents">
-					<div>
-						
-					</div>
+					
 					<!-- Contents area -->
 				</section>
 			</div>
@@ -30,29 +28,3 @@
 	</div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

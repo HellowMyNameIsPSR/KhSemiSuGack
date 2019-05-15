@@ -107,13 +107,14 @@
 	<div class="main-3">
 		<h3>오늘의 통계</h3>
 		<div id="chart_div" style="width:900px; height:300px;"></div>
+		<div id="chart_div2" style="width:900px; height:300px;"></div>
 		
 	</div>
 </div>
 		<script>
 			google.charts.load('current', {'packages':['corechart']});
 			google.charts.setOnLoadCallback(chart);
-
+			
 			function chart(){
 				var option = {
 						title:'월별 회원가입자',
@@ -121,9 +122,12 @@
 						hAxis:{title:"년월"},
 						legend: { position: "none" }
 						};
+				var startDate = '2019-01-01';
+				var endDate = '2019-12-31'
 				var chartData;
 				$.ajax({
 					url:"<%=request.getContextPath()%>/selectMemberForMonth.ad",
+					data:{startDate:startDate, endDate:endDate},
 					async : false,
 					type:"get",
 					success:function(data){
@@ -132,6 +136,28 @@
 					}
 				});
 				var chart = new google.visualization.ColumnChart(document.querySelector('#chart_div'));
+				chart.draw(chartData, option);
+			}
+			
+			google.charts.setOnLoadCallback(chart2);
+			function chart2(){
+				var option = {
+						title:'월별 매출',
+						vAxis:{title:"원"},
+						hAxis:{title:"년월"},
+						legend: { position: "none" }
+						};
+				var chartData;
+				$.ajax({
+					url:"<%=request.getContextPath()%>/selectSalesForMonth.ad",
+					async : false,
+					type:"get",
+					success:function(data){
+						console.log(data);
+						chartData = new google.visualization.DataTable(data);	
+					}
+				});
+				var chart = new google.visualization.ColumnChart(document.querySelector('#chart_div2'));
 				chart.draw(chartData, option);
 			}
 

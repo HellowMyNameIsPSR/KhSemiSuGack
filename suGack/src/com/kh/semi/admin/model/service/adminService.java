@@ -30,6 +30,36 @@ public class adminService {
 		
 		return list;
 	}
+
+	public ArrayList<Integer> selectSalesForMonth() {
+		Connection con = getConnection();
+		
+		ArrayList<Integer> list = new adminDao().selectSalesForMonth(con);
+		
+		close(con);
+		
+		return list;
+	}
+
+	public ArrayList<Integer> selectSalesForWeek() {
+		Connection con = getConnection();
+		
+		ArrayList<Integer> list = new adminDao().selectSalesForWeek(con);
+		
+		close(con);
+		
+		return list;
+	}
+
+	public ArrayList<Integer> selectSalesForDay() {
+		Connection con = getConnection();
+		
+		ArrayList<Integer> list = new adminDao().selectSalesForDay(con);
+		
+		close(con);
+		
+		return list;
+	}
 		
 
 	

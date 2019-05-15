@@ -12,20 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import com.google.gson.Gson;
 import com.kh.semi.admin.model.service.adminService;
 
 /**
- * Servlet implementation class SelectMemberForMonth
+ * Servlet implementation class SelectSalesForMonth
  */
-@WebServlet("/selectMemberForMonth.ad")
-public class SelectMemberForMonth extends HttpServlet {
+@WebServlet("/selectSalesForMonth.ad")
+public class SelectSalesForMonth extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SelectMemberForMonth() {
+    public SelectSalesForMonth() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,7 +33,7 @@ public class SelectMemberForMonth extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Integer> list = new adminService().selectMemberForMonth();
+		ArrayList<Integer> list = new adminService().selectSalesForMonth();
 		System.out.println(list);
 		JSONObject data = new JSONObject();
 		JSONObject ajaxObjCols1 = new JSONObject();
@@ -42,8 +41,11 @@ public class SelectMemberForMonth extends HttpServlet {
 		JSONArray ajaxArrayCols = new JSONArray();
 		JSONArray ajaxArrayRows = new JSONArray();
 //		JSONArray ajaxArray = new JSONArray();
-		
+		ajaxObjCols1.put("id", "month");
+		ajaxObjCols1.put("label", "Month");
 		ajaxObjCols1.put("type", "string");
+		ajaxObjCols2.put("id", "won");
+		ajaxObjCols2.put("label", "won");
 		ajaxObjCols2.put("type", "number");
 		ajaxArrayCols.add(ajaxObjCols1);
 		ajaxArrayCols.add(ajaxObjCols2);
@@ -69,9 +71,8 @@ public class SelectMemberForMonth extends HttpServlet {
 		data.put("cols", ajaxArrayCols);
 		data.put("rows", ajaxArrayRows);
 		
+		response.setContentType("application/json");
 		response.getWriter().print(data.toJSONString());
-		
-		
 	}
 
 	/**

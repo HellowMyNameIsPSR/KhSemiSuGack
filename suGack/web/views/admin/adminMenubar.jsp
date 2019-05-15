@@ -51,7 +51,13 @@
 						<li><a href="viewBbsList.jsp">고객센터관리</a>
 					</ul>
 				</li>
-				<li><a href="viewVstrList.jsp">통계</a></li>
+				<li><span class="opener">통계</span>
+					<ul>
+						<li><a href="adminSalesStatistics.jsp">매출관련통계</a>
+						<li><a href="adminMemberStatistics.jsp">회원관련통계</a>
+						<li><a href="adminAuthorStatistics.jsp">작가관련통계</a>
+					</ul>
+				</li>
 			</ul>
 		</nav>
 		<!-- Footer -->
