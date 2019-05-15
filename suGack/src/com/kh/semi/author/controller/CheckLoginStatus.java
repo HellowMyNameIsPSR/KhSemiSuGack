@@ -1,27 +1,25 @@
 package com.kh.semi.author.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.author.model.service.AuthorService;
 import com.kh.semi.member.model.vo.Member;
 
 /**
- * Servlet implementation class SelectBrandNameServlet
+ * Servlet implementation class CheckLoginStatus
  */
-@WebServlet("/selectBName.at")
-public class SelectBrandNameServlet extends HttpServlet {
+@WebServlet("/loginCheck.at")
+public class CheckLoginStatus extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SelectBrandNameServlet() {
+    public CheckLoginStatus() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,13 +28,16 @@ public class SelectBrandNameServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//입력한 브랜드명 가져오기brandNameCheckResult
-		String brandName = request.getParameter("brandName");
-		
-		//비즈니스 로직 작성
-		int result = new AuthorService().selectBrandName(brandName);
-		response.getWriter().print(result);
-	} // method
+		Member loginUser = (Member) request.getSession().getAttribute("loginUser");
+		boolean loginStatus;
+		if(loginUser != null) {
+			loginStatus = true;
+		} else {
+			loginStatus = false;
+		}
+		System.out.println("loginStatus" + loginStatus);
+		response.getWriter().print(loginStatus);
+	} //end method
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
