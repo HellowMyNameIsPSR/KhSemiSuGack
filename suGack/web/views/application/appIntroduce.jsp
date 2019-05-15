@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.semi.author.model.vo.*, java.util.*"%>
 <%
-	boolean brandNameCheck;
+	boolean brandNameCheck = false;
+	ArrayList<ProType> pTypeList = (ArrayList<ProType>) request.getAttribute("pTypeList");
 %>
 <!DOCTYPE html>
 <html>
@@ -36,7 +37,9 @@
 	    </div>
 	    <!-- img -->
 	    <div class="col-sm-4">
-	      <span class="logo"><img src="image/logo.png"></span>
+	      <span class="logo">
+	      	<img src="<%= request.getContextPath() %>/views/application/image/logo.png">
+	      </span>
 	    </div>
 	  </div>
 	</div>
@@ -87,7 +90,9 @@
 	    <h3>입점신청 절차</h3>
 	  </div>
 	  <div class="row">
-	      <img class="img-responsive center-block" src="image/applyProcess.png" style="width:60%;">
+	      <img class="img-responsive center-block" 
+	      		src="<%= request.getContextPath() %>/views/application/image/applyProcess.png" 
+	      		style="width:60%;">
 	  </div>
 	</div><!-- end Container (About Section) -->
 
@@ -158,14 +163,7 @@
 	    </div>
 	    <form action="" method="get">
 	    <div class="col-sm-7 slideanim">
-	      <div class="row">
-	        <div class="col-sm-6 form-group">
-	          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
-	        </div>
-	        <div class="col-sm-6 form-group">
-	          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-	        </div>
-	      </div>
+	      
 	      <div class="row">
 	      	<div class="col-sm-5 form-group">
 	          <input class="form-control" id="brandName" name="brandName" placeholder="Brand Name" type="text" required>
@@ -181,19 +179,22 @@
 	        	</label>
 	        </div>
 	      </div>
-	      <textarea class="form-control" id="comments" name="comments" placeholder="소개글을 작성해 주세요." rows="5"></textarea><br>
+	      <textarea class="form-control" id="comments" name="comments" placeholder="작가 페이지의 프로필에 사용됩니다. 소개글을 작성해 주세요." rows="5"></textarea><br>
        	  <label class="form-control">1차 입점 서류
        		  <input type="file" name="attachFile" id="attachFile" style="overflow:hidden;opacity: 0;">
        	  </label>
-       	  <select class="form-control">
-       	  	<option>카테고리</option>
-       	  	<option>카테고리</option>
-       	  	<option>카테고리</option>
+       	  <select class="form-control" id="selectPType">
+       	  	<option>공예 유형</option>
+       	  	<% for(int i = 0; i < pTypeList.size(); i++) { %>
+       	  		<option value="<%= pTypeList.get(i).getMaterial() %>">
+       	  			<%= pTypeList.get(i).getMaterial() %>
+       	  		</option>
+       	  	<% } %>
        	  </select> <br>
 	        
 	      <div class="row">
 	        <div class="col-sm-12 form-group">
-	          <button class=" pull-right all-btn all-btn-hover" type="submit" id="sendBtn">신청하기</button>
+	          <button class=" pull-right all-btn all-btn-hover"  id="sendBtn">신청하기</button>
 	        </div>
 	      </div>
 	    </div>
@@ -208,54 +209,56 @@
 	</footer>	
 	
 	<!-- script -->
-	<script src="js/appIntroduce.js"></script>
-	<script>
-		function isLogin(){
-			 
-		 }
-	</script>
+	<script src="<%= request.getContextPath() %>/views/application/js/appIntroduce.js"></script>
 	<script>
 	$(function(){
 		
-		console.log("로그인 상태 확인중..");
-		 $.ajax({ //로그인 상태 확인
-			 url : "<%= request.getContextPath() %>/loginCheck.at",
-			 success : function(data){
-				 console.log(data);
-				 return data;
-			 },
-			 error : function(data) {
-				 console.log("통신에 실패!");
-			 }
-		 }); 
-		 
-		 
 		$("#brandNameCheck").click(function(){ //브랜드명 중복확인 눌렀을 때
 			var brandName = $("#brandName").val();
  			console.log("브랜드명 중복확인중...");
- 			consol.log(isLogin());
 			$.ajax({
 				url : "<%=request.getContextPath() %>/selectBName.at",
 				type : "get",
 				data : {brandName : brandName},
 				success : function(data) {
-					if(isLogin){
-						console.log("내가 실행되면 안되는데");
-						alert("로그인 중..");
-					} else {
-						console.log("나 실행");
+					if(data > 0) {
 						brandNameCheck = false;
-						alert("로그인 후에 이용해 주세요");
-					} //end if
+						alert("이미 존재하는 브랜드 명입니다.");
+					} else if(data < 0) {
+						brandNameCheck = false;
+						alert("로그인 후 이용해 주세요");
+					} else{
+						brandNameCheck = true;
+						alert("사용 가능한 브랜드 명입니다.");
+					} // ens if
 				},
 				error : function(data) {
 					console.log("실패!");
 				}
-			}); //end ajax
-			 
+			}); //end ajax			 
 		}); //end btn
 		
-	}); //end func
+		$("#sendBtn").click(function(){ //신청하기 버튼 눌렀을 때
+			//데이터 확인
+			var dataCheck = true;
+			var comments = $("#comments").val();
+			var proType= $("#selectPType option:selected").val();
+			if(!brandNameCheck){
+				dataCheck = false;
+				alert("브랜드명을 다시 확인해 주세요.");
+			}
+			if(comments == null){
+				dataCheck = false;
+				alert("소개글을 작성해 주세요.");
+			}
+			if(proType == null){
+				dataCheck = false;
+				alert("자신의 공예 유형을 선택해 주세요.");
+			}
+		});
+		
+		
+	});//end func
 	</script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,22 +9,19 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<%@ include file="../assets/css/author.html" %>
 <style>
-	.manageSaleTitle{
+	.saleMenu{
+		border:2px solid lightgray;
 		margin: 20px 0px 20px 0px;
-		height:70px;
-		padding-top:15px;
-		padding-left:20px;
-		min-width:650px;
-	}
-	.saliMenu{
-		margin-bottom:70px;
-		min-width:650px;
-	}
-	.saliMenu tr>td{
-		border:1px solid gray;
 		box-shadow:2px 2px lightgray;
-		background:rightgray;
+		min-width:650px;
+		
+	}
+	.saleMenu tr>td{
+		border:1px solid lightgray;
+		box-shadow:2px 2px lightgray;
+		background: radial-gradient(white, #F6FFFF) fixed;
 		text-align:center;
 	}
 	
@@ -31,60 +29,7 @@
 		background:skyblue;
 		cursor:pointer
 	}
-	
-	
-	.subTitle{
-		border:1px solid gray;
-		margin: 20px 0px 20px 0px;
-		box-shadow:2px 2px lightgray;
-		height:50px;
-		padding-top:5px;
-		padding-left:20px;
-		background:lightgray;
-		font-size:20px;
-		min-width:650px;
-	}
-	
 
-
-	.manageSaleContents{
-		border:2px solid lightgray;
-		margin: 20px 0px 20px 0px;
-		box-shadow:2px 2px lightgray;
-		height:150px;
-		min-width:650px;
-	}
-	.manageSaleTable{
-		border:2px solid lightgray;
-		margin: 20px 0px 20px 0px;
-		box-shadow:2px 2px lightgray;
-		height:500px;
-		min-width:650px;
-
-	}
-	
-	.listTable tr>td{
-		border:1px solid darkgray;
-		font-size:13px;
-		text-align:center;
-		background:white;
-	}
-	.listTable tr>th{
-		border:1px solid darkgray;
-		font-size:13px;
-		text-align:center;
-		background:lightgray;
-		padding-top:7px;
-		padding-botton:7px;
-	}
-	
-	.manageButton{
-		border:2px solid lightgray;
-		margin: 20px 0px 20px 0px;
-		box-shadow:2px 2px lightgray;
-		height:100px;
-		min-width:650px;
-	}
 
 
 </style>
@@ -103,12 +48,13 @@
 					</a>
 				</header>
 				<section id="contents">
-					<header class="main manageSaleTitle">
+					<header class="main">
 						<h2>판매 관리</h2>
 					</header>
 					<!-- Contents area -->
-					<div class="subTitle">
-						<p><strong>취소관리</strong></p>
+					
+					<div class="manageSaleTitle">
+						<h2>취소관리</h2>	<p>
 					</div>
 					
 					<nav>

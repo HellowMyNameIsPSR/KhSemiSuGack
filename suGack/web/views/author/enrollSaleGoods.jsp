@@ -760,60 +760,38 @@
 						</div>
 						
 						<script>
-					/*	$('#summernote').summernote({
-					        height : 400,
-					        onImageUpload : function(files, editor, welEditable) {
-					            sendFile(files[0], editor, welEditable);
-					        },
-					        lang : 'ko-KR'
-					        
-				        	callbacks: {
-								onImageUpload: function(files) {
-									//your upload process
+							$(document).ready(
+									function() {
+										$('#summernote').summernote(
+												{
+													height : 400,
+													minHeight : null,
+													maxHeight : null,
+													focus : true,
+													onImageUpload : function(files, editor,welEditable) {
+														sendFile(files[0], editor, welEditable);
+													}
+												});
+									});
 
-								}
-
+							function sendFile(file, editor, welEditable) {
+								data = new FormData();
+								data.append("file", file);
+								$.ajax({
+									data : data,
+									type : "POST",
+									url : '/image',
+									cache : false,
+									contentType : false,
+									processData : false,
+									success : function(url) {
+										alert(url);
+										editor.insertImage(welEditable, url);
+									}
+								});
 							}
-					    });*/
-						
-						$(document).ready(function() {
-						      $('#summernote').summernote({
-						        height: 400,
-						        minHeight: null,
-						        maxHeight: null,
-						        focus: true,
-						         callbacks: {
-						        	 /*  onImageUpload: function(files, editor, welEditable) {
-						            for (var i = files.length - 1; i >= 0; i--) {
-						              sendFile(files[i], this);
-						            }
-						          }*/
+						</script>
 
-						        }
-						      });
-						    });
-						    
-						   /* function sendFile(file, el) {
-						      var form_data = new FormData();
-						      form_data.append('file', file);
-						      $.ajax({
-						        data: form_data,
-						        type: "POST",
-						        url: 'InsertContentsImageServlet.wo',
-						        cache: false,
-						        contentType: false,
-						        enctype: 'multipart/form-data',
-						        processData: false,
-						        success: function(url) {
-						          $(el).summernote('editor.insertImage', url);
-						          $('#imageBoard > ul').append('<li><img src="'+url+'" width="480" height="auto"/></li>');
-						        }
-						      });
-						    }
-*/
-
-
-				 		</script>
 
 						
 						
