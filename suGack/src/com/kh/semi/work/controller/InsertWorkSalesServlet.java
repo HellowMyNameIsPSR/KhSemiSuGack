@@ -49,18 +49,23 @@ public class InsertWorkSalesServlet extends HttpServlet {
 			
 			Enumeration<String> files = multiRequest.getFileNames();
 			
+			
 			while(files.hasMoreElements()) {
+				
 				String name = files.nextElement();
 				
 				System.out.println("name : " + name);
-				
-				saveFiles.add(multiRequest.getFilesystemName(name));
-				originFiles.add(multiRequest.getOriginalFileName(name));
-				
-				System.out.println("fileSystem name : " 
-									+ multiRequest.getFilesystemName(name));
-				System.out.println("originFile : " 
-									+ multiRequest.getOriginalFileName(name));
+				if(multiRequest.getFilesystemName(name) != null) {
+					
+					saveFiles.add(multiRequest.getFilesystemName(name));
+					originFiles.add(multiRequest.getOriginalFileName(name));
+					
+					System.out.println("fileSystem name : " 
+							+ multiRequest.getFilesystemName(name));
+					System.out.println("originFile : " 
+							+ multiRequest.getOriginalFileName(name));
+					
+				}
 			}
 			
 			//int workId = Integer.parseInt(request.getParameter("workId"));	//작품코드

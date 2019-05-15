@@ -150,6 +150,31 @@ public class WorkDao {
 		}
 		return result;
 	}
+
+	public int insertContentsImage(Connection con, ArrayList<PicFile> picFile) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("insertPicFile");
+		
+		try {
+			for(int i = 0; i < picFile.size(); i++) {
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1, picFile.get(i).getOriginName());
+				pstmt.setString(2, picFile.get(i).getChangeName());
+				pstmt.setString(3, picFile.get(i).getFilePath());
+				pstmt.setInt(4, picFile.get(i).getBno());
+				
+				result += pstmt.executeUpdate();
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		System.out.println("이미지 dao : " +result);
+		return result;
+	}
 	
 
 

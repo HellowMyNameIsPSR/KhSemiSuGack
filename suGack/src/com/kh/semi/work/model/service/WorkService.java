@@ -69,6 +69,21 @@ public class WorkService {
 		close(con);
 		return result;
 	}
+	public int insertContentsImage(ArrayList<PicFile> picFile) {
+		Connection con = getConnection();
+		
+		int result = new WorkDao().insertContentsImage(con, picFile);
+		
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		System.out.println("이미지 서비스 : " +result);
+		return result;
+	}
 	
 }
 

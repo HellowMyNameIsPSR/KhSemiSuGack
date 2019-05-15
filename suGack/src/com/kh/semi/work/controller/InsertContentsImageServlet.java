@@ -18,7 +18,7 @@ import com.kh.semi.work.model.service.WorkService;
 import com.kh.semi.work.model.vo.PicFile;
 import com.oreilly.servlet.MultipartRequest;
 
-@WebServlet("/InsertContentsImageServlet")
+@WebServlet("/InsertContentsImageServlet.wo")
 public class InsertContentsImageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -26,7 +26,9 @@ public class InsertContentsImageServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(ServletFileUpload.isMultipartContent(request)) {
-			int maxSize = 1024 * 1024 * 10;
+			System.out.println("여긴 접근 성공??");
+			//전송 파일 용량 제한 : 10Mbyte로 제한
+			int maxSize = 1024 * 1024 * 100;
 			
 			//웹 서버 컨테이너 경로 추출
 			String root = request.getSession().getServletContext().getRealPath("/");
@@ -46,56 +48,57 @@ public class InsertContentsImageServlet extends HttpServlet {
 			
 			Enumeration<String> files = multiRequest.getFileNames();
 			
+			
 			while(files.hasMoreElements()) {
+				
 				String name = files.nextElement();
 				
 				System.out.println("name : " + name);
-				
-				saveFiles.add(multiRequest.getFilesystemName(name));
-				originFiles.add(multiRequest.getOriginalFileName(name));
-				
-				System.out.println("fileSystem name : " 
-									+ multiRequest.getFilesystemName(name));
-				System.out.println("originFile : " 
-									+ multiRequest.getOriginalFileName(name));
-				
-				ArrayList<PicFile> picFile = new ArrayList<PicFile>();
-				for(int i = originFiles.size() - 1; i >= 0; i--) {
-					PicFile pic = new PicFile();
-					pic.setFilePath(filePath);
-					pic.setOriginName(originFiles.get(i));
-					pic.setChangeName(saveFiles.get(i));
+				if(multiRequest.getFilesystemName(name) != null) {
 					
-					picFile.add(pic);
+					saveFiles.add(multiRequest.getFilesystemName(name));
+					originFiles.add(multiRequest.getOriginalFileName(name));
+					
+					System.out.println("fileSystem name : " 
+							+ multiRequest.getFilesystemName(name));
+					System.out.println("originFile : " 
+							+ multiRequest.getOriginalFileName(name));
+					
 				}
+			}
+			
+			ArrayList<PicFile> picFile = new ArrayList<PicFile>();
+			for(int i = originFiles.size() - 1; i >= 0; i--) {
+				PicFile pic = new PicFile();
+				pic.setFilePath(filePath);
+				pic.setOriginName(originFiles.get(i));
+				pic.setChangeName(saveFiles.get(i));
 				
-				int result2 = new WorkService().insertContentsImage(picFile);
-				
-				
-				String page = "";
-				if(result2 > 0) {
-					//response.sendRedirect(request.getContextPath() + "/selectList.tn");
-					
-					page = "views/author/authorHome.jsp";
-					
-					response.sendRedirect(page);
-				}else {
-					System.out.println("사진 등록 실패!!!!");
-					for(int i = 0; i < saveFiles.size(); i++) {
-						File failedFile = new File(filePath + saveFiles.get(i));
-						
-						//true false 리턴됨
-						
-						System.out.println(failedFile.delete());
-						
-					}
-				}
+				picFile.add(pic);
+			}
+			
+			int result2 = new WorkService().insertContentsImage(picFile);
 			
 			
+			String page = "";
+			if(result2 > 0) {
+				//response.sendRedirect(request.getContextPath() + "/selectList.tn");
+				
+				page = "views/author/authorHome.jsp";
+				
+				response.sendRedirect(page);
+			}else {
+				System.out.println("사진 등록 실패!!!!");
+				for(int i = 0; i < saveFiles.size(); i++) {
+					File failedFile = new File(filePath + saveFiles.get(i));
+					
+					//true false 리턴됨
+					
+					System.out.println(failedFile.delete());
+					
+				}
 			}
 		}
-	
-	
 	
 	
 	
