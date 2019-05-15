@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%
+	boolean brandNameCheck;
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +12,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>    
     <%@ include file="../assets/css/allCss.html" %>
     <%@ include file="stylesheet/appIntroduce.html" %>
 </head>
@@ -209,22 +210,49 @@
 	<!-- script -->
 	<script src="js/appIntroduce.js"></script>
 	<script>
+		function isLogin(){
+			 
+		 }
+	</script>
+	<script>
 	$(function(){
+		
+		console.log("로그인 상태 확인중..");
+		 $.ajax({ //로그인 상태 확인
+			 url : "<%= request.getContextPath() %>/loginCheck.at",
+			 success : function(data){
+				 console.log(data);
+				 return data;
+			 },
+			 error : function(data) {
+				 console.log("통신에 실패!");
+			 }
+		 }); 
+		 
 		 
 		$("#brandNameCheck").click(function(){ //브랜드명 중복확인 눌렀을 때
 			var brandName = $("#brandName").val();
-			console.log(brandName);
+ 			console.log("브랜드명 중복확인중...");
+ 			consol.log(isLogin());
 			$.ajax({
 				url : "<%=request.getContextPath() %>/selectBName.at",
 				type : "get",
 				data : {brandName : brandName},
 				success : function(data) {
-					console.log(data);
+					if(isLogin){
+						console.log("내가 실행되면 안되는데");
+						alert("로그인 중..");
+					} else {
+						console.log("나 실행");
+						brandNameCheck = false;
+						alert("로그인 후에 이용해 주세요");
+					} //end if
 				},
 				error : function(data) {
 					console.log("실패!");
 				}
 			}); //end ajax
+			 
 		}); //end btn
 		
 	}); //end func
