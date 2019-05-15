@@ -15,7 +15,7 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.kh.semi.common.MyFileRenamePolicy;
 import com.kh.semi.work.model.service.WorkService;
-import com.kh.semi.work.model.vo.PicFile;
+import com.kh.semi.work.model.vo.WorkPic;
 import com.kh.semi.work.model.vo.Work;
 import com.oreilly.servlet.MultipartRequest;
 
@@ -54,7 +54,7 @@ public class InsertWorkSalesServlet extends HttpServlet {
 				
 				String name = files.nextElement();
 				
-				System.out.println("name : " + name);
+				//System.out.println("name : " + name);
 				if(multiRequest.getFilesystemName(name) != null) {
 					
 					saveFiles.add(multiRequest.getFilesystemName(name));
@@ -88,17 +88,19 @@ public class InsertWorkSalesServlet extends HttpServlet {
 			work.setPrice(price);
 			work.setCid(cid);
 			
-			ArrayList<PicFile> picFile = new ArrayList<PicFile>();
+			
+			
+			ArrayList<WorkPic> workPic = new ArrayList<WorkPic>();
 			for(int i = originFiles.size() - 1; i >= 0; i--) {
-				PicFile pic = new PicFile();
-				pic.setFilePath(filePath);
-				pic.setOriginName(originFiles.get(i));
-				pic.setChangeName(saveFiles.get(i));
+				WorkPic pic = new WorkPic();
+				pic.setfilePath(filePath);
+				pic.setoriginName(originFiles.get(i));
+				pic.setchangeName(saveFiles.get(i));
 				
-				picFile.add(pic);
+				workPic.add(pic);
 			}
 			
-			int result2 = new WorkService().insertSales(work, picFile);
+			int result2 = new WorkService().insertSales(work, workPic);
 			
 			
 			String page = "";

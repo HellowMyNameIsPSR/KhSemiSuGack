@@ -15,6 +15,7 @@ import java.util.Properties;
 import com.kh.semi.work.model.vo.PageInfo;
 import com.kh.semi.work.model.vo.PicFile;
 import com.kh.semi.work.model.vo.Work;
+import com.kh.semi.work.model.vo.WorkPic;
 
 public class WorkDao {
 	private Properties prop = new Properties();
@@ -127,19 +128,22 @@ public class WorkDao {
 		return listCount;
 	}
 
-	public int insertPicFile(Connection con, ArrayList<PicFile> picFile) {
+	public int insertPicFile(Connection con, ArrayList<WorkPic> workPic) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
 		String query = prop.getProperty("insertPicFile");
 		
 		try {
-			for(int i = 0; i < picFile.size(); i++) {
+			for(int i = 0; i < workPic.size(); i++) {
 				pstmt = con.prepareStatement(query);
-				pstmt.setString(1, picFile.get(i).getOriginName());
-				pstmt.setString(2, picFile.get(i).getChangeName());
-				pstmt.setString(3, picFile.get(i).getFilePath());
-				pstmt.setInt(4, picFile.get(i).getBno());
+				pstmt.setString(1, workPic.get(i).getoriginName());
+				pstmt.setString(2, workPic.get(i).getchangeName());
+				pstmt.setString(3, workPic.get(i).getfilePath());
+				int type = 0;
+				if(i == 0) type = 0;
+				else type = 1;
+				pstmt.setInt(4, type);
 				
 				result += pstmt.executeUpdate();
 			}
@@ -174,6 +178,32 @@ public class WorkDao {
 		}
 		System.out.println("이미지 dao : " +result);
 		return result;
+	}
+
+	public int selectCurrval(Connection con) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		int workId = 0;
+		
+		String query = prop.getProperty("selectCurrval");
+		
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(query);
+			
+			if(rset.next()) {
+				workId = rset.getInt("currval");
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		
+		return workId;
 	}
 	
 
