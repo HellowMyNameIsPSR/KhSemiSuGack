@@ -115,7 +115,7 @@
 				<ul class="nav navbar-nav pull-right">
 					<li><a href="../member/memberLoginForm.jsp">로그인</a></li>
 					<li><a href="../member/memberJoinForm.jsp">회원가입</a></li>
-					<li><a href="../application/appIntroduce.jsp">입점신청</a></li>
+					<li><a href="<%=request.getContextPath() %>/selectproptype.at">입점신청</a></li>
 				</ul>
 			</nav>
 			<%} %>

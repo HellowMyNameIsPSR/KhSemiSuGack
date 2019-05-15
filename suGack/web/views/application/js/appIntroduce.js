@@ -1,19 +1,4 @@
 $(function(){
- 
-	/*$("#brandNameCheck").click(function(){ //브랜드명 중복확인 눌렀을 때
-		var brandName = $("#brandName").val();
-		console.log(brandName);
-		location.href = "/sg/selectBName.at?brandName=" + brandName;
-	});*/
-	
-  /*$("#sendBtn").click(function(){//신청하기 버튼 클릭 했을 때
-	  //신청 내역으로 가기
-	  location.href = "application2.jsp";
-  });
-  
-  $("#applyFormDownload").click(function(){ //입점신청양식 다운로드 버튼 클릭 했을 때
-	  console.log("입점신청양식 다운로드 버튼을 눌렀습니다.")
-  });*/
 	
 	// Add smooth scrolling to all links in navbar + footer link
   $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
