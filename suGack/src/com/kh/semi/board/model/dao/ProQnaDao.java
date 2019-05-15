@@ -197,7 +197,7 @@ public class ProQnaDao {
 
 	
 	//답변리스트 조회용 메소드
-	public ArrayList<ProQnaComment> selectCommentList(Connection con, int bno) {
+	/*public ArrayList<ProQnaComment> selectCommentList(Connection con, int bno) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<ProQnaComment> list = null;
@@ -214,11 +214,11 @@ public class ProQnaDao {
 			
 			while(rset.next()) {
 				
-				/*ProQna qna = new ProQna();
+				ProQna qna = new ProQna();
 				
 				qna.setWriteDate(rset.getDate("WRITE_DATE"));
 				qna.setContent(rset.getString("CONTENT"));
-				qna.setBno(rset.getInt("BNO"));*/
+				qna.setBno(rset.getInt("BNO"));
 				
 				ProQnaComment comment = new ProQnaComment();
 				comment.setWriteDate(rset.getDate("WRITE_DATE"));
@@ -236,13 +236,54 @@ public class ProQnaDao {
 		}
 		
 		return list;
+		
+		
+		selectCommentList=SELECT B.CONTENT, M.MEMBER_NAME, B.WRITE_DATE FROM B_COMMENT B JOIN BOARD BD ON (BD.BNO=B.BNO) JOIN MEMBER M ON(M.MEMBER_ID=BD.MEMBER_ID) where BNO = ?
+	}*/
+
+	//답변리스트 조회용 메소드
+	public ArrayList<ProQnaComment> selectCommentList(Connection con, ProQnaComment comment) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<ProQnaComment> list = null;
+		
+		String query = prop.getProperty("selectCommentList");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, comment.getBno());
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<ProQnaComment>();
+			
+			while(rset.next()) {
+				ProQnaComment c =  new ProQnaComment();
+				c.setCid(rset.getInt("COMMENT_ID"));
+				c.setWriteDate(rset.getDate("WRITE_DATE"));
+				c.setContent(rset.getString("CONTENT"));
+				c.setBno(rset.getInt("BNO"));
+				c.setWriterId(rset.getInt("WRITER_ID"));
+				c.setWriteLevel(rset.getInt("WRITE_LEVEL"));
+				
+				System.out.println("c : " + c);
+				list.add(c);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return list;
 	}
 
 
-	public ArrayList<ProQnaComment> insertComment(Connection con, int writerId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+
+	
 
 
 	

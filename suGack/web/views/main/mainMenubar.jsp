@@ -203,7 +203,8 @@
 									<li><a href="#">기타</a></li>
 								</ul>
 							</li>
-							<li><a href="../product/products.jsp">판매</a></li>
+							<!-- <li><a href="../product/products.jsp">판매</a></li> -->
+							<li><a href="<%= request.getContextPath()%>/selectProduct.pro">판매</a>
 							<li><a href="../fundingProduct/fundingProducts.jsp">펀딩</a></li>
 							<li><a href="../tour/authorpageMain.jsp">작가이야기</a></li>
 							<li><a href="#contact">About</a></li>
