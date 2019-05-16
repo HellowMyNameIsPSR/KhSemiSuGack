@@ -40,7 +40,7 @@
 					
 				 </header>
 
-				<form action="<%=request.getContextPath()%>/insert.to"  method="post" encType="multipart/form-data">
+				<form action="<%=request.getContextPath() %>/insert.to" method="post" encType="multipart/form-data">
 				<section id="contents">
 					<div class="container" style="border: 1px solid black;">
 						<h4>작가프로필</h4>
@@ -68,68 +68,19 @@
 
 
 
-						<div class="photoArea row" style="border: 1px solid black;">
-
-							<div class="col-sm-12">
-								<h4>작가 사진 수정</h4>
-							</div>
-
-							<div class="col-sm-3">
-								<div class="photo" id="contentImgArea1" 
-									style="height: 200px; border: 1px solid black;">
-									
-									<img id="contentImg1" width="260" height="200">
-									
-									</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="photo"  id="contentImgArea2" 
-									style="height: 200px; border: 1px solid black;">
-									
-									<img id="contentImg2" width="260" height="200">
-									</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="photo"  id="contentImgArea3" 
-									style="height: 200px; border: 1px solid black;">
-									
-									<img id="contentImg3" width="260" height="200">
-									</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="photo"  id="contentImgArea4" 
-									style="height: 200px; border: 1px solid black;">
-									<img id="contentImg4" width="260" height="200">
-									</div>
-							</div>
-
-
-
-
-
-						</div>
-						<br>
-
-
-					<div class="text row" id="cent" style="border: 1px solid red;">
-						
-						<textarea  name="author_Title" style="width:1000px" placeholder="제목명"></textarea>
-							
-						<div class="textArea" style="border: 1px solid  black; width: 1200px; height: 700px;">
-						
-							<div class="font" style="border : 1px solid yellow; width:500 px; height:100px"><h4>글꼴메뉴</h4></div>	
-								
-							<textarea name="author_content"  style= "width:1200px"  placeholder="내용을 입력하세요"></textarea>
-						
-						</div>	
 						
 						<div id="fileArea">
+				<!-- 파일 요소를 같이 넘겨준다.value는 input type=file이 되는것! -->
+					<input type="file" id="thumbnailImg1" name="thumbnailImg1" onchange="loadImg(this,1)">
 					
-						    <input type="file" id="thumbnailImg1" name="thumbnailImg1" onchange="loadImg(this,1)">
-						    
-						
-						
-						</div> 
+				</div>
+				
+				
+				
+				
+				
+
+
 					
                               
                         <div align="center">
@@ -138,10 +89,14 @@
 						</div>
 						
 						
+						
+						
+						
+						
 
                              
                         
-					</div>
+				
 
                             
 				</div>
