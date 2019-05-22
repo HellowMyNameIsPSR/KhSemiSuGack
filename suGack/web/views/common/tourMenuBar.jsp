@@ -25,7 +25,7 @@
 				<h2>Menu</h2>
 			</header>
 			<ul>
-				<li><a href="authorpageEdit.jsp"><img alt="" src="../../images/artist.jpg" style="width: 200px; height: 200px;">활동명</a></li>
+				<li><a href="authorpageProEdit.jsp"><img alt="" src="../../images/artist.jpg" style="width: 200px; height: 200px;">활동명</a></li>
 				<li>
 					<span class="opener">작품갤러리</span>
 					<ul>
@@ -43,7 +43,7 @@
 				
 				</li>
 				<li>
-				    <span ><a href="authorPageDetail.jsp">게시글 작성</a></span>   
+				    <span ><a href="authorPageDetail.jsp">스토리 글 작성</a></span>   
 				
 				</li>
 				
